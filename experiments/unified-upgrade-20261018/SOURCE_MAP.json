@@ -1,0 +1,55 @@
+{
+  "version": "2026.10.18-unified",
+  "source_commit": "b74c2e7fd2cf7b51a8fc5fe4ddf926b17ef997df",
+  "components": [
+    {
+      "key": "gpsp",
+      "file": "experiments/rom-mmap-20261017/cherrypi-profile/gpsp",
+      "sha256": "b07165b2a3b31c036fb9ac57047e52a041aa2bcd98027798a5e69fe7efb6a1a7",
+      "source": "experiments/rom-mmap-20261017/source/gpsp",
+      "source_url": "https://github.com/chauncey-k/CherryPi-GBA-Optimized/tree/b74c2e7fd2cf7b51a8fc5fe4ddf926b17ef997df/experiments/rom-mmap-20261017/source/gpsp"
+    },
+    {
+      "key": "menu",
+      "file": "experiments/menu-motion-20261017/motion/cherrypi-launcher",
+      "sha256": "9696b5acde87dfe68db59a466c2ca3243ee52eddf72f8465032e6aa911c8bd73",
+      "source": "experiments/menu-motion-20261017/source",
+      "source_url": "https://github.com/chauncey-k/CherryPi-GBA-Optimized/tree/b74c2e7fd2cf7b51a8fc5fe4ddf926b17ef997df/experiments/menu-motion-20261017/source"
+    },
+    {
+      "key": "supervisor",
+      "file": "experiments/display-session-20261017/display-session/supervisor.sh",
+      "sha256": "e58b0fd6dbaf6b6c5a0937b52847ee58829ad05bceb898ac9d1f153191c3bedd",
+      "source": "experiments/display-session-20261017/source/supervisor.sh",
+      "source_url": "https://github.com/chauncey-k/CherryPi-GBA-Optimized/tree/b74c2e7fd2cf7b51a8fc5fe4ddf926b17ef997df/experiments/display-session-20261017/source/supervisor.sh"
+    },
+    {
+      "key": "display",
+      "file": "experiments/display-session-20261017/display-session/cherrypi-display-session",
+      "sha256": "175dc54d268dc611f149d905ff52194940d7618249998496c9ff8978467af173",
+      "source": "experiments/display-session-20261017/source",
+      "source_url": "https://github.com/chauncey-k/CherryPi-GBA-Optimized/tree/b74c2e7fd2cf7b51a8fc5fe4ddf926b17ef997df/experiments/display-session-20261017/source"
+    },
+    {
+      "key": "control",
+      "file": "components/system-scripts/device-control.sh",
+      "sha256": "95971fcab8743531547d4500944fdbc74579a05e623afec44a2792183aff3dfa",
+      "source": "components/system-scripts/device-control.sh",
+      "source_url": "https://github.com/chauncey-k/CherryPi-GBA-Optimized/tree/b74c2e7fd2cf7b51a8fc5fe4ddf926b17ef997df/components/system-scripts/device-control.sh"
+    },
+    {
+      "key": "boot",
+      "file": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/boot.scr",
+      "sha256": "e37524dc29139c6968cc690e796d5fa8840198ffecd748c2fb493b259cdfda1c",
+      "source": "experiments/fastboot-stage1-r2-20261017/boot.cmd",
+      "source_url": "https://github.com/chauncey-k/CherryPi-GBA-Optimized/tree/b74c2e7fd2cf7b51a8fc5fe4ddf926b17ef997df/experiments/fastboot-stage1-r2-20261017/boot.cmd"
+    },
+    {
+      "key": "dtb",
+      "file": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/suniv-f1c100s-generic.dtb",
+      "sha256": "7c2a1a06fd6ad060a2c8cb721ca5f682b1bb40110a1c331d34ad5c3d05a8ae17",
+      "source": "experiments/fastboot-stage1-r2-20261017/build.sh",
+      "source_url": "https://github.com/chauncey-k/CherryPi-GBA-Optimized/tree/b74c2e7fd2cf7b51a8fc5fe4ddf926b17ef997df/experiments/fastboot-stage1-r2-20261017/build.sh"
+    }
+  ]
+}

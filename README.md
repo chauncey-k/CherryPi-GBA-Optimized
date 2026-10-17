@@ -6,6 +6,7 @@ Cherry Pi F1C200S 原型的独立软件发布目录，当前组合版本 `2026.1
 
 ## 当前版本
 
+- **统一升级入口（新安装流程待上板验收）**：[统一升级包](experiments/unified-upgrade-20261018/README.md)。将已验证 gpSP、动画菜单、显示修复、设备控制与 fastboot r2 一次安装，支持版本检查、首次整包备份、失败恢复和回退；适用于已经安装独立菜单及运行库的系统。
 - **当前安装顺序、程序哈希、启动实测和验证范围**：[当前版本与启动实测](docs/07-当前版本与启动实测.md)。
 - **正在使用的 gpSP 源码与安装包**：[ROM 文件映射版](experiments/rom-mmap-20261017/README.md)。
 - **已上板验证的启动优化**：[fastboot stage1 r2](experiments/fastboot-stage1-r2-20261017/README.md)。Linux 计时下菜单首帧为 3.56 秒；这不是完整上电时间。
