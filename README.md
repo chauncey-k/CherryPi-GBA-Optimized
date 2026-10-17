@@ -1,6 +1,6 @@
 # CherryPi GBA Optimized
 
-Cherry Pi F1C200S 原型的独立软件发布目录，当前组合版本 `2026.10.17-rom-mmap-fastboot-stage1`：保留 gpSP 音频指令优化，加入 ROM 文件映射，以及已在用户板上验证生效的第一阶段启动优化。原始 `smc-live` 发布基线与完整安装资料继续保留。
+Cherry Pi F1C200S 原型的独立软件发布目录，当前组合版本 `2026.10.17-menu-motion`：保留 gpSP 音频指令优化，加入 ROM 文件映射、已验证的第一阶段启动优化，以及静态主题和轻量菜单动画。原始 `smc-live` 发布基线与完整安装资料继续保留。
 
 此目录可单独移动、备份或建立 GitHub 仓库。外部 ARM 交叉编译 SDK 仍需按构建说明准备。
 
@@ -10,6 +10,14 @@ Cherry Pi F1C200S 原型的独立软件发布目录，当前组合版本 `2026.1
 - **正在使用的 gpSP 源码与安装包**：[ROM 文件映射版](experiments/rom-mmap-20261017/README.md)。
 - **已上板验证的启动优化**：[fastboot stage1 r2](experiments/fastboot-stage1-r2-20261017/README.md)。Linux 计时下菜单首帧为 3.56 秒；这不是完整上电时间。
 - **特定游戏 ROM 的文字指针修复工具**：[修复说明](experiments/equipo-rom-repair-20261017/README.md)。仓库仅含工具，不含游戏和私人存档。
+
+## 界面改进
+
+- **已上板反馈良好：轻量菜单动画**：[演示、安装和回退](experiments/menu-motion-20261017/README.md)。基于已验证静态主题，120 ms 页面位移、100 ms 高亮渐入；快速输入无需等待，空闲不持续重绘。用户已确认动画效果良好。
+- **已上板确认：静态菜单主题**：[预览、安装和回退](experiments/theme-20261017/README.md)。无需 PNG，深蓝背景、薄荷绿选中条、统一字距和按键提示，是动画版的安装前置版本。用户已反馈界面正常。
+- **暂缓使用：游戏列表封面预览**：[安装、封面命名和回退](experiments/cover-preview-20261017/README.md)。基于 fastboot r2，已通过本机测试，等待实体板验收；此项尚未计入上面的已验证版本。
+
+![菜单动画演示（宿主测试帧）](experiments/menu-motion-20261017/previews/menu-motion.gif)
 
 ## 从这里开始
 

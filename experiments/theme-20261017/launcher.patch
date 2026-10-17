@@ -1,0 +1,164 @@
+--- a/launcher.c
++++ b/launcher.c
+@@ -3,6 +3,8 @@
+ #include "platform.h"
+ #include "settings.h"
+ #include "library.h"
++#include "theme.h"
++#include <strings.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdint.h>
+@@ -64,50 +66,123 @@
+     if(maximum<1 || brightness<1 || brightness>maximum) { brightness=0; maximum=0; }
+ }
+ static void rect(int x,int y,int w,int h,u16 c) { SDL_Rect r={x,y,w,h}; SDL_FillRect(screen,&r,c); }
+-static void text(int x,int y,const char *s,u16 c,int maxchars) {
++static void text(int x,int y,const char *s,u16 c,int maxchars,int spacing) {
+     int col=0;
+     while(*s && col<maxchars) {
+-        unsigned char ch=(unsigned char)*s++; int a,b;
+-        if(ch>=128) { while(((unsigned char)*s & 0xc0)==0x80) s++; ch='?'; }
+-        if(ch<32) ch='?';
+-        for(b=0;b<FONT_HEIGHT;b++) for(a=0;a<FONT_WIDTH;a++)
+-            if(_font_bits[_font_offset[ch]+b] & (0x8000u>>a)) {
+-                int px=x+col*6+a,py=y+b;
+-                if(px>=0 && px<320 && py>=0 && py<240) ((u16*)((char*)screen->pixels+py*screen->pitch))[px]=c;
++        unsigned char ch=(unsigned char)*s++;int a,b;
++        if(ch>=128) { while(((unsigned char)*s&0xc0)==0x80)s++;ch='?'; }
++        if(ch<32)ch='?';
++        for(b=0;b<FONT_HEIGHT;b++)for(a=0;a<FONT_WIDTH;a++)
++            if(_font_bits[_font_offset[ch]+b]&(0x8000u>>a)) {
++                int px=x+col*spacing+a,py=y+b;
++                if(px>=0 && px<320 && py>=0 && py<240)((u16*)((char*)screen->pixels+py*screen->pitch))[px]=c;
+             }
+         col++;
+     }
+ }
+-static void item(int i,const char *label,int selected) {
+-    int y=44+i*18; if(selected) rect(8,y-3,304,17,0x2451);
+-    text(14,y,label,selected?0xffff:0xc618,48);
++/* Fit by rendered characters, never by cutting UTF-8 in the middle. */
++static void fit_label(char *out,const char *s,int limit,int strip_extension) {
++    int n=0;const char *end=s+strlen(s),*dot=strrchr(s,'.');
++    if(strip_extension && dot && (!strcasecmp(dot,".gba") || !strcasecmp(dot,".zip") || !strcasecmp(dot,".bin")))end=dot;
++    while(s<end && n<limit) {
++        unsigned char ch=(unsigned char)*s++;
++        if(ch>=128) { while(s<end && ((unsigned char)*s&0xc0)==0x80)s++;ch='?'; }
++        out[n++]=ch<32?'?':(char)ch;
++    }
++    if(s<end && limit>=3) { out[limit-3]='.';out[limit-2]='.';out[limit-1]='.'; }
++    out[n]=0;
++}
++static void right_text(int right,int y,const char *s,u16 color,int spacing) {
++    text(right-(int)strlen(s)*spacing,y,s,color,50,spacing);
++}
++static void tile(int y,int h,int selected,u16 accent) {
++    rect(12,y,296,h,selected?UI_SELECTED:UI_PANEL);
++    if(selected)rect(12,y,3,h,accent);
++}
++static void hint(int *x,const char *button,const char *action) {
++    int w=(int)strlen(button)*6+8;
++    rect(*x,222,w,14,UI_LINE);text(*x+4,224,button,UI_TEXT,6,6);
++    *x+=w+5;text(*x,224,action,UI_MUTED,12,6);*x+=(int)strlen(action)*6+12;
++}
++static void footer(void) {
++    int x=12;
++    rect(0,216,320,24,UI_PANEL);rect(12,216,296,1,UI_LINE);
++    if(view==SETTINGS) { hint(&x,"<>","Adjust");hint(&x,"A","Save");hint(&x,"B","Cancel"); }
++    else if(view==POWEROFF) { hint(&x,"<>","Choose");hint(&x,"A","Confirm");hint(&x,"B","Back"); }
++    else {
++        hint(&x,"^v","Move");hint(&x,"A",view==HOME?"Open":"Play");
++        if(view!=HOME)hint(&x,"B","Back");
++        hint(&x,"M","Settings");
++    }
+ }
+ static void render(void) {
++    static const char *titles[]={"CHERRY PI","GAMES","RECENT GAMES","SETTINGS","POWER OFF"};
+     static const char *home[]={"Games","Recent games","Settings","Power off"};
+-    static const char *titles[]={"CHERRY PI","GAMES","RECENT GAMES","SETTINGS","POWER OFF"};
+-    char b[100]; int i;
+-    rect(0,0,320,240,0x0842); text(12,12,titles[view],0xffff,48); rect(8,30,304,1,0x4a69);
+-    if(view==HOME) { for(i=0;i<4;i++) item(i,home[i],i==row); if(library_loaded) snprintf(b,sizeof(b),"%zu games",games.count); else snprintf(b,sizeof(b),"Open Games to view your library"); text(14,142,b,0x9cf3,48); }
++    static const char *sub[]={"Browse your library","Jump back into a game","Sound and screen","Save data and shut down"};
++    char b[100],label[64];int i;
++    rect(0,0,320,240,UI_BG);
++    rect(12,13,3,16,UI_ACCENT);text(23,16,titles[view],UI_TEXT,36,7);
++    if(view==HOME)right_text(308,17,"HANDHELD",UI_MUTED,6);
++    rect(12,38,296,1,UI_LINE);rect(12,38,32,1,UI_ACCENT);
++    if(view==HOME) {
++        for(i=0;i<4;i++) {
++            int y=48+i*35;tile(y,30,i==row,UI_ACCENT);
++            snprintf(b,sizeof(b),"%02d",i+1);text(24,y+10,b,i==row?UI_ACCENT:UI_MUTED,2,6);
++            text(48,y+3,home[i],UI_TEXT,35,7);text(48,y+17,sub[i],UI_MUTED,42,6);
++        }
++    }
+     if(view==GAMES || view==RECENT) {
+-        Library *l=view==GAMES?&games:&recent; size_t top=(size_t)row/8*8;
+-        if(!l->count) { text(14,48,view==GAMES?"No games found":"No recent games",0xffff,48); text(14,70,"Copy ROMs into GAMES/roms",0x9cf3,48); }
+-        for(i=0;i<8 && top+i<l->count;i++) item(i,library_name(l->paths[top+i]),top+i==(size_t)row);
+-        snprintf(b,sizeof(b),"%d / %zu%s",l->count?row+1:0,l->count,l->truncated?" (limit reached)":""); text(14,190,b,0x9cf3,48);
++        Library *l=view==GAMES?&games:&recent;size_t top=(size_t)row/8*8;
++        if(!l->count) {
++            tile(56,126,0,UI_ACCENT);
++            text(26,81,view==GAMES?"Your library is empty":"No recent games yet",UI_TEXT,39,7);
++            text(26,111,view==GAMES?"Copy .gba files to GAMES/roms":"Play a game to see it here",UI_MUTED,45,6);
++            text(26,139,"B returns to the home screen",UI_MUTED,45,6);
++        }
++        for(i=0;i<8 && top+i<l->count;i++) {
++            int y=48+i*18,selected=top+i==(size_t)row;
++            tile(y,17,selected,UI_ACCENT);
++            fit_label(label,library_name(l->paths[top+i]),39,1);
++            text(24,y+3,label,selected?UI_TEXT:UI_MUTED,39,7);
++        }
++        snprintf(b,sizeof(b),"%d / %zu%s",l->count?row+1:0,l->count,l->truncated?"  (limit)":"");
++        right_text(308,28,b,UI_MUTED,6);
+     }
+     if(view==SETTINGS) {
+-        snprintf(b,sizeof(b),"Volume       %d%%",volume); item(0,b,row==0);
+-        if(maximum) snprintf(b,sizeof(b),"Brightness   %d%%",(brightness*100+maximum/2)/maximum);
+-        else snprintf(b,sizeof(b),"Brightness   unavailable");
+-        item(1,b,row==1); item(2,"Save and return",row==2);
+-        text(14,119,"Hold Left/Right to adjust",0x9cf3,48);
+-        text(14,137,"A: save   B: cancel",0x9cf3,48);
+-    }
+-    if(view==POWEROFF) { text(14,48,"Save data and shut down?",0xffff,48); item(2,"Cancel",confirm_row==0); item(3,"Power off",confirm_row==1); }
+-    if(message[0]) text(12,207,message,0xffe0,49);
+-    text(12,226,view==SETTINGS?"Left/Right: adjust   A: save   B: cancel":"A/Start: select   B: back   M: settings",0x9cf3,50);
++        for(i=0;i<2;i++) {
++            int y=48+i*54,percent=i?(maximum?(brightness*100+maximum/2)/maximum:0):volume;
++            tile(y,46,row==i,UI_ACCENT);
++            text(24,y+7,i?"Brightness":"Volume",UI_TEXT,25,7);
++            if(i && !maximum)snprintf(b,sizeof(b),"N/A");else snprintf(b,sizeof(b),"%d%%",percent);
++            right_text(296,y+7,b,row==i?UI_ACCENT:UI_TEXT,7);
++            rect(24,y+30,272,5,UI_LINE);
++            if(percent>0)rect(24,y+30,272*percent/100,5,i && !maximum?UI_LINE:UI_ACCENT);
++        }
++        tile(160,30,row==2,UI_ACCENT);text(24,170,"Save and return",UI_TEXT,38,7);
++    }
++    if(view==POWEROFF) {
++        text(24,57,"Ready to power off?",UI_TEXT,39,7);
++        text(24,80,"Your saves will be synced.",UI_MUTED,46,6);
++        tile(112,30,!confirm_row,UI_ACCENT);text(24,122,"Cancel",UI_TEXT,38,7);
++        tile(152,30,confirm_row,UI_WARN);text(24,162,"Power off",confirm_row?UI_WARN:UI_TEXT,38,7);
++    }
++    if(message[0]) {
++        rect(12,197,296,15,UI_PANEL);rect(12,197,3,15,UI_WARN);
++        fit_label(label,message,46,0);text(22,200,label,UI_WARN,46,6);
++    } else {
++        if(view==HOME) {
++            if(library_loaded)snprintf(b,sizeof(b),"%zu games in your library",games.count);
++            else snprintf(b,sizeof(b),"Ready when you are");
++        } else if(view==GAMES || view==RECENT)snprintf(b,sizeof(b),"A or START to play");
++        else if(view==SETTINGS)snprintf(b,sizeof(b),"Hold Left/Right to adjust");
++        else snprintf(b,sizeof(b),"B to return without shutting down");
++        text(16,200,b,UI_MUTED,48,6);
++    }
++    footer();
+     if(cherrypi_present(screen)==0 && !first_frame) { first_frame=1;boot_mark("menu_ready"); }
+     dirty=0;
+ }
++
+ static void enter_settings(void) { return_view=view; return_row=row; saved_volume=volume; saved_brightness=brightness; view=SETTINGS; row=0; dirty=1; }
+ static void save_settings(void) {
+     if(!cherrypi_apply_settings(volume,brightness)) { notice(cherrypi_settings_error()); return; }

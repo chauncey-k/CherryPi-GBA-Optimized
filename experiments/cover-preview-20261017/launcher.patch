@@ -1,0 +1,84 @@
+--- a/launcher.c
++++ b/launcher.c
+@@ -3,6 +3,7 @@
+ #include "platform.h"
+ #include "settings.h"
+ #include "library.h"
++#include "cover.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdint.h>
+@@ -36,6 +37,7 @@
+ static char romdir[PATH_MAX]="/mnt/games/roms", message[160];
+ static unsigned notice_deadline;
+ static int library_loaded, first_frame;
++static Cover cover;
+ /* RAM-only timing. Kernel uptime excludes the preceding ROM/SPL/U-Boot phase. */
+ static void boot_mark(const char *event) {
+     FILE *f; double up;
+@@ -82,6 +84,24 @@
+     int y=44+i*18; if(selected) rect(8,y-3,304,17,0x2451);
+     text(14,y,label,selected?0xffff:0xc618,48);
+ }
++static void cover_selection(Uint32 now) {
++    Library *l=view==GAMES?&games:view==RECENT?&recent:NULL;
++    cover_select(&cover,l && row>=0 && (size_t)row<l->count?l->paths[row]:NULL,now);
++}
++static void render_cover(void) {
++    int x,y,ox,oy;
++    rect(192,40,120,157,0x18c3);
++    if(cover.state==COVER_READY) {
++        ox=196+(COVER_W-cover.width)/2;oy=46+(COVER_H-cover.height)/2;
++        for(y=0;y<cover.height;y++)for(x=0;x<cover.width;x++)
++            ((u16*)((char*)screen->pixels+(oy+y)*screen->pitch))[ox+x]=cover.pixels[y*COVER_W+x];
++    } else {
++        /* Code-drawn cartridge placeholder; no external artwork required. */
++        rect(224,75,56,65,0x4a69);rect(230,81,44,35,0x3186);
++        rect(238,127,28,5,0x9cf3);text(243,90,"GBA",0xc618,3);
++        text(202,157,cover.state==COVER_WAIT?"Loading...":cover.state==COVER_INVALID?"Invalid PNG":"No cover",0x9cf3,17);
++    }
++}
+ static void render(void) {
+     static const char *home[]={"Games","Recent games","Settings","Power off"};
+     static const char *titles[]={"CHERRY PI","GAMES","RECENT GAMES","SETTINGS","POWER OFF"};
+@@ -91,7 +111,14 @@
+     if(view==GAMES || view==RECENT) {
+         Library *l=view==GAMES?&games:&recent; size_t top=(size_t)row/8*8;
+         if(!l->count) { text(14,48,view==GAMES?"No games found":"No recent games",0xffff,48); text(14,70,"Copy ROMs into GAMES/roms",0x9cf3,48); }
+-        for(i=0;i<8 && top+i<l->count;i++) item(i,library_name(l->paths[top+i]),top+i==(size_t)row);
++        for(i=0;i<8 && top+i<l->count;i++) {
++            int y=44+i*18,selected=top+i==(size_t)row;
++            const char *name=library_name(l->paths[top+i]);char shortname[32];size_t n=strlen(name);
++            if(selected)rect(8,y-3,177,17,0x2451);
++            if(n>27) { memcpy(shortname,name,24);memcpy(shortname+24,"...",4);name=shortname; }
++            text(14,y,name,selected?0xffff:0xc618,27);
++        }
++        if(l->count)render_cover();
+         snprintf(b,sizeof(b),"%d / %zu%s",l->count?row+1:0,l->count,l->truncated?" (limit reached)":""); text(14,190,b,0x9cf3,48);
+     }
+     if(view==SETTINGS) {
+@@ -104,6 +131,7 @@
+     }
+     if(view==POWEROFF) { text(14,48,"Save data and shut down?",0xffff,48); item(2,"Cancel",confirm_row==0); item(3,"Power off",confirm_row==1); }
+     if(message[0]) text(12,207,message,0xffe0,49);
++    else if((view==GAMES || view==RECENT) && cover.rom[0]) text(12,207,library_name(cover.rom),0xc618,49);
+     text(12,226,view==SETTINGS?"Left/Right: adjust   A: save   B: cancel":"A/Start: select   B: back   M: settings",0x9cf3,50);
+     if(cherrypi_present(screen)==0 && !first_frame) { first_frame=1;boot_mark("menu_ready"); }
+     dirty=0;
+@@ -127,6 +155,7 @@
+     { int ok=fprintf(f,"%s\n",path)>=0; if(fclose(f)) ok=0;
+       if(!ok) { unlink(RUN_DIR "/cherrypi-launcher-game"); notice("Cannot write game launch marker"); return 0; } }
+     fprintf(stderr,"Launching: %s\n",path);
++    cover_select(&cover,NULL,SDL_GetTicks());
+     cherrypi_platform_close(); SDL_Quit();
+     execl(EMULATOR_WRAPPER,EMULATOR_WRAPPER,path,(char*)NULL);
+     perror("exec emulator"); return -1;
+@@ -187,6 +216,8 @@
+             }
+         }
+         if(held!=SDLK_UNKNOWN && view!=POWEROFF && (int32_t)(now-repeat_at)>=0) { result=key(held); repeat_at=now+120; if(result) goto done; }
++        cover_selection(now);
++        if(cover_tick(&cover,now))dirty=1;
+         if(dirty) render();
+         SDL_Delay(10);
+     }

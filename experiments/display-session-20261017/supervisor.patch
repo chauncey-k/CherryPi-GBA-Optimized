@@ -1,0 +1,45 @@
+--- a/supervisor.sh
++++ b/supervisor.sh
+@@ -8,10 +8,16 @@
+ LOG=/tmp/cherrypi-autostart.log
+ GAMES=/mnt/games
+ ROMDIR=$GAMES/roms
++DISPLAY_HELPER=/usr/local/sbin/cherrypi-display-session
+ VOLUME=65
+ [ ! -r "$CONFIG" ] || . "$CONFIG"
+ 
++display_release() {
++    [ ! -x "$DISPLAY_HELPER" ] || "$DISPLAY_HELPER" release >> "$LOG" 2>&1 || :
++}
++
+ fallback() {
++    display_release
+     rm -f /run/cherrypi-autostart.ready /run/cherrypi-autostart.pid
+     echo "[GBA] $*; restoring serial login."
+     echo "[GBA] Details: $LOG"
+@@ -19,6 +25,7 @@
+     exec /sbin/getty -L ttyS0 115200 vt100
+ }
+ log() { printf '%s\n' "$*" >> "$LOG"; }
++trap display_release EXIT
+ trap 'touch "$PAUSED"' INT
+ trap 'rm -f /run/cherrypi-autostart.ready /run/cherrypi-autostart.pid; sync; exit 0' TERM
+ mkdir -p /run "$GAMES" || fallback 'Cannot prepare directories'
+@@ -57,6 +64,8 @@
+ if [ -n "${BRIGHTNESS:-}" ]; then
+     /usr/local/sbin/cherrypi-device-control brightness "$BRIGHTNESS" >> "$LOG" 2>&1 || log 'Saved brightness unavailable; retaining current backlight'
+ fi
++[ -x "$DISPLAY_HELPER" ] || fallback 'LCD session helper missing'
++"$DISPLAY_HELPER" acquire >> "$LOG" 2>&1 || fallback 'Cannot reserve LCD graphics session'
+ failures=0
+ echo $$ > /run/cherrypi-autostart.pid
+ touch /run/cherrypi-autostart.ready
+@@ -89,6 +98,8 @@
+             printf 'Game exited with status %s; see serial log\n' "$result" > /run/cherrypi-launcher-error
+         fi
+         failures=0
++        # A completed game returns directly to the menu; keep the LCD graphical.
++        continue
+     elif [ "$result" -ne 0 ] || [ "$elapsed" -lt 3 ]; then
+         failures=$((failures + 1))
+     else

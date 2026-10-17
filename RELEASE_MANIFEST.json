@@ -1,10 +1,10 @@
 {
-  "version": "2026.10.17-rom-mmap-fastboot-stage1",
+  "version": "2026.10.17-menu-motion",
   "files": [
     {
       "path": ".gitattributes",
-      "size": 367,
-      "sha256": "94a22de30fa8b37e2951725c2082d4a55b1e2ef6d057242da9d44cd9548bab1f"
+      "size": 392,
+      "sha256": "89d0d70b5e5b866b52f867892e0d0da1dfeef8779299afb694a7eb21c022767b"
     },
     {
       "path": ".gitignore",
@@ -1063,8 +1063,268 @@
     },
     {
       "path": "docs/07-当前版本与启动实测.md",
-      "size": 4523,
-      "sha256": "065c1ab8ec7db0373bf523a90ce96d587b5388f0e08312ccc971bff00a8a6407"
+      "size": 6242,
+      "sha256": "bcd9d1b4ff14409ad07f46ca1131e276f6e02f85bde4f28899e36472686d7a4f"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/build.sh",
+      "size": 806,
+      "sha256": "4ec4995b84a3e51d50fa26e9113b40477521650ff8debbed895e649423587167"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/cherrypi-cover-preview-20261017.tar.gz",
+      "size": 60920,
+      "sha256": "a5f090258598229d67f27552f7538a47a1c6446622443177396d7b305b11b31a"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/cover-preview/cherrypi-launcher",
+      "size": 46432,
+      "sha256": "ed5e89028201e22238d6bb1fd5f318bd4025009872ce1274ab425f88f278ebe6"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/cover-preview/COPYING",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/cover-preview/install.sh",
+      "size": 1356,
+      "sha256": "1566b91444aa90d8e4e3ad587120b05e8a0c3aac5eb359c039686771b4edc310"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/cover-preview/MENU_BASELINES",
+      "size": 130,
+      "sha256": "ad4fcb3f19639b45eebe5e5ae49bb5a357cbe9d386d89301175c5f2b388d30f4"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/cover-preview/README.md",
+      "size": 4233,
+      "sha256": "9dc9a256be9a113e3bd16a0a54fb12d69d1a94a334423c341f5891bdb255e58f"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/cover-preview/SHA256SUMS",
+      "size": 471,
+      "sha256": "ed5ce064fbed3cbe73e0947aa978af0ea0565f4465ec919008146a5e85eb7480"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/cover-preview/uninstall.sh",
+      "size": 570,
+      "sha256": "d475624a9ec2606b4a26d958896df2580f0720a6a2a42bc0a8fe9c85ad08ad39"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/launcher.patch",
+      "size": 4110,
+      "sha256": "4fc35b5eed453b3065796c1190de4609c549e0137e01961c72122b04201097ae"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/package.py",
+      "size": 1719,
+      "sha256": "398f0722ab92b3746b8ec193228b8773b389acf6de48a0957bb1b757e8d5d2e8"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/prepare-cover.py",
+      "size": 778,
+      "sha256": "91436148922c786ac56530cfbf0d1c7e5aee852194a5aa24a9af4f347a96fec2"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/README.md",
+      "size": 4233,
+      "sha256": "9dc9a256be9a113e3bd16a0a54fb12d69d1a94a334423c341f5891bdb255e58f"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/SHA256SUMS",
+      "size": 105,
+      "sha256": "109db75146a4c73bb213c9b259cc0926e957ae4b3196f797b6019530f747427b"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/cover.c",
+      "size": 5043,
+      "sha256": "7db315d91b4c8ce98aed9851476b7fc79ca0eef2c207e938c51af177603f5953"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/cover.h",
+      "size": 722,
+      "sha256": "6d5b696212c190113e6c83d805998e13e55af48ba65c88cb6abacf10f539051b"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/launcher.c",
+      "size": 12033,
+      "sha256": "842bdde21b2379e6f2b5317759f16bda117831bde4506f713fc41d98b4567f6c"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/library.c",
+      "size": 3755,
+      "sha256": "0702ea1ea3d2d31c1201d13f65bfcf09b6254eb1b7688fa6168a2b2d4ee686dd"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/library.h",
+      "size": 440,
+      "sha256": "c49895172e1525a0568aace52df590f27a7712e8782e995b4fff0e944a8a80cd"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/platform.c",
+      "size": 12047,
+      "sha256": "fbb5b2089acd94cdf912d271efb92d484c6f7f192173acf1dd533245b5860e01"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/platform.h",
+      "size": 352,
+      "sha256": "637e521902dd255f79a820d32e3de7d3178c205969b1351f6b6c6c8998ce838b"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/settings.c",
+      "size": 5681,
+      "sha256": "bc42c650ebb5fcfe7e79cffbf530ab799b07b8ad13f20d88cd05e0c084fcf8e9"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/source/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/tests/check_archive.py",
+      "size": 981,
+      "sha256": "3c4232b18a01759bd74b06670fd2739db425a127ff167f16c7d120e58519418a"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/tests/fixtures.py",
+      "size": 1460,
+      "sha256": "1d818d2331f0ad2284859d7d2c15ec596a5efdaf32b449942eb9b0408367a9b8"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/tests/run.sh",
+      "size": 1079,
+      "sha256": "f449b37cf558b9a0a2eead39514db4d118772f195ce66d4d504cbb02a579bb88"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/tests/SDL.h",
+      "size": 714,
+      "sha256": "6028e8c7e07a21ad34a7f4e3537066dfd520576e4e9b5c3cc7d52ec8a430803a"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/tests/test_cover.c",
+      "size": 2231,
+      "sha256": "58ca22924bd3a6df325dca54bda8c03c8674d333ee0662e53db1e507f8c2d67c"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/tests/test_install.py",
+      "size": 2995,
+      "sha256": "8374d49f2449c91f0bae6e698aab9d5f64ad7c3c8413c37874c3a0a2bbe85cc8"
+    },
+    {
+      "path": "experiments/cover-preview-20261017/tests/test_menu.c",
+      "size": 7242,
+      "sha256": "5d408821a3060097dfdefd11970ddad14cb09c50abda6a2aac101474eedfab06"
+    },
+    {
+      "path": "experiments/display-session-20261017/build.sh",
+      "size": 616,
+      "sha256": "7d97d028783b414a2558c19c97cb1f1e3f0394b36e57a94807e016119000314a"
+    },
+    {
+      "path": "experiments/display-session-20261017/check-archive.sh",
+      "size": 392,
+      "sha256": "97415ebf6c6419fa2dc353e348e40a0818783c50b27456c16b81728d73bb856b"
+    },
+    {
+      "path": "experiments/display-session-20261017/cherrypi-display-session-20261017.tar.gz",
+      "size": 26171,
+      "sha256": "422d0885d174b6919596a0c29a66293987071e9a5094a46e14df8e66560f1703"
+    },
+    {
+      "path": "experiments/display-session-20261017/display-session/cherrypi-display-session",
+      "size": 9384,
+      "sha256": "175dc54d268dc611f149d905ff52194940d7618249998496c9ff8978467af173"
+    },
+    {
+      "path": "experiments/display-session-20261017/display-session/COPYING",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/display-session-20261017/display-session/install.sh",
+      "size": 2402,
+      "sha256": "b3798a07bc9848ec3050ace3d74f2f34f2500d8ffefd664efc43daa653e9e7bc"
+    },
+    {
+      "path": "experiments/display-session-20261017/display-session/README.md",
+      "size": 4862,
+      "sha256": "168cc7792e4d3ca58d46690ae5e3ba2144248a10b8ee013a35e01a0fa2882dbe"
+    },
+    {
+      "path": "experiments/display-session-20261017/display-session/SHA256SUMS",
+      "size": 564,
+      "sha256": "2bbc8d33a65780365d46d34f8759ba903b455bb8a37e5c466b465d71b9bd7acd"
+    },
+    {
+      "path": "experiments/display-session-20261017/display-session/supervisor.sh",
+      "size": 5122,
+      "sha256": "e58b0fd6dbaf6b6c5a0937b52847ee58829ad05bceb898ac9d1f153191c3bedd"
+    },
+    {
+      "path": "experiments/display-session-20261017/display-session/SUPERVISOR_BASELINES",
+      "size": 130,
+      "sha256": "19ae398ccdb17a1e5bed688e85a80aeddf4ab0c7eeaa2520772754d0a4b56417"
+    },
+    {
+      "path": "experiments/display-session-20261017/display-session/uninstall.sh",
+      "size": 1017,
+      "sha256": "22dddf0b27789cb259d073a299519beda1b5f75b1f4411b721f0e973daea7324"
+    },
+    {
+      "path": "experiments/display-session-20261017/package.py",
+      "size": 1660,
+      "sha256": "d2189220a9c0da5b61518381b3a3b045ed5c77089c156ef1a034a9d498319da2"
+    },
+    {
+      "path": "experiments/display-session-20261017/README.md",
+      "size": 4862,
+      "sha256": "168cc7792e4d3ca58d46690ae5e3ba2144248a10b8ee013a35e01a0fa2882dbe"
+    },
+    {
+      "path": "experiments/display-session-20261017/SHA256SUMS",
+      "size": 107,
+      "sha256": "3b9bbc9a8f69c311100c52db306e330474a90e4585220c74b864c0e68deb94fb"
+    },
+    {
+      "path": "experiments/display-session-20261017/source/display-session.c",
+      "size": 5020,
+      "sha256": "69a9be30a40556c22c5bb4ab6cb6d59bed120c469bfe8239ae2d42073ff12365"
+    },
+    {
+      "path": "experiments/display-session-20261017/source/supervisor.sh",
+      "size": 5122,
+      "sha256": "e58b0fd6dbaf6b6c5a0937b52847ee58829ad05bceb898ac9d1f153191c3bedd"
+    },
+    {
+      "path": "experiments/display-session-20261017/supervisor.patch",
+      "size": 1660,
+      "sha256": "69bab776beca71ac401003b03172cc66ff2e91b44fec7bc67a78a0a1e0784b79"
+    },
+    {
+      "path": "experiments/display-session-20261017/tests/run.sh",
+      "size": 584,
+      "sha256": "9842a7fcac4dd907648b08a2fc33a53408b745f9c285eee27b30b3d8c7d7a364"
+    },
+    {
+      "path": "experiments/display-session-20261017/tests/test_display.c",
+      "size": 3870,
+      "sha256": "49cb10818fe3125c3abadf62ea2a3099461ac311a774da46d8a38fdcd8f52e0f"
+    },
+    {
+      "path": "experiments/display-session-20261017/tests/test_install.py",
+      "size": 3692,
+      "sha256": "4c7bd54879c134293d888bd7002de491487984d91541f9e291b374cd4b10b467"
+    },
+    {
+      "path": "experiments/display-session-20261017/tests/test_supervisor.py",
+      "size": 3839,
+      "sha256": "eddfb719cc0aec6ea26dd3889068381ac75aeb3fd1fef338b41cc9bfcde92c7d"
     },
     {
       "path": "experiments/equipo-rom-repair-20261017/COPYING.DOC",
@@ -2032,6 +2292,246 @@
       "sha256": "fd4f53fbe9683fd4aaf9cda6cf0c1f9beecfa6346f99d1acd3e205f579e562ca"
     },
     {
+      "path": "experiments/menu-motion-20261017/build.sh",
+      "size": 777,
+      "sha256": "cb3854d1b87ff30f08ac7af6b0dc100f8c87c1a41ca36483b0a121c42611fc46"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/cherrypi-menu-motion-20261017.tar.gz",
+      "size": 141557,
+      "sha256": "816d52b2f74043163fa21f0a92b5a9d474d7dd23a3ad21013bb0dd2cc5a3c016"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/launcher.patch",
+      "size": 5947,
+      "sha256": "9aff3269e515a6ade2b809e77466ce503f86a3af7ca3d6c62060c499ae3d988a"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/make-previews.py",
+      "size": 1119,
+      "sha256": "8cc3721f83c4eb84d7f7d83781234de9f5ea68a08393228fa3a81f3fc7f3aa64"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/motion/cherrypi-launcher",
+      "size": 42232,
+      "sha256": "9696b5acde87dfe68db59a466c2ca3243ee52eddf72f8465032e6aa911c8bd73"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/motion/COPYING",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/motion/install.sh",
+      "size": 1145,
+      "sha256": "575497a5bd81356a88582b13df8b6d9c585a27ea0d95cbb28a51fc74bd508a8a"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/motion/MENU_BASELINES",
+      "size": 130,
+      "sha256": "d72ee418cbce6a113af746ce568ab15a2ac5ee4c6422d36cdadd0a751a502367"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/motion/README.md",
+      "size": 4132,
+      "sha256": "9e9b94b638115c63e79dc67ad4f0c833fe8282e6bad594ad4a762e2ee5aad52b"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/motion/SHA256SUMS",
+      "size": 471,
+      "sha256": "5f9f6aa5a290b4e40fce1d547b5782eb0d845967cd43cfd9ed210b06e9004564"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/motion/uninstall.sh",
+      "size": 574,
+      "sha256": "7bf55ab55cd49cd4cdf8d002907d7c644b97bbf31a27a715743ed276e5122e9f"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/package.py",
+      "size": 1735,
+      "sha256": "5d2605100b4374c24960f914cd3a9dabc5a3585ef1db1e31fd8fa2dcb0a0fea9"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/focus-000.png",
+      "size": 2455,
+      "sha256": "7eb849dbdb21de91c74fc1a97181ca87cc03d33ab62045709c5b62d4dbb5bc08"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/focus-040.png",
+      "size": 2485,
+      "sha256": "b2e73dcf4b93eed3698f58439bbc574197395b2c526a0ae8e1f9d51b5f94247f"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/focus-080.png",
+      "size": 2481,
+      "sha256": "5695fc45c548bca74695e5ace497aaec2429c2bf31ce842afafd9398e3478395"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/focus-100.png",
+      "size": 2483,
+      "sha256": "7ad50c0d8db5a00371eb0ef84675307f18c254db567b985275e7214fe6eeac21"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/games-page.png",
+      "size": 3510,
+      "sha256": "7f3e812ab9bcb765883e5eb5b18f3ffae1b0982ffd3b1ded4e506d22566ac03b"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/games.png",
+      "size": 2166,
+      "sha256": "46199ecc4c9510015b6aacc901286437986631017a5bd95642e7abe9c4001aec"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/home.png",
+      "size": 3358,
+      "sha256": "31645cfeee239973253cdcf38c611e1a847423177b62c5c7af7ff21e22589ffe"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/menu-motion.gif",
+      "size": 57311,
+      "sha256": "808f85138c18f5098af2dfa20e26013949be28aa39b93591fd4eb87f62b622ce"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/overview.png",
+      "size": 15247,
+      "sha256": "0737596903b2e889452025050a46f5234cfb27c569814364a589cc940ab6501b"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/page-000.png",
+      "size": 2483,
+      "sha256": "1760942d4ec986319ce31850408ad50435c17891547883204badae1b429cc369"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/page-040.png",
+      "size": 2481,
+      "sha256": "197a9b1b66db86bd588d22d6b37ab322363c0f847bb6132ae7fb586f607e35e2"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/page-080.png",
+      "size": 2481,
+      "sha256": "0f8a203658d2fbe944a07fcb7e1204db4685d37f7e3a3016903d284172bd723c"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/page-120.png",
+      "size": 2479,
+      "sha256": "ecddb8ec45e16c8384972bef1f88a0dfc8150c615b0dfe363e2c6b475c551688"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/page-before.png",
+      "size": 3414,
+      "sha256": "aa5214acff1197f2440b584eba3b078db825de2030477fc36b4a885393c2f89d"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/poweroff.png",
+      "size": 2540,
+      "sha256": "a80beb4b1d34a23954e1f924977cb3301273b896a520f6776703244ed19cca2a"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/recent-empty.png",
+      "size": 2626,
+      "sha256": "e27cc1c8469071e428dc91f8e1080c7fc19ed47f0b04931917a27f6f9a2e1ae3"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/settings-error.png",
+      "size": 2455,
+      "sha256": "afbfc8149f236cb82d74f325a81c0ea577b67951dc5834fdc9040495f49253f2"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/previews/settings.png",
+      "size": 2489,
+      "sha256": "ca8dbd3f437fe3ffce775d1f549f903d7990e96c73dd24f4e66eb77364fd207a"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/README.md",
+      "size": 4132,
+      "sha256": "9e9b94b638115c63e79dc67ad4f0c833fe8282e6bad594ad4a762e2ee5aad52b"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/SHA256SUMS",
+      "size": 103,
+      "sha256": "db92278231779556e469e4ccfb8666b7c8cc9c8b0845530beadaba9d205908a7"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/launcher.c",
+      "size": 15417,
+      "sha256": "c82cd01b452d49730dacc026499f4836517d3187c6fd44648bc7a4457f9ec683"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/library.c",
+      "size": 3755,
+      "sha256": "0702ea1ea3d2d31c1201d13f65bfcf09b6254eb1b7688fa6168a2b2d4ee686dd"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/library.h",
+      "size": 440,
+      "sha256": "c49895172e1525a0568aace52df590f27a7712e8782e995b4fff0e944a8a80cd"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/motion.h",
+      "size": 1558,
+      "sha256": "ebc6af14f1d5b2dfcd8c96ec03e00a0ec46a96acc30d847231cef60669ddf975"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/platform.c",
+      "size": 12047,
+      "sha256": "fbb5b2089acd94cdf912d271efb92d484c6f7f192173acf1dd533245b5860e01"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/platform.h",
+      "size": 352,
+      "sha256": "637e521902dd255f79a820d32e3de7d3178c205969b1351f6b6c6c8998ce838b"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/settings.c",
+      "size": 5681,
+      "sha256": "bc42c650ebb5fcfe7e79cffbf530ab799b07b8ad13f20d88cd05e0c084fcf8e9"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/source/theme.h",
+      "size": 462,
+      "sha256": "7d13ffd4bd4717d862894648703b76add760a0430ce50db5d2309c42179aef82"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/tests/check_archive.py",
+      "size": 985,
+      "sha256": "1d35a05c30f4a1f7286b4861a45a73ff1a6fb18f9503e019e345ebe396e9f18d"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/tests/run.sh",
+      "size": 805,
+      "sha256": "961188a1102966dc95b3791aaf9b2757c764002b836bd9b4a550c819035b2c21"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/tests/SDL.h",
+      "size": 714,
+      "sha256": "6028e8c7e07a21ad34a7f4e3537066dfd520576e4e9b5c3cc7d52ec8a430803a"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/tests/test_install.py",
+      "size": 2787,
+      "sha256": "cd6a1c4dc259698f738477fcea1a9bb487c4c39c2d08528bbcac5eb73efca393"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/tests/test_menu.c",
+      "size": 8936,
+      "sha256": "3bdcadfe228618d2a919a3d1f3f31f479aae128f5ce2b8599a3dc780e31714a4"
+    },
+    {
+      "path": "experiments/menu-motion-20261017/tests/test_motion.c",
+      "size": 1220,
+      "sha256": "64c1e4cb4978ebd825142ac6cbe32b8b3fc517c9d7bff27e1df222ec4aad87e9"
+    },
+    {
       "path": "experiments/rom-mmap-20261017/analyze.py",
       "size": 4656,
       "sha256": "efc782c3be356c4f8eb7be84c1dc3cc08e81529107df7c8d10439cb345d4e37d"
@@ -2637,6 +3137,186 @@
       "sha256": "fd4f53fbe9683fd4aaf9cda6cf0c1f9beecfa6346f99d1acd3e205f579e562ca"
     },
     {
+      "path": "experiments/theme-20261017/build.sh",
+      "size": 776,
+      "sha256": "91a20e7b245a3165d9fa0e0d6487323bf4b92ff980c81e7c7a85dea14cd1e765"
+    },
+    {
+      "path": "experiments/theme-20261017/cherrypi-theme-20261017.tar.gz",
+      "size": 86390,
+      "sha256": "e26ae09d2d79a07d4f9ef2e4e4ff2400e4d049d83bc042fe8be66db4b7da3bb8"
+    },
+    {
+      "path": "experiments/theme-20261017/launcher.patch",
+      "size": 8854,
+      "sha256": "b132d53e6f90fed1289c45e7514ea6f5155083fec148ad191f1f0b9c4f6cf01d"
+    },
+    {
+      "path": "experiments/theme-20261017/make-previews.py",
+      "size": 657,
+      "sha256": "79bc0064bd61ac0e6ed7b714ef08caa5ad86a2b0c0b749d5b74000eb26ca4509"
+    },
+    {
+      "path": "experiments/theme-20261017/package.py",
+      "size": 1798,
+      "sha256": "f1d7d02c2044bb9b6f6686279cfd68dc90ae9485b11030ecc6ade7296cd98413"
+    },
+    {
+      "path": "experiments/theme-20261017/previews/games-page.png",
+      "size": 3513,
+      "sha256": "f7190a0a080824debfdb8738451f1a46db7c0f7e92fa727cc53cbf05db85e99e"
+    },
+    {
+      "path": "experiments/theme-20261017/previews/games.png",
+      "size": 2169,
+      "sha256": "051c14d0a7a44caf7bc984ae0dd66a500a91d746ca0bf7b4a4e7d97a6da92a67"
+    },
+    {
+      "path": "experiments/theme-20261017/previews/home.png",
+      "size": 3358,
+      "sha256": "31645cfeee239973253cdcf38c611e1a847423177b62c5c7af7ff21e22589ffe"
+    },
+    {
+      "path": "experiments/theme-20261017/previews/overview.png",
+      "size": 15272,
+      "sha256": "428a576007ce616f415ba63a12cfa29c16a925372a3b05dbfce580b996d56277"
+    },
+    {
+      "path": "experiments/theme-20261017/previews/poweroff.png",
+      "size": 2536,
+      "sha256": "ce61246f9807e51197b695e99a45a0d9d56f43abd2dddb454a43683e805dca77"
+    },
+    {
+      "path": "experiments/theme-20261017/previews/recent-empty.png",
+      "size": 2626,
+      "sha256": "e27cc1c8469071e428dc91f8e1080c7fc19ed47f0b04931917a27f6f9a2e1ae3"
+    },
+    {
+      "path": "experiments/theme-20261017/previews/settings-error.png",
+      "size": 2450,
+      "sha256": "a097420220c5e4bc914e0af6c0cd4ab1d7d278f30dd4956a169a1d47f6366f38"
+    },
+    {
+      "path": "experiments/theme-20261017/previews/settings.png",
+      "size": 2490,
+      "sha256": "9a982b9c1ceaa4b27fcb85ff18981f099e26fb0d85aa51256ec8128d4c61d5ed"
+    },
+    {
+      "path": "experiments/theme-20261017/README.md",
+      "size": 4426,
+      "sha256": "d16be9db9b0de054d3fcabf604bf1ca6ea242702a68023bb2b51a3abe0256470"
+    },
+    {
+      "path": "experiments/theme-20261017/SHA256SUMS",
+      "size": 97,
+      "sha256": "7fe12bf5d701ea085308665ae12c76f3404103fa25401fe5e5e2d77115a73e1a"
+    },
+    {
+      "path": "experiments/theme-20261017/source/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "experiments/theme-20261017/source/launcher.c",
+      "size": 13617,
+      "sha256": "3c34f377a2fd859f73135a402f3be7bc5fd24dc72cb6431230545c92d6adbfa1"
+    },
+    {
+      "path": "experiments/theme-20261017/source/library.c",
+      "size": 3755,
+      "sha256": "0702ea1ea3d2d31c1201d13f65bfcf09b6254eb1b7688fa6168a2b2d4ee686dd"
+    },
+    {
+      "path": "experiments/theme-20261017/source/library.h",
+      "size": 440,
+      "sha256": "c49895172e1525a0568aace52df590f27a7712e8782e995b4fff0e944a8a80cd"
+    },
+    {
+      "path": "experiments/theme-20261017/source/platform.c",
+      "size": 12047,
+      "sha256": "fbb5b2089acd94cdf912d271efb92d484c6f7f192173acf1dd533245b5860e01"
+    },
+    {
+      "path": "experiments/theme-20261017/source/platform.h",
+      "size": 352,
+      "sha256": "637e521902dd255f79a820d32e3de7d3178c205969b1351f6b6c6c8998ce838b"
+    },
+    {
+      "path": "experiments/theme-20261017/source/settings.c",
+      "size": 5681,
+      "sha256": "bc42c650ebb5fcfe7e79cffbf530ab799b07b8ad13f20d88cd05e0c084fcf8e9"
+    },
+    {
+      "path": "experiments/theme-20261017/source/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "experiments/theme-20261017/source/theme.h",
+      "size": 462,
+      "sha256": "7d13ffd4bd4717d862894648703b76add760a0430ce50db5d2309c42179aef82"
+    },
+    {
+      "path": "experiments/theme-20261017/tests/check_archive.py",
+      "size": 967,
+      "sha256": "5a96346cf50cb45ff92da3b184fd039b935b954927c702ecad5171c02505dcae"
+    },
+    {
+      "path": "experiments/theme-20261017/tests/run.sh",
+      "size": 681,
+      "sha256": "36d6105c8b1cf00ff4f0aa87bc0910181b49f207812ad9416aa65a105d8beec0"
+    },
+    {
+      "path": "experiments/theme-20261017/tests/SDL.h",
+      "size": 714,
+      "sha256": "6028e8c7e07a21ad34a7f4e3537066dfd520576e4e9b5c3cc7d52ec8a430803a"
+    },
+    {
+      "path": "experiments/theme-20261017/tests/test_install.py",
+      "size": 2761,
+      "sha256": "a8d9d4f7d1477e6f1ec21f776cf137ea12a4707b2f564c4cda238bbbceefee82"
+    },
+    {
+      "path": "experiments/theme-20261017/tests/test_menu.c",
+      "size": 7215,
+      "sha256": "42c04733defbc8745fbef6fe98675df5db13c8cce8a884ae14028e18749fc20b"
+    },
+    {
+      "path": "experiments/theme-20261017/theme/cherrypi-launcher",
+      "size": 42228,
+      "sha256": "778493c890be55a283569e05619e65bc9c45ace36b4afef3ced2d3d527bba8c2"
+    },
+    {
+      "path": "experiments/theme-20261017/theme/COPYING",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/theme-20261017/theme/install.sh",
+      "size": 1134,
+      "sha256": "7002de0f00370481ccc3ff6a7d1c61d470ef15a69f5d6a4827852366e49dd3f6"
+    },
+    {
+      "path": "experiments/theme-20261017/theme/MENU_BASELINES",
+      "size": 195,
+      "sha256": "c43af01e1ee3777be4cd88895012b0835f95567f865b20a690171dd761ed92ad"
+    },
+    {
+      "path": "experiments/theme-20261017/theme/README.md",
+      "size": 4211,
+      "sha256": "3c49721e0d2558efedfbb78f4c0695ceca65e742416b9f821bd6ac7478885ee3"
+    },
+    {
+      "path": "experiments/theme-20261017/theme/SHA256SUMS",
+      "size": 471,
+      "sha256": "c2a08c89165add78eb47732b275f355d6997c70ef0916bcdea150e7af8096be7"
+    },
+    {
+      "path": "experiments/theme-20261017/theme/uninstall.sh",
+      "size": 568,
+      "sha256": "9d8ab9380940f71dd5865d4407373c6859f0affc86c8112514557502dcc17c3e"
+    },
+    {
       "path": "firmware/image.json",
       "size": 388,
       "sha256": "5e77d4da89f3adc08fcbf33628575bd40da4f0a2d7ba9ae532a26421ff405437"
@@ -2653,8 +3333,8 @@
     },
     {
       "path": "README.md",
-      "size": 4394,
-      "sha256": "419084f218d9c1229c7d6d14b73db9245c59ce00566e3d8c44795fb9f98502a4"
+      "size": 5305,
+      "sha256": "0c784393a9c0d33f9c054f2027399b872864176c5e1667fc603c67c0d45c61b0"
     },
     {
       "path": "sdcard-files/cherrypi-kit/kernel/SHA256SUMS",
@@ -2743,8 +3423,8 @@
     },
     {
       "path": "tools/update-manifest.py",
-      "size": 875,
-      "sha256": "e2141dd16243773cc8ef748c19266ee61424013ab4483885bae78f5774907c95"
+      "size": 862,
+      "sha256": "1b62aeca0324b9235e33f23260d659187a83dcb981ca62c63034008c4afbc054"
     },
     {
       "path": "tools/verify.py",
