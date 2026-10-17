@@ -1,0 +1,1106 @@
+/* gameplaySP
+ *
+ * Copyright (C) 2006 Exophase <exophase@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+
+#include "common.h"
+
+// Special thanks to psp298 for the analog->dpad code!
+
+extern uint16_t io_registers[1024 * 16];
+
+void trigger_key(u32 key)
+{
+	u32 p1_cnt = io_registers[REG_P1CNT];
+
+	if((p1_cnt >> 14) & 0x01)
+	{
+    u32 key_intersection = (p1_cnt & key) & 0x3FF;
+
+    if(p1_cnt >> 15)
+    {
+      if(key_intersection == (p1_cnt & 0x3FF))
+        raise_interrupt(IRQ_KEYPAD);
+    }
+    else
+    {
+			if(key_intersection)
+				raise_interrupt(IRQ_KEYPAD);
+		}
+	}
+}
+
+u32 key = 0;
+
+u32 global_enable_analog = 1;
+u32 analog_sensitivity_level = 4;
+
+typedef enum
+{
+  BUTTON_NOT_HELD,
+  BUTTON_HELD_INITIAL,
+  BUTTON_HELD_REPEAT
+} button_repeat_state_type;
+
+
+// These define autorepeat values (in microseconds), tweak as necessary.
+
+#define BUTTON_REPEAT_START    200000
+#define BUTTON_REPEAT_CONTINUE 50000
+#define BUTTON_REPEAT_RATE 200000
+
+button_repeat_state_type button_repeat_state = BUTTON_NOT_HELD;
+u32 button_repeat = 0;
+gui_action_type cursor_repeat = CURSOR_NONE;
+
+
+#if defined(PC_BUILD) || defined(MIYOO)  
+u32 gamepad_config_map[12] =
+{
+  BUTTON_ID_UP,                 // Analog up
+  BUTTON_ID_DOWN,               // Analog down
+  BUTTON_ID_LEFT,               // Analog left
+  BUTTON_ID_RIGHT,               // Analog right
+  BUTTON_ID_START,                  // Circle
+  BUTTON_ID_SELECT,                  // Cross
+  BUTTON_ID_L,                  // Ltrigger
+  BUTTON_ID_R,                  // Rtrigger
+  BUTTON_ID_A,              // Square
+  BUTTON_ID_B,             // Select
+  BUTTON_ID_L,              // Square
+  BUTTON_ID_R             // Select
+};
+#endif
+
+#ifdef PSP_BUILD
+
+u32 gamepad_config_map[16] =
+{
+  BUTTON_ID_MENU,               // Triangle
+  BUTTON_ID_A,                  // Circle
+  BUTTON_ID_B,                  // Cross
+  BUTTON_ID_START,              // Square
+  BUTTON_ID_L,                  // Ltrigger
+  BUTTON_ID_R,                  // Rtrigger
+  BUTTON_ID_DOWN,               // Down
+  BUTTON_ID_LEFT,               // Left
+  BUTTON_ID_UP,                 // Up
+  BUTTON_ID_RIGHT,              // Right
+  BUTTON_ID_SELECT,             // Select
+  BUTTON_ID_START,              // Start
+  BUTTON_ID_UP,                 // Analog up
+  BUTTON_ID_DOWN,               // Analog down
+  BUTTON_ID_LEFT,               // Analog left
+  BUTTON_ID_RIGHT               // Analog right
+};
+
+#define PSP_ALL_BUTTON_MASK 0xFFFF
+
+gui_action_type get_gui_input()
+{
+  SceCtrlData ctrl_data;
+  gui_action_type new_button = CURSOR_NONE;
+  u32 new_buttons;
+
+  static u32 last_buttons = 0;
+  static u64 button_repeat_timestamp;
+
+  delay_us(25000);
+
+  sceCtrlPeekBufferPositive(&ctrl_data, 1);
+  ctrl_data.Buttons &= PSP_ALL_BUTTON_MASK;
+  new_buttons = (last_buttons ^ ctrl_data.Buttons) & ctrl_data.Buttons;
+  last_buttons = ctrl_data.Buttons;
+
+  if(new_buttons & PSP_CTRL_LEFT)
+    new_button = CURSOR_LEFT;
+
+  if(new_buttons & PSP_CTRL_RIGHT)
+    new_button = CURSOR_RIGHT;
+
+  if(new_buttons & PSP_CTRL_UP)
+    new_button = CURSOR_UP;
+
+  if(new_buttons & PSP_CTRL_DOWN)
+    new_button = CURSOR_DOWN;
+
+  if(new_buttons & PSP_CTRL_START)
+    new_button = CURSOR_SELECT;
+
+  if(new_buttons & PSP_CTRL_CIRCLE)
+    new_button = CURSOR_SELECT;
+
+  if(new_buttons & PSP_CTRL_CROSS)
+    new_button = CURSOR_EXIT;
+
+  if(new_buttons & PSP_CTRL_SQUARE)
+    new_button = CURSOR_BACK;
+
+  if(new_button != CURSOR_NONE)
+  {
+    get_ticks_us(&button_repeat_timestamp);
+    button_repeat_state = BUTTON_HELD_INITIAL;
+    button_repeat = new_buttons;
+    cursor_repeat = new_button;
+  }
+  else
+  {
+    if(ctrl_data.Buttons & button_repeat)
+    {
+      u64 new_ticks;
+      get_ticks_us(&new_ticks);
+
+      if(button_repeat_state == BUTTON_HELD_INITIAL)
+      {
+        if((new_ticks - button_repeat_timestamp) >
+         BUTTON_REPEAT_START)
+        {
+          new_button = cursor_repeat;
+          button_repeat_timestamp = new_ticks;
+          button_repeat_state = BUTTON_HELD_REPEAT;
+        }
+      }
+
+      if(button_repeat_state == BUTTON_HELD_REPEAT)
+      {
+        if((new_ticks - button_repeat_timestamp) >
+         BUTTON_REPEAT_CONTINUE)
+        {
+          new_button = cursor_repeat;
+          button_repeat_timestamp = new_ticks;
+        }
+      }
+    }
+  }
+
+  return new_button;
+}
+
+#define PSP_CTRL_ANALOG_UP    (1 << 28)
+#define PSP_CTRL_ANALOG_DOWN  (1 << 29)
+#define PSP_CTRL_ANALOG_LEFT  (1 << 30)
+#define PSP_CTRL_ANALOG_RIGHT (1 << 31)
+
+u32 button_psp_mask_to_config[] =
+{
+  PSP_CTRL_TRIANGLE,
+  PSP_CTRL_CIRCLE,
+  PSP_CTRL_CROSS,
+  PSP_CTRL_SQUARE,
+  PSP_CTRL_LTRIGGER,
+  PSP_CTRL_RTRIGGER,
+  PSP_CTRL_DOWN,
+  PSP_CTRL_LEFT,
+  PSP_CTRL_UP,
+  PSP_CTRL_RIGHT,
+  PSP_CTRL_SELECT,
+  PSP_CTRL_START,
+  PSP_CTRL_ANALOG_UP,
+  PSP_CTRL_ANALOG_DOWN,
+  PSP_CTRL_ANALOG_LEFT,
+  PSP_CTRL_ANALOG_RIGHT
+};
+
+u32 button_id_to_gba_mask[] =
+{
+  BUTTON_UP,
+  BUTTON_DOWN,
+  BUTTON_LEFT,
+  BUTTON_RIGHT,
+  BUTTON_A,
+  BUTTON_B,
+  BUTTON_L,
+  BUTTON_R,
+  BUTTON_START,
+  BUTTON_SELECT,
+  BUTTON_NONE,
+  BUTTON_NONE,
+  BUTTON_NONE,
+  BUTTON_NONE
+};
+
+gui_action_type get_gui_input_fs_hold(u32 button_id)
+{
+  gui_action_type new_button = get_gui_input();
+  if((last_buttons & button_psp_mask_to_config[button_id]) == 0)
+    return CURSOR_BACK;
+
+  return new_button;
+}
+
+u32 rapidfire_flag = 1;
+
+u32 update_input()
+{
+  SceCtrlData ctrl_data;
+  u32 buttons;
+  u32 non_repeat_buttons;
+  u32 button_id;
+  u32 i;
+  u32 new_key = 0;
+  u32 analog_sensitivity = 92 - (analog_sensitivity_level * 4);
+  u32 inv_analog_sensitivity = 256 - analog_sensitivity;
+
+  sceCtrlPeekBufferPositive(&ctrl_data, 1);
+
+  buttons = ctrl_data.Buttons;
+
+  if(global_enable_analog)
+  {
+    if(ctrl_data.Lx < analog_sensitivity)
+      buttons |= PSP_CTRL_ANALOG_LEFT;
+
+    if(ctrl_data.Lx > inv_analog_sensitivity)
+      buttons |= PSP_CTRL_ANALOG_RIGHT;
+
+    if(ctrl_data.Ly < analog_sensitivity)
+      buttons |= PSP_CTRL_ANALOG_UP;
+
+    if(ctrl_data.Ly > inv_analog_sensitivity)
+      buttons |= PSP_CTRL_ANALOG_DOWN;
+  }
+
+  non_repeat_buttons = (last_buttons ^ buttons) & buttons;
+  last_buttons = buttons;
+
+  for(i = 0; i < 16; i++)
+  {
+    if(non_repeat_buttons & button_psp_mask_to_config[i])
+      button_id = gamepad_config_map[i];
+    else
+      button_id = BUTTON_ID_NONE;
+
+    switch(button_id)
+    {
+      case BUTTON_ID_MENU:
+      {
+        u16 *screen_copy = copy_screen();
+        u32 ret_val = menu(screen_copy);
+        free(screen_copy);
+
+        return ret_val;
+      }
+
+      case BUTTON_ID_LOADSTATE:
+      {
+        u8 current_savestate_filename[512];
+        get_savestate_filename_noshot(savestate_slot,
+         current_savestate_filename);
+        if(!load_state(current_savestate_filename)) cherrypi_state_show_error();
+        return 1;
+      }
+
+      case BUTTON_ID_SAVESTATE:
+      {
+        u8 current_savestate_filename[512];
+        u16 *current_screen = copy_screen();
+        get_savestate_filename_noshot(savestate_slot,
+         current_savestate_filename);
+        if(!save_state(current_savestate_filename, current_screen)) cherrypi_state_show_error();
+        free(current_screen);
+        return 0;
+      }
+
+      case BUTTON_ID_FASTFORWARD:
+        print_string("FASTFORWARD", 0xFFFF, 0x0000, 0, 50);
+        synchronize_flag ^= 1;
+        return 0;
+    }
+
+    if(buttons & button_psp_mask_to_config[i])
+    {
+      button_id = gamepad_config_map[i];
+      if(button_id < BUTTON_ID_MENU)
+      {
+        new_key |= button_id_to_gba_mask[button_id];
+      }
+      else
+
+      if((button_id >= BUTTON_ID_RAPIDFIRE_A) &&
+       (button_id <= BUTTON_ID_RAPIDFIRE_L))
+      {
+        rapidfire_flag ^= 1;
+        if(rapidfire_flag)
+        {
+          new_key |= button_id_to_gba_mask[button_id -
+           BUTTON_ID_RAPIDFIRE_A + BUTTON_ID_A];
+        }
+        else
+        {
+          new_key &= ~button_id_to_gba_mask[button_id -
+           BUTTON_ID_RAPIDFIRE_A + BUTTON_ID_A];
+        }
+      }
+    }
+  }
+
+  if((new_key | key) != key)
+    trigger_key(new_key);
+
+  key = new_key;
+
+  io_registers[REG_P1] = (~key) & 0x3FF;
+
+  return 0;
+}
+
+void init_input()
+{
+  sceCtrlSetSamplingCycle(0);
+  sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
+}
+
+#endif
+
+
+#if defined(GP2X_BUILD) || defined(PND_BUILD)
+
+extern u32 fps_debug;
+
+gui_action_type get_gui_input()
+{
+  gui_action_type new_button = CURSOR_NONE;
+  u32 buttons = gpsp_plat_joystick_read();
+  u32 new_buttons;
+
+  static u32 last_buttons = 0;
+  static u64 button_repeat_timestamp;
+
+  delay_us(25000);
+
+  new_buttons = (last_buttons ^ buttons) & buttons;
+  last_buttons = buttons;
+
+  new_button = gpsp_plat_buttons_to_cursor(new_buttons);
+  if(new_button != CURSOR_NONE)
+  {
+    get_ticks_us(&button_repeat_timestamp);
+    button_repeat_state = BUTTON_HELD_INITIAL;
+    button_repeat = new_buttons;
+    cursor_repeat = new_button;
+  }
+  else
+  {
+    if(buttons & button_repeat)
+    {
+      u64 new_ticks;
+      get_ticks_us(&new_ticks);
+
+      if(button_repeat_state == BUTTON_HELD_INITIAL)
+      {
+        if((new_ticks - button_repeat_timestamp) >
+         BUTTON_REPEAT_START)
+        {
+          new_button = cursor_repeat;
+          button_repeat_timestamp = new_ticks;
+          button_repeat_state = BUTTON_HELD_REPEAT;
+        }
+      }
+
+      if(button_repeat_state == BUTTON_HELD_REPEAT)
+      {
+        if((new_ticks - button_repeat_timestamp) >
+         BUTTON_REPEAT_CONTINUE)
+        {
+          new_button = cursor_repeat;
+          button_repeat_timestamp = new_ticks;
+        }
+      }
+    }
+  }
+
+  return new_button;
+}
+
+u32 button_id_to_gba_mask[] =
+{
+  BUTTON_UP,
+  BUTTON_DOWN,
+  BUTTON_LEFT,
+  BUTTON_RIGHT,
+  BUTTON_A,
+  BUTTON_B,
+  BUTTON_L,
+  BUTTON_R,
+  BUTTON_START,
+  BUTTON_SELECT,
+  BUTTON_NONE,
+  BUTTON_NONE,
+  BUTTON_NONE,
+  BUTTON_NONE
+};
+
+u32 update_input()
+{
+  static u32 rapidfire_flag = 1;
+  static u32 last_buttons;
+  u32 handled_buttons;
+  u32 button_id;
+  u32 new_key = 0;
+  u32 buttons = gpsp_plat_joystick_read();
+  u32 i;
+
+#ifdef GP2X_BUILD
+  if((buttons & GP2X_VOL_DOWN) && (buttons & GP2X_VOL_UP))
+  {
+    buttons &= ~(GP2X_VOL_DOWN | GP2X_VOL_UP);
+    buttons |= GP2X_VOL_MIDDLE;
+  }
+
+  /* for Wiz */
+  if((buttons & GP2X_VOL_DOWN) && (buttons & GP2X_SELECT))
+  {
+    buttons &= ~(GP2X_VOL_DOWN | GP2X_SELECT);
+    buttons |= GP2X_VOL_MIDDLE;
+  }
+
+  last_buttons &= ~(GP2X_VOL_DOWN | GP2X_VOL_UP);
+#endif
+
+  handled_buttons = (last_buttons ^ buttons) & buttons;
+  last_buttons = buttons;
+
+  for(i = 0; i < PLAT_BUTTON_COUNT; i++)
+  {
+    if(handled_buttons & button_plat_mask_to_config[i])
+      button_id = gamepad_config_map[i];
+    else
+      button_id = BUTTON_ID_NONE;
+
+    switch(button_id)
+    {
+      case BUTTON_ID_MENU:
+      {
+        u16 *screen_copy = copy_screen();
+        u32 ret_val = menu(screen_copy);
+        free(screen_copy);
+
+        return ret_val;
+      }
+
+      case BUTTON_ID_LOADSTATE:
+      {
+        char current_savestate_filename[512];
+        get_savestate_filename_noshot(savestate_slot,
+         current_savestate_filename);
+        if(!load_state(current_savestate_filename)) cherrypi_state_show_error();
+        return 1;
+      }
+
+      case BUTTON_ID_SAVESTATE:
+      {
+        char current_savestate_filename[512];
+        u16 *current_screen = copy_screen();
+        get_savestate_filename_noshot(savestate_slot,
+         current_savestate_filename);
+        if(!save_state(current_savestate_filename, current_screen)) cherrypi_state_show_error();
+        free(current_screen);
+        return 0;
+      }
+
+      case BUTTON_ID_FASTFORWARD:
+        synchronize_flag ^= 1;
+        return 0;
+
+#ifdef GP2X_BUILD
+      case BUTTON_ID_VOLUP:
+        gp2x_sound_volume(1);
+        break;
+
+      case BUTTON_ID_VOLDOWN:
+        gp2x_sound_volume(0);
+        break;
+#endif
+
+      case BUTTON_ID_FPS:
+        fps_debug ^= 1;
+        break;
+    }
+
+    if(buttons & button_plat_mask_to_config[i])
+    {
+      button_id = gamepad_config_map[i];
+      if(button_id < BUTTON_ID_MENU)
+      {
+        new_key |= button_id_to_gba_mask[button_id];
+      }
+      else
+
+      if((button_id >= BUTTON_ID_RAPIDFIRE_A) &&
+       (button_id <= BUTTON_ID_RAPIDFIRE_L))
+      {
+        rapidfire_flag ^= 1;
+        if(rapidfire_flag)
+        {
+          new_key |= button_id_to_gba_mask[button_id -
+           BUTTON_ID_RAPIDFIRE_A + BUTTON_ID_A];
+        }
+        else
+        {
+          new_key &= ~button_id_to_gba_mask[button_id -
+           BUTTON_ID_RAPIDFIRE_A + BUTTON_ID_A];
+        }
+      }
+    }
+  }
+
+  if((new_key | key) != key)
+    trigger_key(new_key);
+
+  key = new_key;
+
+  io_registers[REG_P1] = (~key) & 0x3FF;
+
+  return 0;
+}
+
+void init_input()
+{
+
+}
+
+#endif
+
+
+#if defined(RPI_BUILD)
+
+u32 key_map(SDLKey key_sym)
+{
+  switch(key_sym)
+  {
+    case SDLK_a:
+      return BUTTON_L;
+
+    case SDLK_s:
+      return BUTTON_R;
+
+    case SDLK_DOWN:
+      return BUTTON_DOWN;
+
+    case SDLK_UP:
+      return BUTTON_UP;
+
+    case SDLK_LEFT:
+      return BUTTON_LEFT;
+
+    case SDLK_RIGHT:
+      return BUTTON_RIGHT;
+
+    case SDLK_RETURN:
+      return BUTTON_START;
+
+    case SDLK_BACKSPACE:
+      return BUTTON_SELECT;
+
+    case SDLK_x:
+      return BUTTON_B;
+
+    case SDLK_z:
+      return BUTTON_A;
+
+    default:
+      return BUTTON_NONE;
+  }
+}
+#endif
+
+#if defined(PC_BUILD) || defined(MIYOO) 
+
+extern u32 gamepad_config_line_to_button[];
+
+uint32_t tokey(uint32_t i)
+{
+	switch(gamepad_config_map[gamepad_config_line_to_button[i]])
+	{
+		// UP
+		case 0:
+			return BUTTON_UP;
+		break;
+		// LEFT
+		case 1:
+			return BUTTON_LEFT;
+		break;
+		// DOWN
+		case 2:
+			return BUTTON_DOWN;
+		break;
+		// RIGHT
+		case 3:
+			return BUTTON_RIGHT;
+		break;
+		// A
+		case 4:
+			return BUTTON_A;
+		break;
+		// B
+		case 5:
+			return BUTTON_B;
+		break;
+		// L
+		case 6:
+			return BUTTON_L;
+		break;
+		// R
+		case 7:
+			return BUTTON_R;
+		break;
+		// Start
+		case 8:
+			return BUTTON_START;
+		break;
+		// Select
+		case 9:
+			return BUTTON_SELECT;
+    case 10:
+      return BUTTON_SAVESTATE;
+    case 11:
+      return BUTTON_LOADSTATE;
+    case 12:
+      return BUTTON_AUTOFIRE_A;
+    case 13:
+      return BUTTON_AUTOFIRE_B;
+		break;
+	}
+	return 0;	
+}
+
+u32 key_map(u32 key_sym)
+{
+#ifdef CHERRYPI
+  switch (key_sym) {
+    case SDLK_UP: return BUTTON_UP;
+    case SDLK_DOWN: return BUTTON_DOWN;
+    case SDLK_LEFT: return BUTTON_LEFT;
+    case SDLK_RIGHT: return BUTTON_RIGHT;
+    case SDLK_LALT: return BUTTON_A;
+    case SDLK_LCTRL: return BUTTON_B;
+    case SDLK_LSHIFT: return BUTTON_L;
+    case SDLK_SPACE: return BUTTON_R;
+    case SDLK_TAB: return BUTTON_START;
+    case SDLK_BACKSPACE: return BUTTON_SELECT;
+    default: return BUTTON_NONE;
+  }
+#else
+  switch(key_sym)
+  {
+    case SDLK_UP:
+      return tokey(0);
+      
+    case SDLK_DOWN:
+      return tokey(1);
+
+    case SDLK_LEFT:
+      return tokey(2);
+
+    case SDLK_RIGHT:
+      return tokey(3);
+      
+    case SDLK_LALT:
+      return tokey(4);
+
+    case SDLK_LCTRL:
+      return tokey(5);
+      
+    case SDLK_LSHIFT:
+      return tokey(6);
+
+    case SDLK_SPACE:
+      return tokey(7);
+      
+    case SDLK_TAB:
+      return tokey(8);
+
+    case SDLK_BACKSPACE:
+      return tokey(9);
+
+    case SDLK_RETURN:
+      return tokey(10);
+
+    case SDLK_ESCAPE:
+      return tokey(11);
+
+    default:
+      return BUTTON_NONE;
+  }
+#endif
+}
+
+#endif
+#if defined(PC_BUILD) || defined(MIYOO) || defined(RPI_BUILD)
+
+u32 joy_map(u32 button)
+{
+  switch(button)
+  {
+    case 4:
+      return BUTTON_L;
+
+    case 5:
+      return BUTTON_R;
+
+    case 2:
+      return BUTTON_START;
+
+    case 3:
+      return BUTTON_SELECT;
+
+    case 1:
+      return BUTTON_B;
+
+    case 0:
+      return BUTTON_A;
+
+    default:
+      return BUTTON_NONE;
+  }
+}
+
+/* Direction repeat is menu-only; game button press/release remains unchanged. */
+static SDLKey cherrypi_repeat_key = SDLK_UNKNOWN;
+static Uint32 cherrypi_repeat_at;
+void cherrypi_menu_repeat_reset(void)
+{
+  cherrypi_repeat_key = SDLK_UNKNOWN;
+  cherrypi_repeat_at = 0;
+}
+static gui_action_type cherrypi_direction(SDLKey key)
+{
+  switch (key) {
+    case SDLK_UP: return CURSOR_UP;
+    case SDLK_DOWN: return CURSOR_DOWN;
+    case SDLK_LEFT: return CURSOR_LEFT;
+    case SDLK_RIGHT: return CURSOR_RIGHT;
+    default: return CURSOR_NONE;
+  }
+}
+gui_action_type get_gui_input()
+{
+  SDL_Event event;
+  gui_action_type gui_action = CURSOR_NONE;
+
+  delay_us(30000);
+
+  while(cherrypi_poll_event(&event, 1))
+  { 
+    switch(event.type)
+    {
+      case SDL_QUIT:
+        quit();
+
+      case SDL_KEYUP:
+        if (event.key.keysym.sym == cherrypi_repeat_key) cherrypi_menu_repeat_reset();
+        break;
+      case SDL_KEYDOWN:
+      {
+        if (cherrypi_direction(event.key.keysym.sym) != CURSOR_NONE) {
+          if (cherrypi_repeat_key != event.key.keysym.sym) {
+            cherrypi_repeat_key = event.key.keysym.sym;
+            cherrypi_repeat_at = SDL_GetTicks() + 350;
+          }
+        } else cherrypi_menu_repeat_reset();
+        switch(event.key.keysym.sym)
+        {
+          case SDLK_RCTRL:
+            gui_action = CURSOR_DEVICE;
+            break;
+
+          case SDLK_DOWN:
+            gui_action = CURSOR_DOWN;
+            break;
+
+          case SDLK_UP:
+            gui_action = CURSOR_UP;
+            break;
+
+          case SDLK_LEFT:
+            gui_action = CURSOR_LEFT;
+            break;
+
+          case SDLK_RIGHT:
+            gui_action = CURSOR_RIGHT;
+            break;
+#ifdef MIYOO
+          case SDLK_ESCAPE:
+          case SDLK_LCTRL:
+            gui_action = CURSOR_EXIT;
+            break;
+
+          case SDLK_RETURN:
+          case SDLK_LALT:
+            gui_action = CURSOR_SELECT;
+            break;
+#else
+          case SDLK_ESCAPE:
+            gui_action = CURSOR_EXIT;
+            break;
+
+          case SDLK_RETURN:
+          case SDLK_LCTRL:
+            gui_action = CURSOR_SELECT;
+            break;
+
+          case SDLK_LALT:
+            gui_action = CURSOR_BACK;
+            break;
+#endif
+	 default:
+	    break;
+      }
+    }
+    break;
+#ifdef RPI_BUILD
+    case SDL_JOYBUTTONDOWN:
+    {
+      switch (event.jbutton.button)
+      {
+	case 2:
+            gui_action = CURSOR_BACK;
+            break;
+
+	case 1:
+            gui_action = CURSOR_EXIT;
+            break;
+
+	case 0:
+	    gui_action = CURSOR_SELECT;
+    	    break;
+	}
+     }
+     break;
+
+     case SDL_JOYAXISMOTION:
+     {
+         if (event.jaxis.axis==0) { //Left-Right
+            if (event.jaxis.value < -3200) gui_action = CURSOR_LEFT;
+        	else if (event.jaxis.value > 3200) gui_action = CURSOR_RIGHT;
+         }
+         if (event.jaxis.axis==1) {  //Up-Down
+            if (event.jaxis.value < -3200) gui_action = CURSOR_UP;
+        	else if (event.jaxis.value > 3200) gui_action = CURSOR_DOWN;
+         }
+    }
+    break;
+
+#endif
+    default:
+        break;
+    }
+  }
+  if (gui_action == CURSOR_NONE && cherrypi_repeat_key != SDLK_UNKNOWN &&
+      (Sint32)(SDL_GetTicks() - cherrypi_repeat_at) >= 0) {
+    gui_action = cherrypi_direction(cherrypi_repeat_key);
+    cherrypi_repeat_at = SDL_GetTicks() + 120;
+  }
+  return gui_action;
+}
+
+u32 isAutoFireOnA = 0;
+u32 isAutoFireOnB = 0;
+
+void cherrypi_release_game_keys(void)
+{
+  key = 0;
+  isAutoFireOnA = isAutoFireOnB = 0;
+  io_registers[REG_P1] = 0x3ff;
+}
+u64 lastTickOnA = 0;
+u64 lastTickOnB = 0;
+
+u32 update_input()
+{
+
+  SDL_Event event;
+
+  io_registers[REG_P1] = (~key) & 0x3FF;
+
+  if (isAutoFireOnA == 1)
+  {
+    u64 new_ticks;
+    get_ticks_us(&new_ticks);
+
+    if (new_ticks - lastTickOnA > BUTTON_REPEAT_RATE)
+    {
+      get_ticks_us(&lastTickOnA);
+      key |= BUTTON_A;
+      trigger_key(key);
+    }
+    else
+    {
+      key &= ~BUTTON_A;
+    }
+  }
+
+  if (isAutoFireOnB == 1)
+  {
+    u64 new_ticks;
+    get_ticks_us(&new_ticks);
+
+    if (new_ticks - lastTickOnB > BUTTON_REPEAT_RATE)
+    {
+      get_ticks_us(&lastTickOnB);
+      key |= BUTTON_B;
+      trigger_key(key);
+    }
+    else
+    {
+      key &= ~BUTTON_B;
+    }
+  }
+
+  while(cherrypi_poll_event(&event, 0))
+  {
+    switch(event.type)
+    {
+      case SDL_QUIT:
+		{
+        quit();
+		}
+      case SDL_KEYDOWN:
+      {
+		  /* Disable Exiting for the bittboy, we will quit from the menu instead */
+        /*if(event.key.keysym.sym == SDLK_ESCAPE)
+        {
+          quit();
+        }*/
+#if defined(PC_BUILD) || defined(MIYOO) 
+        if(event.key.keysym.sym == SDLK_RCTRL)
+#else
+        if(event.key.keysym.sym == SDLK_F10)
+#endif
+        {
+          u16 *screen_copy = copy_screen();
+          u32 ret_val = menu(screen_copy);
+          free(screen_copy);
+
+          return ret_val;
+        }
+        else
+        if(event.key.keysym.sym == SDLK_F5)
+        {
+          char current_savestate_filename[512];
+          u16 *current_screen = copy_screen();
+          get_savestate_filename_noshot(savestate_slot,
+           current_savestate_filename);
+          if(!save_state(current_savestate_filename, current_screen)) cherrypi_state_show_error();
+          free(current_screen);
+        }
+        else
+
+        if(event.key.keysym.sym == SDLK_F7)
+        {
+          char current_savestate_filename[512];
+          get_savestate_filename_noshot(savestate_slot,
+           current_savestate_filename);
+          if(!load_state(current_savestate_filename)) cherrypi_state_show_error();
+          debug_on();
+          return 1;
+        }
+        else if(event.key.keysym.sym == SDLK_BACKQUOTE)
+        {
+          synchronize_flag ^= 1;
+#ifdef CHERRYPI
+          fprintf(stderr, "Fast-forward: %s\n", synchronize_flag ? "OFF" : "ON");
+#endif
+        }
+        else
+        {
+          u32 mappedKey = key_map(event.key.keysym.sym);
+          if (mappedKey == BUTTON_SAVESTATE) 
+          {
+            char current_savestate_filename[512];
+            u16 *current_screen = copy_screen();
+            get_savestate_filename_noshot(savestate_slot,
+            current_savestate_filename);
+            if(!save_state(current_savestate_filename, current_screen)) cherrypi_state_show_error();
+            free(current_screen);
+            return 0;
+          }
+          else if (mappedKey == BUTTON_LOADSTATE) 
+          {
+            char current_savestate_filename[512];
+            get_savestate_filename_noshot(savestate_slot,
+            current_savestate_filename);
+            if(!load_state(current_savestate_filename)) cherrypi_state_show_error();
+            return 1;
+          }
+          else if (mappedKey == BUTTON_AUTOFIRE_A)
+          {
+            isAutoFireOnA = 1;
+          }
+          else if (mappedKey == BUTTON_AUTOFIRE_B)
+          {
+            isAutoFireOnB = 1;
+          }
+          else
+          {
+            key |= mappedKey;
+            trigger_key(key);
+          }
+        }
+
+        break;
+      }
+
+      case SDL_KEYUP:
+      {
+        u32 mappedKey = key_map(event.key.keysym.sym);
+        if (mappedKey == BUTTON_AUTOFIRE_A)
+        {
+          isAutoFireOnA = 0;
+        }
+        else if (mappedKey == BUTTON_AUTOFIRE_B)
+        {
+          isAutoFireOnB = 0;
+        }
+        else
+        {
+          key &= ~mappedKey;
+        }
+
+        break;
+      }
+    }
+  }
+
+
+
+  return 0;
+}
+
+void init_input()
+{
+  u32 joystick_count = SDL_NumJoysticks();
+
+  if(joystick_count > 0)
+  {
+    SDL_JoystickOpen(0);
+    SDL_JoystickEventState(SDL_ENABLE);
+  }
+}
+
+#endif
+
+
+#define input_savestate_builder(type)                                         \
+void input_##type##_savestate(file_tag_type savestate_file)                   \
+{                                                                             \
+  file_##type##_variable(savestate_file, key);                                \
+}                                                                             \
+
+input_savestate_builder(read);
+input_savestate_builder(write_mem);
+

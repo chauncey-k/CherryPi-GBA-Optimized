@@ -1,0 +1,774 @@
+00000000 a shift
+00000000 a shift
+00012120 00000004 T _init
+00012830 00000418 T main
+00012c48 T _start
+00012c6c 00000068 T _start_c
+00012cd4 t deregister_tm_clones
+00012d00 t register_tm_clones
+00012d38 t __do_global_dtors_aux
+00012d7c t frame_dummy
+00012db0 00000094 T init_main
+00012e44 000001e8 T print_memory_stats
+0001302c 00000004 T trigger_ext_event
+00013030 000002bc T synchronize
+000132ec 000006b4 T update_gba
+000139a0 00000168 T quit
+00013b08 00000024 T quit_without_autosave
+00013b2c 00000024 T reset_gba
+00013b50 0000003c T file_length
+00013b8c 00000014 T delay_us
+00013ba0 0000001c T get_ticks_us
+00013bbc 00000034 T change_ext
+00013bf0 0000007c T make_rpath
+00013c6c 0000006c T main_read_savestate
+00013cd8 00000068 T main_write_mem_savestate
+00013d40 00000004 T printout
+00013d44 00000034 T set_clock_speed
+00013d78 00000064 T print_arm_registers
+00013ddc 00000034 T print_thumb_instruction
+00013e10 00000034 T print_arm_instruction
+00013e44 00000084 T print_flags
+00013ec8 0000007c T print_stack
+00013f44 00000014 T debug_on
+00013f58 00000010 T debug_off
+00013f68 000004b8 T step_debug
+00014420 000000d0 T set_cpu_mode
+000144f0 000000a8 T raise_interrupt
+00014598 00013aa4 T execute_arm
+0002803c 00000088 T init_cpu
+000280c4 00000038 T move_reg
+000280fc 00000058 T cpu_read_savestate
+00028154 00000054 T cpu_write_mem_savestate
+000281a8 00000054 t cp_release_rom_buffer
+000281fc 00000084 T read_backup
+00028280 00000218 T write_eeprom
+00028498 000000b0 T read_eeprom
+00028548 000002b0 T write_backup
+000287f8 00000028 T encode_bcd
+00028820 00000130 T load_backup
+00028950 000000c0 T save_backup
+00028a10 00000040 T update_backup
+00028a50 0000000c T update_backup_force
+00028a5c 0000001c T skip_spaces
+00028a78 000000cc T parse_config_line
+00028b44 00000470 T load_game_config
+00028fb4 000000c4 T load_bios
+00029078 00000084 T evict_gamepak_page
+000290fc 000000ec T load_gamepak_page
+000291e8 00000614 T write_rtc
+000297fc 000001e4 T read_memory8
+000299e0 000003c0 T read_memory16
+00029da0 00000204 T read_memory16_signed
+00029fa4 000003c8 T read_memory32
+0002a36c 0003b1f0 T dma_transfer
+0006555c 00001590 T write_io_register8
+00066aec 0000011c T write_memory8
+00066c08 00001038 T write_io_register16
+00067c40 00000158 T write_io_register32
+00067d98 00000154 T write_memory32
+00067eec 00000144 T write_memory16
+00068030 00000130 T init_memory_gamepak
+00068160 000000f4 T init_gamepak_buffer
+00068254 000001a8 T load_gamepak_raw
+000683fc 0000020c T load_gamepak
+00068608 0000040c T init_memory
+00068a14 00000018 T bios_region_read_allow
+00068a2c 00000014 T bios_region_read_protect
+00068a40 000002f0 T memory_read_savestate
+00068d30 000002f0 T memory_write_mem_savestate
+00069020 00000060 t state_capture_layout
+00069080 00000294 T load_state
+00069314 000000e8 T save_state
+000693fc 000018d4 t render_scanline_text_base_normal
+0006acd0 00001a40 t render_scanline_text_transparent_normal
+0006c710 0000194c t render_scanline_text_base_color16
+0006e05c 000016f4 t render_scanline_text_transparent_color16
+0006f750 000018f0 t render_scanline_text_base_color32
+00071040 00001560 t render_scanline_text_transparent_color32
+000725a0 00001904 t render_scanline_text_base_alpha
+00073ea4 00001c78 t render_scanline_text_transparent_alpha
+00075b1c 00000418 T render_scanline_affine_base_normal
+00075f34 000003d0 T render_scanline_affine_transparent_normal
+00076304 00000488 T render_scanline_affine_base_color16
+0007678c 000003e8 T render_scanline_affine_transparent_color16
+00076b74 0000045c T render_scanline_affine_base_color32
+00076fd0 000003e4 T render_scanline_affine_transparent_color32
+000773b4 00000474 T render_scanline_affine_base_alpha
+00077828 00000410 T render_scanline_affine_transparent_alpha
+00077c38 00000234 t render_scanline_bitmap_mode3_normal
+00077e6c 00000208 t render_scanline_bitmap_mode4_normal
+00078074 00000240 t render_scanline_bitmap_mode5_normal
+000782b4 000023f8 t render_scanline_obj_normal_1D
+0007a6ac 000023b4 t render_scanline_obj_normal_2D
+0007ca60 00001fd8 t render_scanline_obj_color16_1D
+0007ea38 00001f8c t render_scanline_obj_color16_2D
+000809c4 00001ef8 t render_scanline_obj_color32_1D
+000828bc 00001e88 t render_scanline_obj_color32_2D
+00084744 000034d4 t render_scanline_obj_alpha_obj_1D
+00087c18 00003458 t render_scanline_obj_alpha_obj_2D
+0008b070 000053e0 t render_scanline_obj_partial_alpha_1D
+00090450 00005354 t render_scanline_obj_partial_alpha_2D
+000957a4 000000b0 t expand_brighten
+00095854 000001b8 t expand_darken_partial_alpha
+00095a0c 000001f8 t expand_brighten_partial_alpha
+00095c04 00001594 t render_scanline_conditional_tile
+00097198 00002074 t render_scanline_obj_copy_tile_2D.constprop.0
+0009920c 000020a8 t render_scanline_obj_copy_tile_1D.constprop.0
+0009b2b4 000025c8 t render_scanline_window_tile
+0009d87c 00000104 t render_scanline_conditional_bitmap.isra.0
+0009d980 0000209c t render_scanline_obj_copy_bitmap_1D.constprop.0
+0009fa1c 00002068 t render_scanline_obj_copy_bitmap_2D.constprop.0
+000a1a84 000009dc t render_scanline_tile
+000a2460 00002b74 T update_scanline
+000a4fd4 00000f90 T flip_screen
+000a5f64 00000040 T cherrypi_menu_present
+000a5fa4 00000018 T update_screen
+000a5fbc 0000008c T init_video
+000a6048 00000010 T get_screen
+000a6058 00000098 T video_resolution_large
+000a60f0 00000178 T video_resolution_small
+000a6268 00000024 T set_gba_resolution
+000a628c 00000074 T clear_screen
+000a6300 00000060 T copy_screen
+000a6360 00000094 T blit_to_screen
+000a63f4 0000021c T print_string_ext
+000a6610 00000050 T print_string
+000a6660 00000054 T print_string_pad
+000a66b4 00000004 T debug_screen_clear
+000a66b8 00000004 T debug_screen_start
+000a66bc 00000004 T debug_screen_end
+000a66c0 00000004 T debug_screen_update
+000a66c4 0000005c T debug_screen_printf
+000a6720 00000008 T debug_screen_newline
+000a6728 00000064 T debug_screen_printl
+000a678c 0000003c T video_read_savestate
+000a67c8 00000038 T video_write_mem_savestate
+000a6800 0000004c T trigger_key
+000a684c 00000030 T tokey
+000a687c 00000128 T key_map
+000a69a4 0000001c T joy_map
+000a69c0 00000018 T cherrypi_menu_repeat_reset
+000a69d8 00000270 T get_gui_input
+000a6c48 0000002c T cherrypi_release_game_keys
+000a6c74 00000394 T update_input
+000a7008 00000024 T init_input
+000a702c 00000018 T input_read_savestate
+000a7044 00000018 T input_write_mem_savestate
+000a705c 000002f4 T sound_callback
+000a7350 0000002c T sound_timer_queue8
+000a737c 00000044 T sound_timer_queue16
+000a73c0 00000074 T sound_timer_queue32
+000a7434 00000244 T sound_timer
+000a7678 00000014 T sound_reset_fifo
+000a768c 00001f90 T update_gbc_sound
+000a961c 00000060 T init_noise_table
+000a967c 0000011c T reset_sound
+000a9798 00000070 T sound_exit
+000a9808 00000234 T init_sound
+000a9a3c 00000120 T sound_read_savestate
+000a9b5c 0000011c T sound_write_mem_savestate
+000a9c78 000000bc T cherrypi_sound_state_valid
+000a9d34 00000010 t menu_exit.15
+000a9d44 00000004 t menu_fix_gamepad_help.2
+000a9d48 00000034 T sort_function
+000a9d7c 00000034 t submenu_gamepad.1
+000a9db0 0000009c t cherrypi_brightness_read
+000a9e4c 00000030 t menu_load_state.8
+000a9e7c 00000038 t menu_restart.11
+000a9eb4 00000004 t submenu_cheats_misc.3
+000a9eb8 00000004 t submenu_graphics_sound.4
+000a9ebc 0000011c t submenu_main.5
+000a9fd8 000001ac T load_game_config_file
+000aa184 000000b8 T load_controllers
+000aa23c 000000b8 T save_controllers
+000aa2f4 000001f4 T load_config_file
+000aa4e8 000000f4 T save_game_config_file
+000aa5dc 00000174 T save_config_file
+000aa750 00000708 t cherrypi_device_menu
+000aae58 0000072c T load_file
+000ab584 000000bc t menu_load_state_file.7
+000ab640 000000cc t menu_load.12
+000ab70c 00000014 t menu_quit.0
+000ab720 000001e4 T get_savestate_snapshot
+000ab904 00000078 t menu_change_state.10
+000ab97c 00000078 t submenu_savestate.6
+000ab9f4 000000d8 t menu_save_state.9
+000abacc 00000068 T get_savestate_filename_noshot
+000abb34 00000070 T get_savestate_filename
+000abba4 000018b4 T menu_advanced
+000ad458 00000044 T cherrypi_state_show_error
+000ad49c 0000001c T menu
+000ad4b8 000000dc T decrypt_gsa_code
+000ad594 00000258 T add_cheats
+000ad7ec 00000198 T process_cheat_gs1
+000ad984 0000026c T process_cheat_gs3
+000adbf0 0000006c T process_cheats
+000adc5c 00000298 T load_file_zip
+000adef4 T arm_update_gba_arm
+000adfd0 T arm_update_gba_thumb
+000ae0ac T arm_update_gba_idle_arm
+000ae188 T arm_update_gba_idle_thumb
+000ae264 T arm_indirect_branch_arm
+000ae27c T arm_indirect_branch_thumb
+000ae294 T arm_indirect_branch_dual_arm
+000ae308 T arm_indirect_branch_dual_thumb
+000ae37c T execute_store_cpsr
+000ae3f8 T execute_store_spsr
+000ae408 T execute_read_spsr
+000ae418 T execute_spsr_restore
+000ae4b8 T execute_swi_arm
+000ae540 T execute_swi_thumb
+000ae5c8 T execute_swi_hle_div_arm
+000ae610 T execute_swi_hle_div_thumb
+000ae658 T execute_arm_translate
+000ae6e8 T execute_store_u8
+000ae780 t ext_store_u8
+000ae7a0 T execute_store_u16
+000ae838 t ext_store_u16
+000ae860 T execute_store_u32
+000ae920 t ext_store_u32
+000ae940 T execute_store_u32_safe
+000ae978 t ext_store_u32_safe
+000ae990 t write_epilogue
+000aea6c T cp_live_unknown_arm
+000aea7c t smc_write
+000aea88 t lookup_pc
+000aea98 t lookup_pc_thumb
+000aeaac t lookup_pc_arm
+000aeac0 T execute_load_u8
+000aeaf0 t ext_load_u8
+000aeb0c T execute_load_s8
+000aeb40 t ext_load_s8
+000aeb64 T execute_load_u16
+000aeb98 t ext_load_u16
+000aebb4 T execute_load_s16
+000aebe8 t ext_load_s16
+000aec0c T execute_load_u32
+000aec3c t ext_load_u32
+000aec58 T execute_bios_ptr_protected
+000aec64 t execute_ewram_ptr
+000aec7c t execute_gamepak_ptr
+000aecc4 t execute_eeprom_ptr
+000aecec t execute_backup_ptr
+000aed1c t execute_open_ptr
+000aed90 T execute_bios_rom_ptr
+000aeda0 t execute_iwram_ptr
+000aedb0 t execute_vram_ptr
+000aedc0 t execute_oam_ram_ptr
+000aedd0 t execute_io_registers_ptr
+000aede0 t execute_palette_ram_ptr
+000aedf0 t ptr_read_function_table
+000af1f0 t load_ptr_read_function_table
+000af210 T execute_patch_bios_read
+000af224 T execute_patch_bios_protect
+000af238 T step_debug_arm
+000af3c0 00000298 T warm_init
+000af658 0000012c T warm_finish
+000af784 000000c0 T warm_cache_op_range
+000af844 000000bc T warm_cache_op_all
+000af900 0000009c T warm_change_cb_range
+000af99c 000000a0 T warm_change_cb_upper
+000afa3c 00000084 T warm_virt2phys
+000afac0 00000088 t cp_live_column
+000afb48 000000a0 t generate_indirect_branch_arm.8
+000afbe8 000000a0 t generate_indirect_branch_dual.0
+000afc88 00000040 t complete_store_reg.4
+000afcc8 0000004c t generate_load_reg.7
+000afd14 00000048 t generate_store_reg.9
+000afd5c 00000044 t complete_store_reg.13
+000afda0 00000050 t generate_load_reg.14
+000afdf0 0000004c t generate_store_reg.15
+000afe3c 000000c0 t arm_disect_imm_32bit.part.0
+000afefc 00000168 t prepare_load_reg_pc.5
+000b0064 0000016c t prepare_load_reg_pc.10.constprop.0
+000b01d0 0000004c t complete_store_reg_pc_no_flags.1
+000b021c 000000e8 t complete_store_reg_pc_flags.2
+000b0304 000001b8 T cp_live_store
+000b04bc 00000024 T arm_disect_imm_32bit
+000b04e0 0000009c T execute_spsr_restore_body
+000b057c 000000a8 T execute_store_cpsr_body
+000b0624 00000040 T execute_swi_hle_div_c
+000b0664 00000128 T flush_translation_cache_ram
+000b078c 00029db8 T translate_block_arm
+000da544 000005b8 T block_lookup_address_arm
+000daafc 0000889c T translate_block_thumb
+000e3398 00000594 T block_lookup_address_thumb
+000e392c 0000062c T block_lookup_address_dual
+000e3f58 0000003c T flush_translation_cache_rom
+000e3f94 00000048 T flush_translation_cache_bios
+000e3fdc 000000c8 T dump_translation_cache
+000e40bc T expand_blend
+000e41fc T expand_normal
+000e4274 000001a0 t sha1_addUncounted.part.0
+000e4414 0000002c T sha1_init
+000e4440 00000034 T sha1_writebyte
+000e4474 00000068 T sha1_write
+000e44dc 000000e0 T sha1_result
+000e45bc 00000158 T sha1_initHmac
+000e4714 000000f0 T sha1_resultHmac
+000e4804 000002f8 T loadPNG
+000e4afc 00000014 t on_interrupt
+000e4b10 0000000c t silence
+000e4b1c 00000060 t close_framebuffer
+000e4b7c 00000054 t restore_input
+000e4bd0 00000240 T cherrypi_input_init
+000e4e10 00000624 T cherrypi_poll_event
+000e5434 00000514 T cherrypi_video_mode
+000e5948 000001e0 T cherrypi_present
+000e5b28 0000027c T cherrypi_platform_test
+000e5da4 00000078 t fail
+000e5e1c 000002a4 t set_volume
+000e60c0 000002b4 t persist
+000e6374 0000000c T cherrypi_settings_error
+000e6380 000001e4 T cherrypi_set_brightness
+000e6564 000000c0 T cherrypi_apply_settings
+000e6624 00000178 T cherrypi_request_poweroff
+000e679c 00000030 T cherrypi_preview_volume
+000e67cc 00000070 t write_all
+000e683c 000000bc t io_fail
+000e68f8 000001b4 t check_header.constprop.0
+000e6aac 00000314 t read_file.constprop.0
+000e6dc0 0000000c T cp_state_message
+000e6dcc 00000014 T cp_state_clear_message
+000e6de0 00000050 T cp_state_fail
+000e6e30 00000070 T cp_state_begin
+000e6ea0 0000013c T cp_state_pack
+000e6fdc 0000000c T cp_state_snapshot
+000e6fe8 00000090 T cp_state_layout_ok
+000e7078 00000010 T cp_state_legacy
+000e7088 0000013c T cp_state_set_rom
+000e71c4 00000070 T cp_state_field
+000e7234 00000324 T cp_state_stage
+000e7558 0000005c T cp_state_commit
+000e75b4 000004c4 T cp_state_save
+000e7a78 000000e8 T cp_state_preview
+000e7b60 000001a0 t refresh_preview
+000e7d00 0000011c t open_slots
+000e7e1c 00000078 t persist
+000e7e94 000000c0 t save_selected
+000e7f54 00001194 T cherrypi_quick_menu
+000e90e8 000001c4 t on_tick
+000e92ac 00000404 t dump_profile
+000e96b0 00000168 T cp_profile_origin
+000e9818 000000e0 T cp_profile_translation
+000e98f8 00000040 T cp_profile_flush
+000e9938 0000002c T cp_profile_frame
+000e9964 000000c8 T cp_profile_prepare
+000e9a2c 000001b8 T cp_profile_start
+000e9fe8 t .udivsi3_skip_div0_test
+000e9fe8 T __aeabi_uidiv
+000e9fe8 000001ec T __udivsi3
+000ea1d4 00000020 T __aeabi_uidivmod
+000ea1f4 T __aeabi_idiv
+000ea1f4 00000220 T __divsi3
+000ea1fc t .divsi3_skip_div0_test
+000ea414 00000020 T __aeabi_idivmod
+000ea434 T __aeabi_drsub
+000ea43c 000002b0 T __aeabi_dsub
+000ea43c 000002b0 T __subdf3
+000ea440 000002ac T __adddf3
+000ea440 000002ac T __aeabi_dadd
+000ea6ec 00000024 T __aeabi_ui2d
+000ea6ec 00000024 T __floatunsidf
+000ea710 00000028 T __aeabi_i2d
+000ea710 00000028 T __floatsidf
+000ea738 00000048 T __aeabi_f2d
+000ea738 00000048 T __extendsfdf2
+000ea780 00000074 T __aeabi_ul2d
+000ea780 00000074 T __floatundidf
+000ea794 00000060 T __aeabi_l2d
+000ea794 00000060 T __floatdidf
+000ea7f4 0000026c T __aeabi_dmul
+000ea7f4 0000026c T __muldf3
+000eaa60 00000204 T __aeabi_ddiv
+000eaa60 00000204 T __divdf3
+000eac64 00000054 T __aeabi_d2uiz
+000eac64 00000054 T __fixunsdfsi
+000eacb8 0000019c T __aeabi_frsub
+000eacc0 00000194 T __aeabi_fsub
+000eacc0 00000194 T __subsf3
+000eacc4 00000190 T __addsf3
+000eacc4 00000190 T __aeabi_fadd
+000eae54 00000028 T __aeabi_ui2f
+000eae54 00000028 T __floatunsisf
+000eae5c 00000020 T __aeabi_i2f
+000eae5c 00000020 T __floatsisf
+000eae7c 0000008c T __aeabi_ul2f
+000eae7c 0000008c T __floatundisf
+000eae8c 0000007c T __aeabi_l2f
+000eae8c 0000007c T __floatdisf
+000eaf08 00000198 T __aeabi_fmul
+000eaf08 00000198 T __mulsf3
+000eb0a0 00000160 T __aeabi_fdiv
+000eb0a0 00000160 T __divsf3
+000eb200 00000054 T __aeabi_f2uiz
+000eb200 00000054 T __fixunssfsi
+000eb254 T __aeabi_ldivmod
+000eb328 T __aeabi_uldivmod
+000eb364 00000010 W __aeabi_idiv0
+000eb364 00000010 W __aeabi_ldiv0
+000eb374 0000001c T __clear_cache
+000eb390 00000120 T __udivmoddi4
+000eb4b0 00000004 T _fini
+000eb4c0 r all_implied_fbits
+000ee4e4 00000004 R frame_interval
+000ee4e8 00000004 R event_cycles_trigger
+000ee4ec 00000040 R psr_masks
+000ee52c 00000100 R bit_count
+000ee62c 00000004 R num_output_fields
+000ee630 00000004 R stack_print_lines
+000ee638 00000010 r gbc_sound_wave_volume
+000ee648 00000010 r prescale_table
+000ee658 00000010 r cache_mb.0
+000ee668 00000004 R write_backup_delay
+000ee66c 00000010 r map_widths
+000ee67c 00000030 r obj_width_table
+000ee6ac 00000030 r obj_height_table
+000ee6dc 00000180 r tile_mode_renderers
+000ee85c 0000000c r bitmap_mode_renderers
+000ee868 00000018 r active_layers
+000ee880 00000400 r _font_offset
+000eec80 00000004 R video_scale
+000eec84 0000116c r _font_bits
+000efdf0 00000038 r CSWTCH.34
+000efe28 00000018 r CSWTCH.37
+000efe40 00000010 r CSWTCH.31
+000efee4 0000003c r gamepad_help.17
+000eff40 00000048 r cp_live_words
+000eff88 00000014 R sha1InitState
+000eff9c 00000008 r __func__.0
+000effc4 00000008 r magic
+000effcc 0000001c r names.2
+000effe8 00000010 r states.1
+000efff8 0000000c r exit_names.0
+000f0004 0000000c r CSWTCH.41
+000f0030 r all_implied_fbits
+000f00c8 r __EH_FRAME_BEGIN__
+000f00c8 r __FRAME_END__
+000f1c6c d __frame_dummy_init_array_entry
+000f1c70 d __do_global_dtors_aux_fini_array_entry
+000f1c74 00000004 D stderr
+000f1c78 d _DYNAMIC
+000f1d98 d _GLOBAL_OFFSET_TABLE_
+000f2000 D __dso_handle
+000f2004 00000004 D execute_cycles
+000f2008 00000004 D video_count
+000f200c 00000004 D synchronize_flag
+000f2010 00000004 D frameskip_value
+000f2014 00000004 d fps
+000f2018 00000004 d frames_drawn
+000f201c 00000004 D fps_debug
+000f2020 00000004 D update_backup_flag
+000f2024 00000004 D clock_speed
+000f2028 00000004 d clock_speed_old.0
+000f202c 00000010 d file_ext
+000f203c 00000004 D current_debug_state
+000f2040 00000004 D breakpoint_value
+000f2044 00000004 D motordev
+000f2048 00000004 D global_cycles_per_instruction
+000f204c 00000004 D reg
+000f2050 0000001c D cpu_mode_names
+000f206c 00000080 D cpu_modes
+000f20ec 00000040 D reg_names
+000f212c 0000001c D cpu_modes_cpsr
+000f2148 00000004 D backup_type
+000f214c 00000004 D flash_manufacturer_id
+000f2150 00000004 D flash_device_id
+000f2154 00000014 D nintendo_bios_sha1
+000f2168 00000004 D rtc_status
+000f216c 00000040 D dma_region_map
+000f21ac 00000004 D oam_update
+000f21b0 00000048 D gamepak_waitstate_sequential
+000f21f8 000000c0 D waitstate_cycles_sequential
+000f22b8 00000004 D small_resolution_width
+000f22bc 00000004 D small_resolution_height
+000f22c0 00000004 D screen_scale
+000f22c4 00000004 D screen_filter
+000f22c8 00000004 D current_scale
+000f22cc 00000030 D gamepad_config_map
+000f22fc 00000004 D cursor_repeat
+000f2300 00000004 D analog_sensitivity_level
+000f2304 00000004 D global_enable_analog
+000f2308 00000004 D global_enable_audio
+000f230c 00000004 D sound_frequency
+000f2310 00000040 D gbc_sound_envelope_volume_table
+000f2350 00000020 D gbc_sound_channel_volume_table
+000f2370 00000010 D gbc_sound_master_volume_table
+000f2380 00000020 D square_pattern_duty
+000f23a0 00000004 D audio_buffer_size_number
+000f23a4 00000040 D gamepad_config_line_to_button
+000f23e4 00000004 D display_state_screenshot
+000f23e8 0000000c d scale_options
+000f23f4 0000002c d audio_buffer_options
+000f2420 00000008 d update_backup_options.19
+000f2428 0000003c d gamepad_config_buttons.18
+000f2464 00000010 D filter2_options
+000f2474 00000004 d warm_fd
+000f2478 0000007c D arm_register_allocation
+000f24f4 0000007c D thumb_register_allocation
+000f2570 00000004 D ram_translation_ptr
+000f2574 00000004 D last_ram_translation_ptr
+000f2578 00000004 D ram_block_tag_top
+000f257c 00000004 D iwram_code_max
+000f2580 00000004 D iwram_code_min
+000f2584 00000004 D ewram_code_max
+000f2588 00000004 D ewram_code_min
+000f258c 00000004 D rom_translation_ptr
+000f2590 00000004 D bios_translation_ptr
+000f2594 0000002b D swi_hle_handle
+000f25c0 00000004 D idle_loop_target_pc
+000f25c4 00000004 D last_rom_translation_ptr
+000f25c8 00000004 D last_bios_translation_ptr
+000f25cc 00000004 D bios_block_tag_top
+000f25d0 00000004 D allow_smc_ram_u32
+000f25d4 00000004 D allow_smc_ram_u16
+000f25d8 00000004 D allow_smc_ram_u8
+000f25dc 00000004 D iwram_stack_optimize
+000f25e0 00000004 D force_pc_update_target
+000f25e4 00000004 d fbfd
+000f25e8 00000004 d vtfd
+000f25ec 00000004 d gamepad_fd
+000f25f0 00000004 d previous_menu
+000f25f4 D __TMC_END__
+000f25f4 B __bss_start
+000f25f4 B __bss_start__
+000f25f4 D _edata
+000f2600 00000004 B __stack_chk_guard
+000f2604 00000001 b completed.1
+000f2608 00000018 b object.0
+000f2620 00000004 B skip_next_frame
+000f2624 00000004 B cpu_ticks
+000f2628 00000004 B frame_ticks
+000f262c 00000004 B virtual_frame_count
+000f2630 00000004 B real_frame_count
+000f2634 00000004 B current_frameskip_type
+000f2638 00000004 B num_skipped_frames
+000f263c 00000004 B frameskip_counter
+000f2640 00000004 B random_skip
+000f2644 00000004 B gbc_update_count
+000f2648 00000004 B oam_update_count
+000f264c 00000004 B no_alpha
+000f2650 00000004 B flush_ram_count
+000f2654 00000004 B event_cycles
+000f2658 00000004 B auto_save_state
+000f265c 00000004 B auto_save_state_slot
+000f2660 00000004 B boot_to_BIOS
+000f2664 00000004 B last_frame
+000f2668 00000004 B auto_load_save_state
+000f266c 00000004 B cycle_dma32_words
+000f2670 00000004 B cycle_dma16_words
+000f2674 00000004 B cycle_block_memory_words
+000f2678 00000004 B cycle_block_memory_sp_access
+000f267c 00000004 B cycle_block_memory_access
+000f2680 00000004 B cycle_sp_relative_access
+000f2684 00000004 B cycle_pc_relative_access
+000f2688 00000004 B cycle_memory_access
+000f268c 00000004 B thumb_frame
+000f2690 00000004 B arm_frame
+000f2694 00000004 B instruction_count
+000f2698 00000004 B in_interrupt
+000f269c 00000004 B output_field
+000f26a0 00000004 B last_instruction
+000f26a4 00000004 B high_frequency_branch_targets
+000f26a8 00000004 B branch_targets
+000f26ac 00000004 b cp_rom_mapping_size
+000f26b0 00000004 B flash_mode
+000f26b4 00000004 B flash_bank_offset
+000f26b8 00000004 B eeprom_mode
+000f26bc 00000004 B eeprom_counter
+000f26c0 00000004 B eeprom_size
+000f26c4 00000004 B eeprom_address
+000f26c8 00000004 B backup_update
+000f26cc 00000004 B flash_command_position
+000f26d0 00000004 B flash_size
+000f26d4 00000004 B sram_size
+000f26d8 00000001 b IsNintendoBIOS
+000f26dc 00000004 B page_time
+000f26e0 00000004 B gamepak_file_large
+000f26e4 00000004 B rtc_state
+000f26e8 00000004 b rumble.1
+000f26ec 00000004 B gbc_sound_update
+000f26f0 00000004 B gbc_sound_wave_update
+000f26f4 00000004 B direct_map_vram
+000f26f8 00000c80 b obj_priority_count
+000f3378 00000280 b obj_alpha_count
+000f35f8 00000004 B debug_cursor_y
+000f35fc 00000004 B debug_cursor_x
+000f3600 00000004 B screen_filter2
+000f3608 00000004 b cherrypi_repeat_key
+000f360c 00000004 b cherrypi_repeat_at
+000f3610 00000004 B key
+000f3614 00000004 B isAutoFireOnB
+000f3618 00000004 B isAutoFireOnA
+000f3620 00000008 B lastTickOnA
+000f3628 00000008 B lastTickOnB
+000f3630 00000004 B button_repeat
+000f3634 00000004 B button_repeat_state
+000f3638 00000004 B gbc_sound_buffer_index
+000f363c 00000004 b sound_buffer_base
+000f3640 00000004 b sound_exit_flag
+000f3644 00000004 b sound_cv
+000f3648 00000004 B gbc_sound_last_cpu_ticks
+000f364c 00000004 B gbc_sound_partial_ticks
+000f3650 00000004 b audio_buffer_size
+000f3654 00000004 b gbc_sound_tick_step
+000f3658 00000004 b sound_last_cpu_ticks
+000f365c 00020000 b sound_buffer
+0011365c 00000004 B savestate_slot
+00113660 00000004 b kernel_version
+00113664 00000004 B translation_gate_targets
+00113668 00000004 B translation_flush_count
+0011366c 00000004 B translation_recursion_level
+00113670 00002000 b cp_live_blocked
+00115670 00002000 b cp_live_ready
+00117670 00000004 b interrupted
+00117674 00000004 b fbmem
+00117678 00000044 b finfo
+001176bc 00000004 b saved_kdmode
+001176c0 00000004 b tty_ready
+001176c4 0000003c b saved_termios
+00117700 00000004 b saved_flags
+00117704 0000050c b deadlines
+00117c10 00000004 b physical
+00117c14 000000a0 b vinfo
+00117cb4 00000004 b canvas
+00117cb8 00000004 b clear_display
+00117cbc 00040000 b colors
+00157cbc 00000060 b error_text
+00157d1c 00000004 b staged
+00157d20 00000090 b message
+00157db0 00000004 b used
+00157db4 00000004 b count
+00157db8 00000004 b schema
+00157dbc 00000004 b layout_bad
+00157dc0 00000004 b legacy
+00157dc4 00000780 b segments
+00158544 00000004 b rom_valid
+00158548 00000014 b rom_hash
+0015855c 0007bc47 b incoming
+001d41a4 0007bc47 b snapshot
+0024fdf0 00002ac0 b highlight
+002528b0 00006c00 b thumbnail
+002594b0 00012c00 b preview
+0026c0b0 00000004 b total
+0026c0b4 00000004 b timeline_size
+0026c0b8 00000004 b game_frames
+0026c0bc 00000018 b translations
+0026c0d4 0000000c b flushes
+0026c0e0 00000004 b rom_begin
+0026c0e4 00000004 b rom_end
+0026c0e8 00000004 b rom_hits
+0026c0ec 00000004 b ram_begin
+0026c0f0 00000004 b ram_end
+0026c0f4 00000004 b ram_hits
+0026c0f8 00000004 b bios_begin
+0026c0fc 00000004 b bios_end
+0026c100 00000004 b bios_hits
+0026c104 00000004 b lost
+0026c108 00000004 b started
+0026c10c 00000004 b guest_lost
+0026c110 00000004 b origin_lost
+0026c114 00000800 b origins
+0026c914 00000004 b enabled
+0026c918 000012c0 b timeline
+0026dbd8 00001800 b guest_blocks
+0026f3d8 00008000 b samples
+002773d8 00000004 B frames
+002773dc 00000200 B main_path
+002775e0 00000008 B last_frame_interval_timestamp
+002775e8 00000080 B timer
+00277668 00000004 B interval_skipped_frames
+0027766c 00000004 B ticks
+00277670 00000004 B memory_writes_u32
+00277674 00000040 B memory_region_access_write_u32
+002776b4 00000040 B memory_region_access_read_s16
+002776f4 000000c4 B reg_mode
+002777b8 00000040 B memory_region_access_read_s8
+002777f8 00000004 B memory_reads_s8
+002777fc 00000004 B memory_reads_u32
+00277800 00000004 B memory_writes_u16
+00277804 00000100 B initial_reg
+00277904 00000040 B memory_region_access_write_u16
+00277944 00000004 B memory_writes_u8
+00277948 00000040 B memory_region_access_read_u16
+00277988 00000040 B memory_region_access_read_u32
+002779c8 00000040 B memory_region_access_read_u8
+00277a08 00000040 B memory_region_access_write_u8
+00277a48 00000004 B memory_reads_u16
+00277a4c 00000004 B memory_reads_u8
+00277a50 00000018 B spsr
+00277a68 00000004 B memory_reads_s16
+00277a6c 00020000 B gamepak_backup
+00297a6c 00000040 B memory_limits
+00297aac 00000004 B write_mem_ptr
+00297ab0 00000200 B gamepak_filename
+00297cb0 00000004 B bios_read_protect
+00297cb4 00000008 B eeprom_buffer
+00297cbc 00000004 B rtc_data_bytes
+00297cc0 00000200 B backup_filename
+00297ec0 000000b0 B dma
+00297f70 00000004 B gamepak_memory_map
+00297f74 00000003 B rtc_registers
+00297f78 00000040 B memory_regions
+00297fb8 00000004 B gamepak_size
+00297fbc 00000030 B rtc_data
+00297fec 00000004 B eeprom_address_length
+00297ff0 00000004 B rtc_command
+00297ff4 00000004 B gamepak_ram_pages
+00297ff8 00000004 B gamepak_rom
+00297ffc 00000005 B gamepak_code
+00298004 00000004 B rtc_write_mode
+00298008 00000003 B gamepak_maker
+0029800c 0000000d B gamepak_title
+0029801c 00000004 B rtc_bit_count
+00298020 00000004 B gamepak_ram_buffer_size
+00298024 00000008 B affine_reference_y
+0029802c 00000008 B affine_reference_x
+00298034 00000004 B frame_to_render
+00298038 00000004 B screen
+0029803c 00000004 B resolution_height
+00298040 00000040 B layer_order
+00298080 00000004 B layer_count
+00298084 00000004 B resolution_width
+00298088 00000004 B rl_screen
+0029808c 00000040 B wave_samples
+002980cc 00000004 B sound_mutex
+002980d0 00000004 B gbc_sound_master_volume_left
+002980d4 00000078 B direct_sound_channel
+0029814c 00000004 B gbc_sound_master_volume
+00298150 000001b0 B gbc_sound_channel
+00298300 00000004 B gbc_sound_master_volume_right
+00298304 00000004 B sound_on
+00298308 00000004 B cherrypi_menu_active
+0029830c 00000004 B num_cheats
+00298310 00004200 B cheats
+0029c510 00008000 B memory_map_write
+002a4510 00008000 B memory_map_read
+002ac510 00a00000 B rom_translation_cache
+00cac510 000c0000 B ram_translation_cache
+00d6c510 00040000 B rom_branch_hash
+00dac510 00040000 B bios_translation_cache
+00dec510 00008000 B bios_block_ptrs
+00df4510 00000020 B translation_gate_target_pc
+00df4530 00000004 B ram_guard_dirty_pages
+00df4534 00040000 B ram_block_ptrs
+00e34534 00000010 B cp_smc_write_trace
+00e34544 00000004 B cp_live_smc_skipped
+00e34548 B __bss_end__
+00e34548 B _bss_end__
+00e34548 00000400 B palette_ram
+00e34948 00000400 B oam_ram
+00e34d48 00000400 B palette_ram_converted
+00e35148 00008000 B bios_rom
+00e3d148 00030000 B vram
+00e6d148 00010000 B iwram
+00e7d148 00080000 B ewram
+00efd148 00008000 B io_registers
+00f05148 00019000 b obj_priority_list
+00f1e148 00000010 B noise_table7
+00f1e158 00001000 B noise_table15
+00f1f158 00000800 B block_exits
+00f1f958 00010000 B block_data
+00f2f958 B __end__
+00f2f958 B _end

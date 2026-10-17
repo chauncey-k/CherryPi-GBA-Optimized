@@ -1,8 +1,15 @@
 # CherryPi GBA Optimized
 
-Cherry Pi F1C200S 原型的独立软件发布目录，版本 `2026.10.17-smc-live`。保存已在用户板上验证改善卡顿的 gpSP，以及从空白 SD 卡恢复 Linux、实体按键、声音、亮度、上电主菜单所需的文件和步骤。
+Cherry Pi F1C200S 原型的独立软件发布目录，当前组合版本 `2026.10.17-rom-mmap-fastboot-stage1`：保留 gpSP 音频指令优化，加入 ROM 文件映射，以及已在用户板上验证生效的第一阶段启动优化。原始 `smc-live` 发布基线与完整安装资料继续保留。
 
 此目录可单独移动、备份或建立 GitHub 仓库。外部 ARM 交叉编译 SDK 仍需按构建说明准备。
+
+## 当前版本
+
+- **当前安装顺序、程序哈希、启动实测和验证范围**：[当前版本与启动实测](docs/07-当前版本与启动实测.md)。
+- **正在使用的 gpSP 源码与安装包**：[ROM 文件映射版](experiments/rom-mmap-20261017/README.md)。
+- **已上板验证的启动优化**：[fastboot stage1 r2](experiments/fastboot-stage1-r2-20261017/README.md)。Linux 计时下菜单首帧为 3.56 秒；这不是完整上电时间。
+- **特定游戏 ROM 的文字指针修复工具**：[修复说明](experiments/equipo-rom-repair-20261017/README.md)。仓库仅含工具，不含游戏和私人存档。
 
 ## 从这里开始
 
@@ -34,9 +41,11 @@ COPYING、LICENSES/          保留的开源许可
 sources.lock.json           上游来源及固定版本
 ```
 
-## 已验证版本
+## 性能优化基线
 
-优化程序 SHA256：
+下列哈希属于原始 smc-live 基线；当前 ROM 文件映射版的哈希见上面的当前版本文档。
+
+基线优化程序 SHA256：
 
 ```text
 923fb7fff27a3f0eb2bfc4b3599a62dd0149a478444ee8a521e49a563589f250
@@ -52,4 +61,4 @@ sources.lock.json           上游来源及固定版本
 
 基础镜像只保存在本地，`.gitignore` 排除 `.img` 和 `.img.gz`；GitHub 源码目录保留镜像哈希、构建配方和使用说明。克隆仓库的人需要另行取得经校验的基础镜像或自行构建。此目录没有游戏、GBA BIOS、个人存档、账户备份或 SSH 私钥。默认原型系统登录为 `root / cherrypi`，不是面向公网服务的账号配置。
 
-对应源码及第三方许可见 [THIRD_PARTY.md](THIRD_PARTY.md)。此次仅准备本地独立目录和 Git 仓库，不创建远程仓库、不推送、不发布 Release。
+对应源码及第三方许可见 [THIRD_PARTY.md](THIRD_PARTY.md)。GitHub 仓库保存源码、可公开的安装包、文档和校验清单；`local/` 中生成的私人 ROM、存档及安装包不属于公开内容。

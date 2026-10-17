@@ -1,0 +1,46 @@
+--- a/memory.c
++++ b/memory.c
+@@ -3004,6 +3004,35 @@
+ 
+ void init_gamepak_buffer()
+ {
++#ifdef CHERRYPI
++  /* malloc success is not a physical-memory budget on Linux. On this 64MiB
++   * board a fully resident 32MiB ROM can leave too little room for native
++   * code, state I/O and kernel allocations. Use the existing 32KiB pager.
++   * Keep the fallback bounded, including failure of its metadata allocation. */
++  static const u32 cache_mb[] = { 24, 16, 8, 4 };
++  u32 i;
++  gamepak_rom = NULL;
++  gamepak_memory_map = NULL;
++  for(i = 0; i < sizeof(cache_mb) / sizeof(cache_mb[0]); i++)
++  {
++    gamepak_ram_buffer_size = cache_mb[i] * 1024u * 1024u;
++    gamepak_ram_pages = gamepak_ram_buffer_size / (32u * 1024u);
++    gamepak_rom = malloc(gamepak_ram_buffer_size);
++    if(!gamepak_rom) continue;
++    gamepak_memory_map = malloc(sizeof(gamepak_swap_entry_type) * gamepak_ram_pages);
++    if(gamepak_memory_map)
++    {
++      fprintf(stderr, "ROM cache: %u MiB (%u pages); larger raw ROMs use SD paging\n",
++              cache_mb[i], gamepak_ram_pages);
++      return;
++    }
++    free(gamepak_rom);
++    gamepak_rom = NULL;
++  }
++  gamepak_ram_buffer_size = gamepak_ram_pages = 0;
++  fprintf(stderr, "Cannot allocate a ROM cache and page table; exiting cleanly\n");
++  exit(EXIT_FAILURE);
++#else
+   // Try to initialize 32MB (this is mainly for non-PSP platforms)
+   gamepak_rom = NULL;
+ 
+@@ -3028,6 +3057,7 @@
+   gamepak_ram_pages = gamepak_ram_buffer_size / (32 * 1024);
+   gamepak_memory_map = malloc(sizeof(gamepak_swap_entry_type) *
+    gamepak_ram_pages);
++#endif
+ }
+ 
+ void init_memory()

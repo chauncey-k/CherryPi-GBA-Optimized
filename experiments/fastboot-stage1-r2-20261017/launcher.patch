@@ -1,0 +1,55 @@
+--- a/launcher.c
++++ b/launcher.c
+@@ -35,6 +35,15 @@
+ static int saved_volume,saved_brightness,dirty=1,confirm_row;
+ static char romdir[PATH_MAX]="/mnt/games/roms", message[160];
+ static unsigned notice_deadline;
++static int library_loaded, first_frame;
++/* RAM-only timing. Kernel uptime excludes the preceding ROM/SPL/U-Boot phase. */
++static void boot_mark(const char *event) {
++    FILE *f; double up;
++    f=fopen("/proc/uptime","r"); if(!f)return;
++    if(fscanf(f,"%lf",&up)!=1) { fclose(f);return; } fclose(f);
++    f=fopen(RUN_DIR "/cherrypi-boot-timing.log","a"); if(!f)return;
++    fprintf(f,"%s %.2f\n",event,up); fclose(f);
++}
+ static void notice(const char *s) { snprintf(message,sizeof(message),"%s",s); notice_deadline=SDL_GetTicks()+5000; dirty=1; }
+ static int read_number(const char *path) { int n=-1; FILE *f=fopen(path,"r"); if(f) { if(fscanf(f,"%d",&n)!=1) n=-1; fclose(f); } return n; }
+ static void config(void) {
+@@ -78,7 +87,7 @@
+     static const char *titles[]={"CHERRY PI","GAMES","RECENT GAMES","SETTINGS","POWER OFF"};
+     char b[100]; int i;
+     rect(0,0,320,240,0x0842); text(12,12,titles[view],0xffff,48); rect(8,30,304,1,0x4a69);
+-    if(view==HOME) { for(i=0;i<4;i++) item(i,home[i],i==row); snprintf(b,sizeof(b),"%zu games",games.count); text(14,142,b,0x9cf3,48); }
++    if(view==HOME) { for(i=0;i<4;i++) item(i,home[i],i==row); if(library_loaded) snprintf(b,sizeof(b),"%zu games",games.count); else snprintf(b,sizeof(b),"Open Games to view your library"); text(14,142,b,0x9cf3,48); }
+     if(view==GAMES || view==RECENT) {
+         Library *l=view==GAMES?&games:&recent; size_t top=(size_t)row/8*8;
+         if(!l->count) { text(14,48,view==GAMES?"No games found":"No recent games",0xffff,48); text(14,70,"Copy ROMs into GAMES/roms",0x9cf3,48); }
+@@ -96,7 +105,8 @@
+     if(view==POWEROFF) { text(14,48,"Save data and shut down?",0xffff,48); item(2,"Cancel",confirm_row==0); item(3,"Power off",confirm_row==1); }
+     if(message[0]) text(12,207,message,0xffe0,49);
+     text(12,226,view==SETTINGS?"Left/Right: adjust   A: save   B: cancel":"A/Start: select   B: back   M: settings",0x9cf3,50);
+-    cherrypi_present(screen); dirty=0;
++    if(cherrypi_present(screen)==0 && !first_frame) { first_frame=1;boot_mark("menu_ready"); }
++    dirty=0;
+ }
+ static void enter_settings(void) { return_view=view; return_row=row; saved_volume=volume; saved_brightness=brightness; view=SETTINGS; row=0; dirty=1; }
+ static void save_settings(void) {
+@@ -147,7 +157,7 @@
+     }
+     if(k==SDLK_LALT || k==SDLK_RETURN) {
+         if(view==HOME) {
+-            if(row==0) { if(!library_scan(&games,romdir)) notice("Cannot read some ROM directories"); view=GAMES; row=0; }
++            if(row==0) { boot_mark("rom_scan_begin"); if(!library_scan(&games,romdir)) notice("Cannot read some ROM directories"); boot_mark("rom_scan_end"); library_loaded=1; view=GAMES; row=0; }
+             else if(row==1) { if(!recent_load(&recent,HISTORY_FILE)) notice("Cannot read recent history"); view=RECENT;row=0; }
+             else if(row==2) enter_settings();
+             else { view=POWEROFF; confirm_row=0; }
+@@ -159,7 +169,7 @@
+ }
+ int main(void) {
+     SDL_Event event; SDLKey held=SDLK_UNKNOWN; Uint32 repeat_at=0; int result=0;
+-    config(); library_scan(&games,romdir);
++    boot_mark("launcher_start"); config();
+     if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER)<0) { fprintf(stderr,"SDL: %s\n",SDL_GetError()); return 1; }
+     cherrypi_input_init(); screen=cherrypi_video_mode(320,240,16,0);
+     if(!screen) { fprintf(stderr,"Video: %s\n",SDL_GetError()); cherrypi_platform_close(); SDL_Quit(); return 1; }

@@ -1,0 +1,161 @@
+--- a/memory.c
++++ b/memory.c
+@@ -19,6 +19,10 @@
+ 
+ #define IN_MEMORY_C
+ #include "common.h"
++#ifdef CHERRYPI
++#include <sys/mman.h>
++#include <unistd.h>
++#endif
+ 
+ static uint8_t IsNintendoBIOS = 0;
+ 
+@@ -2119,6 +2123,41 @@
+   return -1;
+ }
+ 
++#ifdef CHERRYPI
++/* The private mapping keeps guest pointers stable while Linux can reclaim
++ * clean ROM pages. RTC writes become private copies, never writes to the ROM.
++ * Only complete 32KiB guest pages are mapped: no accesses past file EOF. */
++static size_t cp_rom_mapping_size;
++
++static void cp_release_rom_buffer(void)
++{
++  if(cp_rom_mapping_size)
++    munmap(gamepak_rom, cp_rom_mapping_size);
++  else
++    free(gamepak_rom);
++  cp_rom_mapping_size = 0;
++  gamepak_rom = NULL;
++  free(gamepak_memory_map);
++  gamepak_memory_map = NULL;
++}
++
++static void cp_reset_heap_rom(void)
++{
++  if(cp_rom_mapping_size)
++  {
++    cp_release_rom_buffer();
++    init_gamepak_buffer();
++  }
++}
++
++static void cp_refresh_rom_regions(void)
++{
++  unsigned i;
++  for(i = 8; i <= 13; i++)
++    memory_regions[i] = gamepak_rom + ((i & 1) ? 0xFFFFFF : 0);
++}
++#endif
++
+ s32 load_gamepak_raw(char *name)
+ {
+   file_open(gamepak_file, name, read);
+@@ -2131,6 +2170,38 @@
+     // be needing it anymore.
+     if(file_check_valid(gamepak_file_large))
+       file_close(gamepak_file_large);
++
++#ifdef CHERRYPI
++    gamepak_file_large = NULL;
++    if(file_size >= 0x8000 && file_size <= 32u * 1024u * 1024u &&
++       (file_size & 0x7FFF) == 0)
++    {
++      void *mapped = mmap(NULL, file_size, PROT_READ | PROT_WRITE,
++                          MAP_PRIVATE, fileno(gamepak_file), 0);
++      if(mapped == MAP_FAILED)
++      {
++        perror("ROM mmap");
++        file_close(gamepak_file);
++        return -1;
++      }
++      cp_release_rom_buffer();
++      gamepak_rom = mapped;
++      cp_rom_mapping_size = file_size;
++      gamepak_ram_buffer_size = file_size;
++      gamepak_ram_pages = 0; /* The manual pager is not used by this ROM. */
++      file_close(gamepak_file);
++      fprintf(stderr, "ROM backend: private file mmap (%u KiB); Linux page reclaim enabled\n",
++              file_size / 1024);
++      return file_size;
++    }
++    cp_reset_heap_rom();
++    if(file_size > gamepak_ram_buffer_size)
++    {
++      fprintf(stderr, "ROM must be at most 32MiB and aligned to 32KiB; use an uncompressed .gba\n");
++      file_close(gamepak_file);
++      return -1;
++    }
++#endif
+ 
+     // If it's a big file size keep it, don't close it, we'll
+     // probably want to load from it more later.
+@@ -2174,7 +2245,12 @@
+   file_size = wiz_load_gamepak(name);
+ #else
+   if(!strcmp(dot_position, ".zip"))
++  {
++#ifdef CHERRYPI
++    cp_reset_heap_rom();
++#endif
+     file_size = load_file_zip(name);
++  }
+   else
+     file_size = load_gamepak_raw(name);
+ #endif
+@@ -2184,6 +2260,9 @@
+   if(file_size != -1)
+   {
+     gamepak_size = (file_size + 0x7FFF) & ~0x7FFF;
++#ifdef CHERRYPI
++    cp_refresh_rom_regions();
++#endif
+ 
+ 	sram_size = SRAM_SIZE_32KB;
+ 	flash_size = FLASH_SIZE_64KB;
+@@ -3004,6 +3083,35 @@
+ 
+ void init_gamepak_buffer()
+ {
++#ifdef CHERRYPI
++  /* malloc success is not a physical-memory budget on Linux. On this 64MiB
++   * board a fully resident 32MiB ROM can leave too little room for native
++   * code, state I/O and kernel allocations. Use the existing 32KiB pager.
++   * Keep the fallback bounded, including failure of its metadata allocation. */
++  static const u32 cache_mb[] = { 24, 16, 8, 4 };
++  u32 i;
++  gamepak_rom = NULL;
++  gamepak_memory_map = NULL;
++  for(i = 0; i < sizeof(cache_mb) / sizeof(cache_mb[0]); i++)
++  {
++    gamepak_ram_buffer_size = cache_mb[i] * 1024u * 1024u;
++    gamepak_ram_pages = gamepak_ram_buffer_size / (32u * 1024u);
++    gamepak_rom = malloc(gamepak_ram_buffer_size);
++    if(!gamepak_rom) continue;
++    gamepak_memory_map = malloc(sizeof(gamepak_swap_entry_type) * gamepak_ram_pages);
++    if(gamepak_memory_map)
++    {
++      fprintf(stderr, "ROM cache: %u MiB (%u pages); larger raw ROMs use SD paging\n",
++              cache_mb[i], gamepak_ram_pages);
++      return;
++    }
++    free(gamepak_rom);
++    gamepak_rom = NULL;
++  }
++  gamepak_ram_buffer_size = gamepak_ram_pages = 0;
++  fprintf(stderr, "Cannot allocate a ROM cache and page table; exiting cleanly\n");
++  exit(EXIT_FAILURE);
++#else
+   // Try to initialize 32MB (this is mainly for non-PSP platforms)
+   gamepak_rom = NULL;
+ 
+@@ -3028,6 +3136,7 @@
+   gamepak_ram_pages = gamepak_ram_buffer_size / (32 * 1024);
+   gamepak_memory_map = malloc(sizeof(gamepak_swap_entry_type) *
+    gamepak_ram_pages);
++#endif
+ }
+ 
+ void init_memory()

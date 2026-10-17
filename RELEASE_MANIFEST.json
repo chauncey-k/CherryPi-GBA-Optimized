@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.17-smc-live",
+  "version": "2026.10.17-rom-mmap-fastboot-stage1",
   "files": [
     {
       "path": ".gitattributes",
@@ -1062,6 +1062,1581 @@
       "sha256": "8f497cd3cba0430e50dadb8243b408a4db346360a701290d4bd1d1fbe6e3cc18"
     },
     {
+      "path": "docs/07-当前版本与启动实测.md",
+      "size": 4523,
+      "sha256": "065c1ab8ec7db0373bf523a90ce96d587b5388f0e08312ccc971bff00a8a6407"
+    },
+    {
+      "path": "experiments/equipo-rom-repair-20261017/COPYING.DOC",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/equipo-rom-repair-20261017/make-sd-package.py",
+      "size": 2603,
+      "sha256": "ebb63d357d705fc7a7a0bdc97194ced9f0e4c16cf67ec661f8464d991cf05bd4"
+    },
+    {
+      "path": "experiments/equipo-rom-repair-20261017/README.md",
+      "size": 5101,
+      "sha256": "f254cf82594ce8ed200bcac5a09dd83d3da1589c7169aae52f6bd303c9dacd9e"
+    },
+    {
+      "path": "experiments/equipo-rom-repair-20261017/repair.py",
+      "size": 4135,
+      "sha256": "2bae50007642e6165e05838951f2191c29520f05dc57791422b823c5b7c2c664"
+    },
+    {
+      "path": "experiments/equipo-rom-repair-20261017/VALIDATION.json",
+      "size": 811,
+      "sha256": "2cfe04fe2958862c4756267772d6fb8bcb0f2013cf4fb7d4cf0fded61d3bde63"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/baseline.dtb",
+      "size": 16448,
+      "sha256": "14b65ceabd84e9f70940a704e4741888bbff2267a5a9c1ee8e2ad6e456563e47"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/boot-baseline.scr",
+      "size": 697,
+      "sha256": "4fb3e7a5c019bd2edaa3c7cca16f64ae9d01c831b6c308d2bf4670ca2336316d"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/boot.cmd",
+      "size": 584,
+      "sha256": "8034733ad6ae1d20563189a43346e8d8078da82afee4099d590785c6a2bed9e2"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/build.sh",
+      "size": 1647,
+      "sha256": "11e7c07585015a4b3c85840f2b925831c3a19f955fde8175e5664262bb80dd9d"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/boot.scr",
+      "size": 656,
+      "sha256": "e37524dc29139c6968cc690e796d5fa8840198ffecd748c2fb493b259cdfda1c"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/BOOT_BASELINES",
+      "size": 130,
+      "sha256": "9c8995858278e239de752aa6e72b4c15b506726f4c906a74958ea73bd3c7216e"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/cherrypi-launcher",
+      "size": 42228,
+      "sha256": "3a3eaf7378a6a4ef69ffcd193e4e2ff0de3ff39c65347d231a963dd9d4de50b7"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/COPYING",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/DTB_BASELINES",
+      "size": 130,
+      "sha256": "64017c88d046cf3257f721579c9d012714b595d2fcb773bcfd7d085317c29356"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/GPSP_BASELINES",
+      "size": 65,
+      "sha256": "b972eb2f9562b432aedf41aa7d06064a5a7090c4d710449f63673e2023323c0d"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/install.sh",
+      "size": 2054,
+      "sha256": "f622d1e649052cc2f45e4e90288658a30c91e2ef8211141b297c6d2a1f6ccb58"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/MENU_BASELINES",
+      "size": 130,
+      "sha256": "425d3611ceb9ff64dc632cf1ed940145924856b98d17dce2f1c8d2ffab749b98"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/README.md",
+      "size": 4809,
+      "sha256": "067c6c0d983443387fc4b6c11de9f7b878065e440c9ab9bf3b9bf2c843e07b60"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/SHA256SUMS",
+      "size": 880,
+      "sha256": "71cbd04bb497436221d883678a0ca7df336ae1daaf3e004139b156d64f1831bd"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/suniv-f1c100s-generic.dtb",
+      "size": 16456,
+      "sha256": "7c2a1a06fd6ad060a2c8cb721ca5f682b1bb40110a1c331d34ad5c3d05a8ae17"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot/uninstall.sh",
+      "size": 933,
+      "sha256": "1b9c66694c3736d6352055f7b3a91d57b6a17767e061af930358ae2a9f85e7a8"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/cherrypi-fastboot-stage1-20261017.tar.gz",
+      "size": 63588,
+      "sha256": "e5aded5a42083712153e40ce231254337c0338c86eff82576f008fa5cb35b44b"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/launcher.patch",
+      "size": 3626,
+      "sha256": "31e32bde3a69989ebeec4faa69f0a3d592f54834fb5c6fd65f9a4978c0cf3a37"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/package.py",
+      "size": 1827,
+      "sha256": "25adae17f1fe570bc70b11b484caaa1fa53ccf793f058bbb03c4c3ae6033e2bb"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/README.md",
+      "size": 4809,
+      "sha256": "067c6c0d983443387fc4b6c11de9f7b878065e440c9ab9bf3b9bf2c843e07b60"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/SHA256SUMS",
+      "size": 107,
+      "sha256": "a2e172251bc4f1d3d0dd6ae80e9e83b3ac54843ea803670c41cc7ae2d4ed666d"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/source/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/source/launcher.c",
+      "size": 10534,
+      "sha256": "3dc11abdedfe63462e44a8ffa41b5a43101a4fbfd9854a02b4e1010b611945b6"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/source/library.c",
+      "size": 3755,
+      "sha256": "0702ea1ea3d2d31c1201d13f65bfcf09b6254eb1b7688fa6168a2b2d4ee686dd"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/source/library.h",
+      "size": 440,
+      "sha256": "c49895172e1525a0568aace52df590f27a7712e8782e995b4fff0e944a8a80cd"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/source/platform.c",
+      "size": 12047,
+      "sha256": "fbb5b2089acd94cdf912d271efb92d484c6f7f192173acf1dd533245b5860e01"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/source/platform.h",
+      "size": 352,
+      "sha256": "637e521902dd255f79a820d32e3de7d3178c205969b1351f6b6c6c8998ce838b"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/source/settings.c",
+      "size": 5681,
+      "sha256": "bc42c650ebb5fcfe7e79cffbf530ab799b07b8ad13f20d88cd05e0c084fcf8e9"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/source/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/test_install.py",
+      "size": 3253,
+      "sha256": "ab14ed67d6be83731f09fb0338483d8e403a73c78d0e0a7c882bebd876ed09e2"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/test_payload.py",
+      "size": 1985,
+      "sha256": "a0a4dddf2cbad040b0d0de79d97b5d7986d66333c30f9380603dcc5dee02563a"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/tests/run.sh",
+      "size": 648,
+      "sha256": "bbf7460a1ea43ba52acae7631b5373ba8da90749c7d4351e4941e84b28895460"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/tests/SDL.h",
+      "size": 714,
+      "sha256": "6028e8c7e07a21ad34a7f4e3537066dfd520576e4e9b5c3cc7d52ec8a430803a"
+    },
+    {
+      "path": "experiments/fastboot-stage1-20261017/tests/test_menu.c",
+      "size": 6171,
+      "sha256": "b1dcb8ef9759083e6887a8cbe6d3521b9d462be959fddf3f2a3ebb4516dd4af2"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/baseline.dtb",
+      "size": 16448,
+      "sha256": "14b65ceabd84e9f70940a704e4741888bbff2267a5a9c1ee8e2ad6e456563e47"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/boot-baseline.scr",
+      "size": 697,
+      "sha256": "4fb3e7a5c019bd2edaa3c7cca16f64ae9d01c831b6c308d2bf4670ca2336316d"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/boot.cmd",
+      "size": 584,
+      "sha256": "8034733ad6ae1d20563189a43346e8d8078da82afee4099d590785c6a2bed9e2"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/build.sh",
+      "size": 1647,
+      "sha256": "11e7c07585015a4b3c85840f2b925831c3a19f955fde8175e5664262bb80dd9d"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/boot.scr",
+      "size": 656,
+      "sha256": "e37524dc29139c6968cc690e796d5fa8840198ffecd748c2fb493b259cdfda1c"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/BOOT_BASELINES",
+      "size": 130,
+      "sha256": "9c8995858278e239de752aa6e72b4c15b506726f4c906a74958ea73bd3c7216e"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/cherrypi-launcher",
+      "size": 42228,
+      "sha256": "3a3eaf7378a6a4ef69ffcd193e4e2ff0de3ff39c65347d231a963dd9d4de50b7"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/COPYING",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/DTB_BASELINES",
+      "size": 130,
+      "sha256": "64017c88d046cf3257f721579c9d012714b595d2fcb773bcfd7d085317c29356"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/GPSP_BASELINES",
+      "size": 195,
+      "sha256": "bace7f41d265f10f7caa3947d201e846c9d69bd3d001edd4b53a8bdc2dc3203b"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/install.sh",
+      "size": 2054,
+      "sha256": "f622d1e649052cc2f45e4e90288658a30c91e2ef8211141b297c6d2a1f6ccb58"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/MENU_BASELINES",
+      "size": 130,
+      "sha256": "425d3611ceb9ff64dc632cf1ed940145924856b98d17dce2f1c8d2ffab749b98"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/README.md",
+      "size": 5112,
+      "sha256": "034dd224c6628be85cb98ada3fe621408a7d304d584577d7b4579e6f58476350"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/SHA256SUMS",
+      "size": 880,
+      "sha256": "23c89e0ccaa8d85c13891e0b4936fa4f3ae05d07e44c26404d770018cc1ee2e3"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/suniv-f1c100s-generic.dtb",
+      "size": 16456,
+      "sha256": "7c2a1a06fd6ad060a2c8cb721ca5f682b1bb40110a1c331d34ad5c3d05a8ae17"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot/uninstall.sh",
+      "size": 933,
+      "sha256": "1b9c66694c3736d6352055f7b3a91d57b6a17767e061af930358ae2a9f85e7a8"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/cherrypi-fastboot-stage1-r2-20261017.tar.gz",
+      "size": 64007,
+      "sha256": "a0c35b1acee4458b0927c165814bf9a56e42b31e07af8b1b6988498b05cb2778"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/launcher.patch",
+      "size": 3626,
+      "sha256": "31e32bde3a69989ebeec4faa69f0a3d592f54834fb5c6fd65f9a4978c0cf3a37"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/package.py",
+      "size": 1951,
+      "sha256": "09314e8a1ee6825637050837da51fd473e68e8a8a887842d13247b77cb3e299e"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/README.md",
+      "size": 5426,
+      "sha256": "f517993f5afd754fef16dbd3c8b75a72c32d5bdcf2b49e8670becd6fe050481b"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/SHA256SUMS",
+      "size": 110,
+      "sha256": "64ef5fe5c59c0c568f6f51b809755de2591303ba072d07facb5c14f954056db4"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/source/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/source/launcher.c",
+      "size": 10534,
+      "sha256": "3dc11abdedfe63462e44a8ffa41b5a43101a4fbfd9854a02b4e1010b611945b6"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/source/library.c",
+      "size": 3755,
+      "sha256": "0702ea1ea3d2d31c1201d13f65bfcf09b6254eb1b7688fa6168a2b2d4ee686dd"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/source/library.h",
+      "size": 440,
+      "sha256": "c49895172e1525a0568aace52df590f27a7712e8782e995b4fff0e944a8a80cd"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/source/platform.c",
+      "size": 12047,
+      "sha256": "fbb5b2089acd94cdf912d271efb92d484c6f7f192173acf1dd533245b5860e01"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/source/platform.h",
+      "size": 352,
+      "sha256": "637e521902dd255f79a820d32e3de7d3178c205969b1351f6b6c6c8998ce838b"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/source/settings.c",
+      "size": 5681,
+      "sha256": "bc42c650ebb5fcfe7e79cffbf530ab799b07b8ad13f20d88cd05e0c084fcf8e9"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/source/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/test_install.py",
+      "size": 3850,
+      "sha256": "3ab9d50d38ec744ea8ac786298f9538fa296ca49eccfecf981a73301db28abee"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/test_payload.py",
+      "size": 1985,
+      "sha256": "a0a4dddf2cbad040b0d0de79d97b5d7986d66333c30f9380603dcc5dee02563a"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/tests/run.sh",
+      "size": 648,
+      "sha256": "bbf7460a1ea43ba52acae7631b5373ba8da90749c7d4351e4941e84b28895460"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/tests/SDL.h",
+      "size": 714,
+      "sha256": "6028e8c7e07a21ad34a7f4e3537066dfd520576e4e9b5c3cc7d52ec8a430803a"
+    },
+    {
+      "path": "experiments/fastboot-stage1-r2-20261017/tests/test_menu.c",
+      "size": 6171,
+      "sha256": "b1dcb8ef9759083e6887a8cbe6d3521b9d462be959fddf3f2a3ebb4516dd4af2"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/analyze.py",
+      "size": 4656,
+      "sha256": "efc782c3be356c4f8eb7be84c1dc3cc08e81529107df7c8d10439cb345d4e37d"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/build.sh",
+      "size": 474,
+      "sha256": "f3942c583fd55a28db200623035bfd99044f8f25b09e51a56118524f73544416"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-memory-safe-20261017.tar.gz",
+      "size": 678348,
+      "sha256": "2b3cab822d3b4ecb619d767a629319d40f6a88c4661d64b46c9a9787a450aa1d"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/BASELINE_SHA256",
+      "size": 65,
+      "sha256": "b972eb2f9562b432aedf41aa7d06064a5a7090c4d710449f63673e2023323c0d"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/COPYING.DOC",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/gpsp",
+      "size": 924572,
+      "sha256": "9b6df48b3e2aa5992de818f6b5012f2d333d598634a14d7ed2e1deef3c9ca26d"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/gpsp.nm",
+      "size": 27851,
+      "sha256": "0c904148403b2d2065bea5747096037e8b17b342c01ff48e93b186e6f2e0f964"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/install.sh",
+      "size": 1233,
+      "sha256": "fbf9887a049d5e08887e356d603b7e53a3a21f74c381df366717ea21d13791ef"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/README.md",
+      "size": 5806,
+      "sha256": "d251aeb2705453d6f16f02c708421ec80c0c7c9b148f92f511e4dc2f67566d3e"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/run-profile.sh",
+      "size": 925,
+      "sha256": "57ada04ad2aee45e408b4801e6c4cb72ad6429aef3c2de3c11065d2d7a8ce9fe"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/run-test.sh",
+      "size": 1599,
+      "sha256": "06f94c8afdc7326e44b7a72233f6ed89389d4e71bded495673c445370fd0ede8"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/SHA256SUMS",
+      "size": 696,
+      "sha256": "69e5380222b178dcb5bb8423f961da36a80eb0d52f42fe8bf14ad145c2b68945"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/cherrypi-profile/uninstall.sh",
+      "size": 465,
+      "sha256": "e1812cbcc3d936c05c63a3979d52595ef7cfcdb317a8af8a9fb9fd41a3d04067"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/fix.patch",
+      "size": 1606,
+      "sha256": "73abc7f572d6c7f13e347aa6b58d7bb7504cb2f9c453f280062a7e57d9f6c26b"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/package.py",
+      "size": 1404,
+      "sha256": "a82ceb8221285dad5f1de6930b348920481754494cf16657f64e540f7731f95a"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/README.md",
+      "size": 6113,
+      "sha256": "ab9d4ef729e78e9e4e53a82dabc7924df597ab93bfcb04883dcba2ea9234c35d"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/SHA256SUMS",
+      "size": 103,
+      "sha256": "22cb6f65207f7e23172aa99c4ed31523acc38b29d736fd45d33d3f4fbd1e7a93"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/.gitignore.upstream",
+      "size": 200,
+      "sha256": "c50f7bb1b3c3b3fbdb5dc7cc887f39551f1277fb11d885c537a7ae54cbf3c49c"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/arm_codegen.h",
+      "size": 48768,
+      "sha256": "f56c44db36148556e3a9ab9b890a37192fab18eedcb34d83c5331a80d32bc2e0"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/arm_dpimacros.h",
+      "size": 72113,
+      "sha256": "84914cccc6ade30999917d6cdc318f1c7d5e96156decf3c794dd836fe8b65524"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/arm_emit.h",
+      "size": 107458,
+      "sha256": "a7ab38ca0da51bdc179402c0e72a586796ccac26df183516faf11c292638441e"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/arm_stub.S",
+      "size": 43254,
+      "sha256": "ceaa6d201dd06864ca456e13fc9f9e539e2fa1883b7ddb1de102a1bf32f72791"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_eagle2x.h",
+      "size": 1839,
+      "sha256": "14cda01ef4b65cd46c2924d025a92a85b7221f9e5a48cee45e76666d30924a10"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_eagle2x.S",
+      "size": 11460,
+      "sha256": "712753f3985f2d5bfc07b956f511c6add4b79682b010a5dc4b1d59903bfc3297"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_eagle2x.Sinc",
+      "size": 25101,
+      "sha256": "c71c4131f668c800d6f43c8561bb8c40e4cdbc3b056b1885955271025f23a983"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_normalxx.Sinc",
+      "size": 22697,
+      "sha256": "c6a0b78bbcb9e1b3a389c0dcafa24ed2236d869ad45861fd3f282870f4f5ff51"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_scale2x.h",
+      "size": 1839,
+      "sha256": "737257986a9e2e8ea58c7d94b34630935852ed122e60dade209c656ed089cc1c"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_scale2x.S",
+      "size": 9873,
+      "sha256": "da92f5d941af56a074bf89be0879a6414e4c59e5640576e0b70ca3db714faaa4"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_scale2x.Sinc",
+      "size": 17302,
+      "sha256": "53847762d632fa39b6945336e50b9ab828f5f4e0b478e57af6f110b56d505fc1"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_scale3x.h",
+      "size": 1839,
+      "sha256": "77b47d888a6bb465f1189d0389b0cb29befa274aa2d4fb94a5af61ae4b738e83"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_scale3x.S",
+      "size": 11992,
+      "sha256": "c2860c8adfe25ad887b25aa010d5e501dd85fbcd60543199be43a70d710f57bf"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_scale3x.Sinc",
+      "size": 34944,
+      "sha256": "30638c92dacc079ba20e9e3c58827b38969b75940823ce48a5d684c9ee771b1d"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/neon_scale_license.txt",
+      "size": 1055,
+      "sha256": "0e2375d7980c78fb40a2f70b5c13b5f4decf12d1697c3b6090e9ab6e892a1c66"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/video_blend.S",
+      "size": 6615,
+      "sha256": "60607fde95e4dfad9a3f5968263482851fad0d179f9dfc6774297033c9eab025"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/warm.c",
+      "size": 6132,
+      "sha256": "4eb1755f156ec7e2f551472fc719bf1069352e719b35be4b7ab5c644fc517e80"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/arm/warm.h",
+      "size": 3236,
+      "sha256": "6dd90df6324eab409fd8e928e100527e00efbeda8d19bc8dd319fa258a4cbdbc"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/borders/border1.png",
+      "size": 39242,
+      "sha256": "3c19ca21987429397978b2ec0e4170c9cbc86b54b26fab3dd953ff61406977f3"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/borders/border2.png",
+      "size": 3673,
+      "sha256": "e0baced694e62969075683ca6346071311267d06227f3b49f28f34b75281f281"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/borders/border3.png",
+      "size": 2643,
+      "sha256": "535a3f62210116a9ead1f228aca97dcb364b39406aaa4a332483e44bfa46138f"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/changelog-org.txt",
+      "size": 38664,
+      "sha256": "99f323731879e650b9a613931322e140e18a71e084b7dcc6ff4887c9c16d3861"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cheats.c",
+      "size": 9199,
+      "sha256": "505ebd15b1b958c851b59c57205229fea15ca2586c51a18ce6b0c2616c89ba49"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cheats.h",
+      "size": 1257,
+      "sha256": "eaad703ce7c6a5cccf71b388421704266cf3bdc557283ec5dd37b3e50525ca0a"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/Makefile",
+      "size": 1060,
+      "sha256": "b3270786da908a44ac8dfe9648652e1cd01794a55c3dadda9c5496e3c5b7759d"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/platform.c",
+      "size": 11882,
+      "sha256": "a8cbb1102b479b55ad226e9689cd37f1d6ab481ca27e403c0642616c063c3696"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/platform.h",
+      "size": 316,
+      "sha256": "beaf4ab68adaa7b50939c523585d4e150afb7e37b297f720cf5220607d20fd98"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/profile.c",
+      "size": 8483,
+      "sha256": "387d3ef138343595a301910e5eeae74635e9250e9d05767b92502bf3a1e82c8b"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/profile.h",
+      "size": 346,
+      "sha256": "684aaeae1c185ff14f2c442e5d00ded02229fdef6427d5a589e6361ac5e40bf6"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/quick_menu.c",
+      "size": 10505,
+      "sha256": "18f60075adbb82fba824d332e79252be7a9a43a1697e3e7ee3c000c6f907e9f8"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/quick_menu.h",
+      "size": 164,
+      "sha256": "be37d11483deb751152421d5d3920362e95c0876fffbb6cf1dd73b7ae7c0ac09"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/settings.c",
+      "size": 5811,
+      "sha256": "39348efaf48a70055c5ccc7392a7eb6598d4ce982b2559915517ca6aaf5bcc8e"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/state_io.c",
+      "size": 8393,
+      "sha256": "30a455a34a0fabd5c745123c05b62a5b5db37a4f46d6441ffb6b2612701da889"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cherrypi/state_io.h",
+      "size": 916,
+      "sha256": "7f50840cf35448218c067ee2888e9f81fe8bbd8a8f32c0144fff2a1fb400eba8"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/common.h",
+      "size": 10803,
+      "sha256": "39809c6f2506f11f3fa73a1e17c1564b58a7b679a6bf8d0185abeac9bc1e1e5e"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/COPYING.DOC",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cpu.c",
+      "size": 304448,
+      "sha256": "a64019a57f1e448099e03f36fc947d72f944bbf4148fc8b16e2f5c1e6ffbfbc1"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cpu.h",
+      "size": 5626,
+      "sha256": "ca71fe044ce315a539ca2b60f6add4be80711219df5c8b0f760b40ef590dc5ea"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/cpu_threaded.c",
+      "size": 267601,
+      "sha256": "3ce077717b5086a0ecdf345ad625466572c9af88bc2f2267210e130f45e471d2"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/disasm.c",
+      "size": 9074,
+      "sha256": "a86547a86744363bd1187686baed7b94a18f6ccf38b384306cb6abbceaba2970"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/game_config.txt",
+      "size": 33552,
+      "sha256": "2a90bef52459513ea00288a24ab47e6ea2e1b5e0f391b2d77bf4532bba27a780"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/gp2x.c",
+      "size": 12855,
+      "sha256": "a361bf2716789981b18a1b4aa4bb3b09d71acc224052d25c0da8f984252ccbba"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/gp2x.h",
+      "size": 1463,
+      "sha256": "07cae8bf2725f47cc1db81455ddea3b8379349ca67d505558952018c38682747"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/gpsp_caanoo.gpe",
+      "size": 182,
+      "sha256": "8e1adc02ad94caace2f35c3753cf45707349f26bdcdb05780f227aec21184296"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/gpsp_caanoo.ini",
+      "size": 76,
+      "sha256": "9267179c346e29005f2de559e42dd1da0a44c5a9763925263e5e3323c961b5c8"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/Makefile",
+      "size": 1882,
+      "sha256": "18c484be72fe7aa60b597e4fe5fbc60b33a0b9fdeaad77ccf935995219615f0b"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/pollux_dpc_set.c",
+      "size": 3092,
+      "sha256": "477bf62856579ff780ba06d51c6dbe66737055a83d5eb542aed5c6b315be30c9"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/pollux_dpc_set.h",
+      "size": 140,
+      "sha256": "1478dcf2bb770a9213f5f3509df84e4b2858287c50da4711a40fdab52a21c29b"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/readme_gp2x.txt",
+      "size": 13848,
+      "sha256": "a7d5e482ab8e1e3b76875607bbaa0775d0e3bf44bc26dc5b69b1cca1bec37bb0"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/test/align_test.c",
+      "size": 1391,
+      "sha256": "9155e0c897feb180f5b359af9a067715ab17670c3b205ea99a54359719ee0fed"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/test/load_imm_test.c",
+      "size": 3220,
+      "sha256": "ec8143d24c5fcf0d0036e231eac9b6a0f4400c9fe3dbd600bf4f99b898b5f409"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gp2x/upscale_aspect.s",
+      "size": 14285,
+      "sha256": "ab9deb7eea1db1bf6f068eb9b6ff85b32feaaacea82ccde296d5f8911e65cd4f"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gui.c",
+      "size": 66436,
+      "sha256": "c541785720d10b7fcb4a07a984fba6ab2e790efff945f0504125973cfee839a3"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/gui.h",
+      "size": 1539,
+      "sha256": "ef0d872946a19c66ba51003c308e14f83113bf3bd1ea87c5d233cd7288cbde29"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/imageio.c",
+      "size": 3670,
+      "sha256": "72d0da766ad6f1a5dc762a12b8db33f4a6ee1f4bf9703e3a5067e33c190d56d2"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/imageio.h",
+      "size": 186,
+      "sha256": "9fd90880c8ee2198338d1143607f0702b1f2c662a1c9ad81603525750d42a6f4"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/input.c",
+      "size": 24282,
+      "sha256": "a9060ad2c0a8c1f39f13cf616f31b3bca4b5bdb045cdad0c124e0030dd471ef2"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/input.h",
+      "size": 2340,
+      "sha256": "c857707b08083e345d7d534e21a1ac5b2d9d4ab2a28f67dfd8113e1d2095083f"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/main.c",
+      "size": 26885,
+      "sha256": "b7617d6277af20b6cd142d41f1791bcc128c420176a7e4062b3a5dbd3beee969"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/main.h",
+      "size": 7797,
+      "sha256": "bb6617f746ee28594b7a97f354ccc4ee9665bfbf8c800c2d699adbf5ac681f50"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/memory.c",
+      "size": 127002,
+      "sha256": "e93a73064196baa7132afea58722b4160281c16d6029c624ea1ff46858fba2e1"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/memory.h",
+      "size": 5320,
+      "sha256": "1c3d29ea028c2f233e998feff43c2a68156ea9f0243e2a1fd90c7f1ed8564b20"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/miyoo/Makefile",
+      "size": 4065,
+      "sha256": "6ff5cf1fd730e5d6dd9cc89e306f6ff17a20278253dcedb406f71a83582dc913"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/miyoo/opkg_assets/aliases.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/miyoo/opkg_assets/CONTROL/control",
+      "size": 213,
+      "sha256": "14a31c7bbdfa9d5b47f53980d57904d0529efbe90c7c9dc5e6cbc4c973bad5f3"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/miyoo/opkg_assets/CONTROL/postinst",
+      "size": 103,
+      "sha256": "baa77be4ac828fa538e4bb8af592addffb6dbcafe8d0e07982b2b97f9bf32a8e"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/miyoo/opkg_assets/CONTROL/preinst",
+      "size": 86,
+      "sha256": "e6841e41fb47d6b46ad669de2ec18359f46fa8949e8387bb5ee7e1f9fc32ae36"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/miyoo/opkg_assets/gpsp.lnk",
+      "size": 144,
+      "sha256": "8eeaca6a198310e18b20906297e951bcc75434b782ea9a55cfe37e63b47d8327"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/miyoo/pkg.cfg",
+      "size": 3623,
+      "sha256": "2a0c3664f7bc4a6011971397342762afa4723cdc20d1de6df44f0c8c8b5f4b07"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/README.md",
+      "size": 3323,
+      "sha256": "2b9d7d91d6fd3b1291452f38e7dfc15e537165b51bd531232e13d0b79cfa007a"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/sha1.c",
+      "size": 7775,
+      "sha256": "12887155d3230e7d6f11e518ef39036b6e8b2b64de7b94b24de7bbdc421d5144"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/sha1.h",
+      "size": 821,
+      "sha256": "23dfe895085d8283d7f4c351bae1f7bfc9ad07dd5fc30ac7cc45f2fa6a4692de"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/sound.c",
+      "size": 32709,
+      "sha256": "cf85d4902624095fe05fd3b42b1247702bb14a1ca9809a0374beec79591e5dfd"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/sound.h",
+      "size": 17781,
+      "sha256": "c6c6dc1a930870d93937e22c7f1cfbb889ed8dc25c739e5d147df130ac1a4a17"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/video.c",
+      "size": 230751,
+      "sha256": "84a8cf1f8d2d125c00d6d2bd308995639adb6f0cd9271a927c44b69467525755"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/video.h",
+      "size": 3150,
+      "sha256": "8e43981cf898da3cc27d6b9eba4bbcb1384032959eadd62226f79cd4080b29f1"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/x86/Makefile",
+      "size": 767,
+      "sha256": "81009b1fd00ad7eceaedaccce79ee3c0ed05745ffc81f04b77996cb3394825bb"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/x86/x86_emit.h",
+      "size": 128664,
+      "sha256": "8f99a099a48dfc7123fe7665aa31b60ad09e37681d4c8a969e8bc3ea5651954b"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/x86/x86_stub.S",
+      "size": 17541,
+      "sha256": "fc3ac408e266d7764fb7eee860a1a6ac3636b16fb31464a39c8201cc7cc1231f"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/zip.c",
+      "size": 3988,
+      "sha256": "f479a697c77fdc6025080b0b657a2c2997be729518d5e2d42191bcc3bfaff0db"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/source/gpsp/zip.h",
+      "size": 866,
+      "sha256": "c7a00e54fb34a19e7f02027ede632ef6a3994a15d96d40647c38175210bd6a02"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/check_archive.sh",
+      "size": 419,
+      "sha256": "7b64c66f65c3e8142890d31e22bf74c0ebe5d89a7812c753919c529c1168510f"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/check_arm_layout.py",
+      "size": 2269,
+      "sha256": "2c79cfd53aeb7473c46c96eb6c4fff7c24058c8e4a08389496ddfdaba4efd020"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/quick_test_api.h",
+      "size": 949,
+      "sha256": "b5404ec25fcebab9d2b282f6f5f6b71ef9c469511c3e08fac3225c50776154a6"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/run.sh",
+      "size": 1300,
+      "sha256": "801f514cbcd7609e853004ce81a810c7cec37881c54db4c6acb974ba737cc5ce"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_adapter.py",
+      "size": 4177,
+      "sha256": "50e2853539f0945af26ceb81f9ddbe076fd586bf49f9cb0e9ee92497088d8111"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_arm_smc.py",
+      "size": 5799,
+      "sha256": "b40dc1df0d23201163ffde42e68bd6dec9be46ce8250cb331ad02a407fa9d8e3"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_dma_smc.py",
+      "size": 3339,
+      "sha256": "a25c10076e1c834dc51fcba2baa36d0baa55713717cd7d5569f748d24eb7c482"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_guard_flush.py",
+      "size": 6983,
+      "sha256": "32ddbd3c760f4aadfca53605c34ed12e1dbe65ba20b535fac82c91f239dce94b"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_gui.py",
+      "size": 1959,
+      "sha256": "1c9f6f5ecb5f269ec5edf8ec465782cab23b61fc452ee3a27bfa56818ae2b8e4"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_helpers.py",
+      "size": 2438,
+      "sha256": "d8d1b5dd430c3902e14342013f02534084123cef4e44fb3c523a980e0c1a54eb"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_io.c",
+      "size": 6715,
+      "sha256": "d8ba0bb03d2b910bfa8b9501e392faa31f14a314091b9d5864180195a67aa4ba"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_live_smc.py",
+      "size": 11738,
+      "sha256": "6ff174b710cce7fb4899356a08fe1efd9641253581089c456a66187dce47ceb9"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_native_controls.py",
+      "size": 3358,
+      "sha256": "59c4650589605a1f34a72de43b7ee067403bd08465147d45d81342a72915b77b"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_profile.c",
+      "size": 3060,
+      "sha256": "3cbdc4f63a407ef15298f29339f009691707f7ed96415fb83fc4bf60e220772d"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_profile.py",
+      "size": 1449,
+      "sha256": "cbb5fea3e0f034e4862f3e9c4ed4313f0775dbbf210f842515e229c1c4b432d1"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_quick.c",
+      "size": 8754,
+      "sha256": "98a7f118f29536f4534c3d291d2b16cb29f3c412189fff91125659be30e75b13"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_quick_install.py",
+      "size": 2522,
+      "sha256": "9ec7e7c170c8b3806d927383598c0f0d799ba7f5891541534ed02b22218d51e5"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_rom_cache.py",
+      "size": 4123,
+      "sha256": "3daedce505f0fd11f933fa5f05d3c88fc7029a4b0a3b639d58bfbb80f97e7dba"
+    },
+    {
+      "path": "experiments/memory-safe-20261017/tests/test_text.py",
+      "size": 1100,
+      "sha256": "fd4f53fbe9683fd4aaf9cda6cf0c1f9beecfa6346f99d1acd3e205f579e562ca"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/analyze.py",
+      "size": 4656,
+      "sha256": "efc782c3be356c4f8eb7be84c1dc3cc08e81529107df7c8d10439cb345d4e37d"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/build.sh",
+      "size": 474,
+      "sha256": "f3942c583fd55a28db200623035bfd99044f8f25b09e51a56118524f73544416"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/BASELINE_SHA256",
+      "size": 130,
+      "sha256": "0b8dcf0b077b54a7b6fbb7eaecc1a8b33b5438b49fef806b06c9c38f029e1d57"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/COPYING.DOC",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/gpsp",
+      "size": 924572,
+      "sha256": "b07165b2a3b31c036fb9ac57047e52a041aa2bcd98027798a5e69fe7efb6a1a7"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/gpsp.nm",
+      "size": 27933,
+      "sha256": "e6e1e276e2b89a8b1d2e5090557ee1a913475750d8d80c1280e23cc6dd6c564b"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/install.sh",
+      "size": 1245,
+      "sha256": "939ad09997f7addf96faa140b9d50e20ae8d396f26aed429d9c866526f361431"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/README.md",
+      "size": 3758,
+      "sha256": "da170681e56bc9502b2e29bef85bc627ebeb1f4c02c7df83f07f3b36e1a09d13"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/run-profile.sh",
+      "size": 925,
+      "sha256": "57ada04ad2aee45e408b4801e6c4cb72ad6429aef3c2de3c11065d2d7a8ce9fe"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/run-test.sh",
+      "size": 1599,
+      "sha256": "06f94c8afdc7326e44b7a72233f6ed89389d4e71bded495673c445370fd0ede8"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/SHA256SUMS",
+      "size": 696,
+      "sha256": "31f653891865b0ac88e914192c3eca9359e913c26089f26dfde3702b2c377801"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-profile/uninstall.sh",
+      "size": 459,
+      "sha256": "4bc2001b066ecd1a01d8f3207c65e699cdfa79b560fd2fa87db06e914674cc5d"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/cherrypi-rom-mmap-20261017.tar.gz",
+      "size": 680739,
+      "sha256": "130621bc26e18a346b2b60d2443b782a1e16141367f817f0756e1e4e97002686"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/fix.patch",
+      "size": 4587,
+      "sha256": "131142994e98869f06b7c13157328aaaf6638ba2dce7935475c62b9efe9bf945"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/package.py",
+      "size": 1401,
+      "sha256": "ccab672ae97b3ed2ec1deac3a5600b1659f1940d2b4b7e0534a37a279e78af9d"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/README.md",
+      "size": 4145,
+      "sha256": "59438006cfe41aebbce129fd54e36336d1636a6faf9bbeba4483ca157247bf49"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/SHA256SUMS",
+      "size": 100,
+      "sha256": "1026dfe3e2ab67067b9c83e7cea9200e8d17cfd527306fbe316d30fb81f7d805"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/.gitignore.upstream",
+      "size": 200,
+      "sha256": "c50f7bb1b3c3b3fbdb5dc7cc887f39551f1277fb11d885c537a7ae54cbf3c49c"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/arm_codegen.h",
+      "size": 48768,
+      "sha256": "f56c44db36148556e3a9ab9b890a37192fab18eedcb34d83c5331a80d32bc2e0"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/arm_dpimacros.h",
+      "size": 72113,
+      "sha256": "84914cccc6ade30999917d6cdc318f1c7d5e96156decf3c794dd836fe8b65524"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/arm_emit.h",
+      "size": 107458,
+      "sha256": "a7ab38ca0da51bdc179402c0e72a586796ccac26df183516faf11c292638441e"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/arm_stub.S",
+      "size": 43254,
+      "sha256": "ceaa6d201dd06864ca456e13fc9f9e539e2fa1883b7ddb1de102a1bf32f72791"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_eagle2x.h",
+      "size": 1839,
+      "sha256": "14cda01ef4b65cd46c2924d025a92a85b7221f9e5a48cee45e76666d30924a10"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_eagle2x.S",
+      "size": 11460,
+      "sha256": "712753f3985f2d5bfc07b956f511c6add4b79682b010a5dc4b1d59903bfc3297"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_eagle2x.Sinc",
+      "size": 25101,
+      "sha256": "c71c4131f668c800d6f43c8561bb8c40e4cdbc3b056b1885955271025f23a983"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_normalxx.Sinc",
+      "size": 22697,
+      "sha256": "c6a0b78bbcb9e1b3a389c0dcafa24ed2236d869ad45861fd3f282870f4f5ff51"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_scale2x.h",
+      "size": 1839,
+      "sha256": "737257986a9e2e8ea58c7d94b34630935852ed122e60dade209c656ed089cc1c"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_scale2x.S",
+      "size": 9873,
+      "sha256": "da92f5d941af56a074bf89be0879a6414e4c59e5640576e0b70ca3db714faaa4"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_scale2x.Sinc",
+      "size": 17302,
+      "sha256": "53847762d632fa39b6945336e50b9ab828f5f4e0b478e57af6f110b56d505fc1"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_scale3x.h",
+      "size": 1839,
+      "sha256": "77b47d888a6bb465f1189d0389b0cb29befa274aa2d4fb94a5af61ae4b738e83"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_scale3x.S",
+      "size": 11992,
+      "sha256": "c2860c8adfe25ad887b25aa010d5e501dd85fbcd60543199be43a70d710f57bf"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_scale3x.Sinc",
+      "size": 34944,
+      "sha256": "30638c92dacc079ba20e9e3c58827b38969b75940823ce48a5d684c9ee771b1d"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/neon_scale_license.txt",
+      "size": 1055,
+      "sha256": "0e2375d7980c78fb40a2f70b5c13b5f4decf12d1697c3b6090e9ab6e892a1c66"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/video_blend.S",
+      "size": 6615,
+      "sha256": "60607fde95e4dfad9a3f5968263482851fad0d179f9dfc6774297033c9eab025"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/warm.c",
+      "size": 6132,
+      "sha256": "4eb1755f156ec7e2f551472fc719bf1069352e719b35be4b7ab5c644fc517e80"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/arm/warm.h",
+      "size": 3236,
+      "sha256": "6dd90df6324eab409fd8e928e100527e00efbeda8d19bc8dd319fa258a4cbdbc"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/borders/border1.png",
+      "size": 39242,
+      "sha256": "3c19ca21987429397978b2ec0e4170c9cbc86b54b26fab3dd953ff61406977f3"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/borders/border2.png",
+      "size": 3673,
+      "sha256": "e0baced694e62969075683ca6346071311267d06227f3b49f28f34b75281f281"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/borders/border3.png",
+      "size": 2643,
+      "sha256": "535a3f62210116a9ead1f228aca97dcb364b39406aaa4a332483e44bfa46138f"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/changelog-org.txt",
+      "size": 38664,
+      "sha256": "99f323731879e650b9a613931322e140e18a71e084b7dcc6ff4887c9c16d3861"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cheats.c",
+      "size": 9199,
+      "sha256": "505ebd15b1b958c851b59c57205229fea15ca2586c51a18ce6b0c2616c89ba49"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cheats.h",
+      "size": 1257,
+      "sha256": "eaad703ce7c6a5cccf71b388421704266cf3bdc557283ec5dd37b3e50525ca0a"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/Makefile",
+      "size": 1060,
+      "sha256": "b3270786da908a44ac8dfe9648652e1cd01794a55c3dadda9c5496e3c5b7759d"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/platform.c",
+      "size": 11882,
+      "sha256": "a8cbb1102b479b55ad226e9689cd37f1d6ab481ca27e403c0642616c063c3696"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/platform.h",
+      "size": 316,
+      "sha256": "beaf4ab68adaa7b50939c523585d4e150afb7e37b297f720cf5220607d20fd98"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/profile.c",
+      "size": 8483,
+      "sha256": "387d3ef138343595a301910e5eeae74635e9250e9d05767b92502bf3a1e82c8b"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/profile.h",
+      "size": 346,
+      "sha256": "684aaeae1c185ff14f2c442e5d00ded02229fdef6427d5a589e6361ac5e40bf6"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/quick_menu.c",
+      "size": 10505,
+      "sha256": "18f60075adbb82fba824d332e79252be7a9a43a1697e3e7ee3c000c6f907e9f8"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/quick_menu.h",
+      "size": 164,
+      "sha256": "be37d11483deb751152421d5d3920362e95c0876fffbb6cf1dd73b7ae7c0ac09"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/settings.c",
+      "size": 5811,
+      "sha256": "39348efaf48a70055c5ccc7392a7eb6598d4ce982b2559915517ca6aaf5bcc8e"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/state_io.c",
+      "size": 8393,
+      "sha256": "30a455a34a0fabd5c745123c05b62a5b5db37a4f46d6441ffb6b2612701da889"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cherrypi/state_io.h",
+      "size": 916,
+      "sha256": "7f50840cf35448218c067ee2888e9f81fe8bbd8a8f32c0144fff2a1fb400eba8"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/common.h",
+      "size": 10803,
+      "sha256": "39809c6f2506f11f3fa73a1e17c1564b58a7b679a6bf8d0185abeac9bc1e1e5e"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/COPYING.DOC",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cpu.c",
+      "size": 304448,
+      "sha256": "a64019a57f1e448099e03f36fc947d72f944bbf4148fc8b16e2f5c1e6ffbfbc1"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cpu.h",
+      "size": 5626,
+      "sha256": "ca71fe044ce315a539ca2b60f6add4be80711219df5c8b0f760b40ef590dc5ea"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/cpu_threaded.c",
+      "size": 267601,
+      "sha256": "3ce077717b5086a0ecdf345ad625466572c9af88bc2f2267210e130f45e471d2"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/disasm.c",
+      "size": 9074,
+      "sha256": "a86547a86744363bd1187686baed7b94a18f6ccf38b384306cb6abbceaba2970"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/game_config.txt",
+      "size": 33552,
+      "sha256": "2a90bef52459513ea00288a24ab47e6ea2e1b5e0f391b2d77bf4532bba27a780"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/gp2x.c",
+      "size": 12855,
+      "sha256": "a361bf2716789981b18a1b4aa4bb3b09d71acc224052d25c0da8f984252ccbba"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/gp2x.h",
+      "size": 1463,
+      "sha256": "07cae8bf2725f47cc1db81455ddea3b8379349ca67d505558952018c38682747"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/gpsp_caanoo.gpe",
+      "size": 182,
+      "sha256": "8e1adc02ad94caace2f35c3753cf45707349f26bdcdb05780f227aec21184296"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/gpsp_caanoo.ini",
+      "size": 76,
+      "sha256": "9267179c346e29005f2de559e42dd1da0a44c5a9763925263e5e3323c961b5c8"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/Makefile",
+      "size": 1882,
+      "sha256": "18c484be72fe7aa60b597e4fe5fbc60b33a0b9fdeaad77ccf935995219615f0b"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/pollux_dpc_set.c",
+      "size": 3092,
+      "sha256": "477bf62856579ff780ba06d51c6dbe66737055a83d5eb542aed5c6b315be30c9"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/pollux_dpc_set.h",
+      "size": 140,
+      "sha256": "1478dcf2bb770a9213f5f3509df84e4b2858287c50da4711a40fdab52a21c29b"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/readme_gp2x.txt",
+      "size": 13848,
+      "sha256": "a7d5e482ab8e1e3b76875607bbaa0775d0e3bf44bc26dc5b69b1cca1bec37bb0"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/test/align_test.c",
+      "size": 1391,
+      "sha256": "9155e0c897feb180f5b359af9a067715ab17670c3b205ea99a54359719ee0fed"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/test/load_imm_test.c",
+      "size": 3220,
+      "sha256": "ec8143d24c5fcf0d0036e231eac9b6a0f4400c9fe3dbd600bf4f99b898b5f409"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gp2x/upscale_aspect.s",
+      "size": 14285,
+      "sha256": "ab9deb7eea1db1bf6f068eb9b6ff85b32feaaacea82ccde296d5f8911e65cd4f"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gui.c",
+      "size": 66436,
+      "sha256": "c541785720d10b7fcb4a07a984fba6ab2e790efff945f0504125973cfee839a3"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/gui.h",
+      "size": 1539,
+      "sha256": "ef0d872946a19c66ba51003c308e14f83113bf3bd1ea87c5d233cd7288cbde29"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/imageio.c",
+      "size": 3670,
+      "sha256": "72d0da766ad6f1a5dc762a12b8db33f4a6ee1f4bf9703e3a5067e33c190d56d2"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/imageio.h",
+      "size": 186,
+      "sha256": "9fd90880c8ee2198338d1143607f0702b1f2c662a1c9ad81603525750d42a6f4"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/input.c",
+      "size": 24282,
+      "sha256": "a9060ad2c0a8c1f39f13cf616f31b3bca4b5bdb045cdad0c124e0030dd471ef2"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/input.h",
+      "size": 2340,
+      "sha256": "c857707b08083e345d7d534e21a1ac5b2d9d4ab2a28f67dfd8113e1d2095083f"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/main.c",
+      "size": 26885,
+      "sha256": "b7617d6277af20b6cd142d41f1791bcc128c420176a7e4062b3a5dbd3beee969"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/main.h",
+      "size": 7797,
+      "sha256": "bb6617f746ee28594b7a97f354ccc4ee9665bfbf8c800c2d699adbf5ac681f50"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/memory.c",
+      "size": 129061,
+      "sha256": "76f5a1486756f26ac7d79969d3dcfdbc5fc51a4238ddf7ab653d2c1009e5fdce"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/memory.h",
+      "size": 5320,
+      "sha256": "1c3d29ea028c2f233e998feff43c2a68156ea9f0243e2a1fd90c7f1ed8564b20"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/miyoo/Makefile",
+      "size": 4065,
+      "sha256": "6ff5cf1fd730e5d6dd9cc89e306f6ff17a20278253dcedb406f71a83582dc913"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/miyoo/opkg_assets/aliases.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/miyoo/opkg_assets/CONTROL/control",
+      "size": 213,
+      "sha256": "14a31c7bbdfa9d5b47f53980d57904d0529efbe90c7c9dc5e6cbc4c973bad5f3"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/miyoo/opkg_assets/CONTROL/postinst",
+      "size": 103,
+      "sha256": "baa77be4ac828fa538e4bb8af592addffb6dbcafe8d0e07982b2b97f9bf32a8e"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/miyoo/opkg_assets/CONTROL/preinst",
+      "size": 86,
+      "sha256": "e6841e41fb47d6b46ad669de2ec18359f46fa8949e8387bb5ee7e1f9fc32ae36"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/miyoo/opkg_assets/gpsp.lnk",
+      "size": 144,
+      "sha256": "8eeaca6a198310e18b20906297e951bcc75434b782ea9a55cfe37e63b47d8327"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/miyoo/pkg.cfg",
+      "size": 3623,
+      "sha256": "2a0c3664f7bc4a6011971397342762afa4723cdc20d1de6df44f0c8c8b5f4b07"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/README.md",
+      "size": 3323,
+      "sha256": "2b9d7d91d6fd3b1291452f38e7dfc15e537165b51bd531232e13d0b79cfa007a"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/sha1.c",
+      "size": 7775,
+      "sha256": "12887155d3230e7d6f11e518ef39036b6e8b2b64de7b94b24de7bbdc421d5144"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/sha1.h",
+      "size": 821,
+      "sha256": "23dfe895085d8283d7f4c351bae1f7bfc9ad07dd5fc30ac7cc45f2fa6a4692de"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/sound.c",
+      "size": 32709,
+      "sha256": "cf85d4902624095fe05fd3b42b1247702bb14a1ca9809a0374beec79591e5dfd"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/sound.h",
+      "size": 17781,
+      "sha256": "c6c6dc1a930870d93937e22c7f1cfbb889ed8dc25c739e5d147df130ac1a4a17"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/video.c",
+      "size": 230751,
+      "sha256": "84a8cf1f8d2d125c00d6d2bd308995639adb6f0cd9271a927c44b69467525755"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/video.h",
+      "size": 3150,
+      "sha256": "8e43981cf898da3cc27d6b9eba4bbcb1384032959eadd62226f79cd4080b29f1"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/x86/Makefile",
+      "size": 767,
+      "sha256": "81009b1fd00ad7eceaedaccce79ee3c0ed05745ffc81f04b77996cb3394825bb"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/x86/x86_emit.h",
+      "size": 128664,
+      "sha256": "8f99a099a48dfc7123fe7665aa31b60ad09e37681d4c8a969e8bc3ea5651954b"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/x86/x86_stub.S",
+      "size": 17541,
+      "sha256": "fc3ac408e266d7764fb7eee860a1a6ac3636b16fb31464a39c8201cc7cc1231f"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/zip.c",
+      "size": 3988,
+      "sha256": "f479a697c77fdc6025080b0b657a2c2997be729518d5e2d42191bcc3bfaff0db"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/source/gpsp/zip.h",
+      "size": 866,
+      "sha256": "c7a00e54fb34a19e7f02027ede632ef6a3994a15d96d40647c38175210bd6a02"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/check_archive.sh",
+      "size": 416,
+      "sha256": "b9ae572b746e294b9973998c74819aba8de37f1e5da3125b846ea8ac381137c4"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/check_arm_layout.py",
+      "size": 2269,
+      "sha256": "2c79cfd53aeb7473c46c96eb6c4fff7c24058c8e4a08389496ddfdaba4efd020"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/quick_test_api.h",
+      "size": 949,
+      "sha256": "b5404ec25fcebab9d2b282f6f5f6b71ef9c469511c3e08fac3225c50776154a6"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/run.sh",
+      "size": 1339,
+      "sha256": "50d2ecf3777bcd12c24d12766b3ae29e8d690f4ac7922928a0f80946ff38ca63"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_adapter.py",
+      "size": 4177,
+      "sha256": "50e2853539f0945af26ceb81f9ddbe076fd586bf49f9cb0e9ee92497088d8111"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_arm_smc.py",
+      "size": 5799,
+      "sha256": "b40dc1df0d23201163ffde42e68bd6dec9be46ce8250cb331ad02a407fa9d8e3"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_dma_smc.py",
+      "size": 3339,
+      "sha256": "a25c10076e1c834dc51fcba2baa36d0baa55713717cd7d5569f748d24eb7c482"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_guard_flush.py",
+      "size": 6983,
+      "sha256": "32ddbd3c760f4aadfca53605c34ed12e1dbe65ba20b535fac82c91f239dce94b"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_gui.py",
+      "size": 1959,
+      "sha256": "1c9f6f5ecb5f269ec5edf8ec465782cab23b61fc452ee3a27bfa56818ae2b8e4"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_helpers.py",
+      "size": 2438,
+      "sha256": "d8d1b5dd430c3902e14342013f02534084123cef4e44fb3c523a980e0c1a54eb"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_io.c",
+      "size": 6715,
+      "sha256": "d8ba0bb03d2b910bfa8b9501e392faa31f14a314091b9d5864180195a67aa4ba"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_live_smc.py",
+      "size": 11738,
+      "sha256": "6ff174b710cce7fb4899356a08fe1efd9641253581089c456a66187dce47ceb9"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_native_controls.py",
+      "size": 3358,
+      "sha256": "59c4650589605a1f34a72de43b7ee067403bd08465147d45d81342a72915b77b"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_profile.c",
+      "size": 3060,
+      "sha256": "3cbdc4f63a407ef15298f29339f009691707f7ed96415fb83fc4bf60e220772d"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_profile.py",
+      "size": 1449,
+      "sha256": "cbb5fea3e0f034e4862f3e9c4ed4313f0775dbbf210f842515e229c1c4b432d1"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_quick.c",
+      "size": 8754,
+      "sha256": "98a7f118f29536f4534c3d291d2b16cb29f3c412189fff91125659be30e75b13"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_quick_install.py",
+      "size": 2516,
+      "sha256": "6f9186d05cc939ea1b259696e46f0860d505188ce7120ec5dcfb487bf5ec53b2"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_rom_cache.py",
+      "size": 4123,
+      "sha256": "3daedce505f0fd11f933fa5f05d3c88fc7029a4b0a3b639d58bfbb80f97e7dba"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_rom_mmap.py",
+      "size": 4644,
+      "sha256": "ab6ea42795e7c3fdc40594b1767dab520249cabb4b86128c71328142ba948cad"
+    },
+    {
+      "path": "experiments/rom-mmap-20261017/tests/test_text.py",
+      "size": 1100,
+      "sha256": "fd4f53fbe9683fd4aaf9cda6cf0c1f9beecfa6346f99d1acd3e205f579e562ca"
+    },
+    {
       "path": "firmware/image.json",
       "size": 388,
       "sha256": "5e77d4da89f3adc08fcbf33628575bd40da4f0a2d7ba9ae532a26421ff405437"
@@ -1078,8 +2653,8 @@
     },
     {
       "path": "README.md",
-      "size": 3537,
-      "sha256": "6af849343dd27a5ec878b0374922684a092e9bac493939d1a3dad062940d4bed"
+      "size": 4394,
+      "sha256": "419084f218d9c1229c7d6d14b73db9245c59ce00566e3d8c44795fb9f98502a4"
     },
     {
       "path": "sdcard-files/cherrypi-kit/kernel/SHA256SUMS",
@@ -1168,8 +2743,8 @@
     },
     {
       "path": "tools/update-manifest.py",
-      "size": 859,
-      "sha256": "fe8d1c29ee9685f590359f58af2177036e1ad1310117e789e8539243132f0e74"
+      "size": 875,
+      "sha256": "e2141dd16243773cc8ef748c19266ee61424013ab4483885bae78f5774907c95"
     },
     {
       "path": "tools/verify.py",

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-17",
+  "original_rom_sha1": "60b3c1b3d5b94d0a1ec2f2662c55b86d9a259d9a",
+  "repaired_rom_sha1": "5ad0baa726e15414738b9597caebdb80d7373ef8",
+  "changed_rom_bytes": 8,
+  "independent_arm926_string_copy_categories": [30, 31],
+  "destination_buffer_only_ewram_changes": true,
+  "actual_native_state_validator_accepts_converted_state": true,
+  "old_state_rejected_for_new_rom_identity": true,
+  "actual_repaired_files_headless_replay_frames": 300,
+  "bad_jump_in_repaired_replay": false,
+  "busybox_mock_install_and_progress_preservation": "passed",
+  "board_validation": "pending",
+  "notes": "Headless host and BIOS are approximated. Category 31 has a controlled command test; its actual item pickup event is not yet covered. Original author bytes and full-game correctness are not claimed."
+}
