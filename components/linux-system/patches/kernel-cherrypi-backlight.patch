@@ -1,0 +1,40 @@
+--- a/arch/arm/boot/dts/suniv-f1c100s-generic.dts
++++ b/arch/arm/boot/dts/suniv-f1c100s-generic.dts
+@@ -13,9 +13,19 @@
+ 		serial1 = &uart0;
+ 	};
+ 
++    /* PT4103 EN via fitted R44: PE6 / PWM1, 500 Hz. */
++    cherrypi_backlight: backlight {
++        compatible = "pwm-backlight";
++        pwms = <&pwm 1 2000000 0>;
++        power-supply = <&reg_vcc3v3>;
++        brightness-levels = <0 10 20 30 40 50 60 70 80 90 100>;
++        default-brightness-level = <2>;
++    };
++
+     panel: panel {
+         compatible = "cherrypi,rgb480272-prototype";
+         power-supply = <&reg_vcc3v3>;
++        backlight = <&cherrypi_backlight>;
+         port {
+             panel_in: endpoint {
+                 remote-endpoint = <&tcon0_out_panel>;
+@@ -229,3 +239,17 @@
+         allwinner,tcon-channel = <0>;
+     };
+ };
++
++/* PE6 is separate from the LCD data pins and the microSD pins. */
++&pio {
++    cherrypi_pwm1_pins: pwm1-pe6-pins {
++        pins = "PE6";
++        function = "pwm1";
++    };
++};
++
++&pwm {
++    pinctrl-names = "default";
++    pinctrl-0 = <&cherrypi_pwm1_pins>;
++    status = "okay";
++};

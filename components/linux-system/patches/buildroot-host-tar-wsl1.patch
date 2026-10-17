@@ -1,0 +1,7 @@
+--- a/package/tar/tar.mk
++++ b/package/tar/tar.mk
+@@ -63,2 +63,2 @@
+-	mv $(@D)/tar-$(HOST_TAR_VERSION)/* $(@D)
+-	rmdir $(@D)/tar-$(HOST_TAR_VERSION)
++	rsync -a --remove-source-files $(@D)/tar-$(HOST_TAR_VERSION)/ $(@D)/
++	find $(@D)/tar-$(HOST_TAR_VERSION) -depth -type d -empty -delete

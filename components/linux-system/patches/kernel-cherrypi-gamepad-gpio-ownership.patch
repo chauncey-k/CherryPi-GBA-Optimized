@@ -1,0 +1,54 @@
+--- a/arch/arm/boot/dts/suniv-f1c100s-generic.dts
++++ b/arch/arm/boot/dts/suniv-f1c100s-generic.dts
+@@ -38,20 +38,18 @@
+         compatible = "gpio-keys-polled";
+         label = "cherrypi-gamepad";
+         poll-interval = <5>;
+-        pinctrl-names = "default";
+-        pinctrl-0 = <&gamepad_pe_pins &gamepad_pa_pins>;
+-        button-up { label = "up"; linux,code = <KEY_UP>; gpios = <&pio 4 0 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-down { label = "down"; linux,code = <KEY_DOWN>; gpios = <&pio 4 1 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-left { label = "left"; linux,code = <KEY_LEFT>; gpios = <&pio 4 2 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-right { label = "right"; linux,code = <KEY_RIGHT>; gpios = <&pio 4 3 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-a { label = "a"; linux,code = <KEY_J>; gpios = <&pio 4 4 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-b { label = "b"; linux,code = <KEY_K>; gpios = <&pio 4 5 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-l { label = "l"; linux,code = <KEY_U>; gpios = <&pio 4 7 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-r { label = "r"; linux,code = <KEY_I>; gpios = <&pio 4 8 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-start { label = "start"; linux,code = <KEY_ENTER>; gpios = <&pio 4 9 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-select { label = "select"; linux,code = <KEY_SPACE>; gpios = <&pio 4 10 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-menu { label = "menu"; linux,code = <KEY_M>; gpios = <&pio 4 11 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
+-        button-fastforward { label = "fastforward"; linux,code = <KEY_F>; gpios = <&pio 0 0 GPIO_ACTIVE_LOW>; debounce-interval = <10>; };
++        button-up { label = "up"; linux,code = <KEY_UP>; gpios = <&pio 4 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-down { label = "down"; linux,code = <KEY_DOWN>; gpios = <&pio 4 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-left { label = "left"; linux,code = <KEY_LEFT>; gpios = <&pio 4 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-right { label = "right"; linux,code = <KEY_RIGHT>; gpios = <&pio 4 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-a { label = "a"; linux,code = <KEY_J>; gpios = <&pio 4 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-b { label = "b"; linux,code = <KEY_K>; gpios = <&pio 4 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-l { label = "l"; linux,code = <KEY_U>; gpios = <&pio 4 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-r { label = "r"; linux,code = <KEY_I>; gpios = <&pio 4 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-start { label = "start"; linux,code = <KEY_ENTER>; gpios = <&pio 4 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-select { label = "select"; linux,code = <KEY_SPACE>; gpios = <&pio 4 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-menu { label = "menu"; linux,code = <KEY_M>; gpios = <&pio 4 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
++        button-fastforward { label = "fastforward"; linux,code = <KEY_F>; gpios = <&pio 0 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; debounce-interval = <10>; };
+     };
+ 
+ 	chosen {
+@@ -276,17 +274,4 @@
+ };
+ 
+ 
+-/* Twelve independent active-low switches; PE6 remains reserved for PWM. */
+-&pio {
+-    gamepad_pe_pins: gamepad-pe-pins {
+-        pins = "PE0", "PE1", "PE2", "PE3", "PE4", "PE5",
+-               "PE7", "PE8", "PE9", "PE10", "PE11";
+-        function = "gpio_in";
+-        bias-pull-up;
+-    };
+-    gamepad_pa_pins: gamepad-pa-pins {
+-        pins = "PA0";
+-        function = "gpio_in";
+-        bias-pull-up;
+-    };
+-};
++/* Gamepad pull-ups are requested through GPIO flags, without pinctrl mux ownership. */

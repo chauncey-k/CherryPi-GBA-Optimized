@@ -1,0 +1,12 @@
+diff --git a/arch/arm/dts/suniv-f1c100s-generic.dts b/arch/arm/dts/suniv-f1c100s-generic.dts
+index a6088968..0ae844c2 100755
+--- a/arch/arm/dts/suniv-f1c100s-generic.dts
++++ b/arch/arm/dts/suniv-f1c100s-generic.dts
+@@ -11,6 +11,7 @@
+ 		     "allwinner,suniv";
+ 
+ 	aliases {
++		mmc0 = &mmc0;
+ 		serial0 = &uart1;
+ 		spi0 = &spi0;
+ 	};

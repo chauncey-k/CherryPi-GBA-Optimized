@@ -1,0 +1,12 @@
+--- a/toolchain/toolchain-external/pkg-toolchain-external.mk
++++ b/toolchain/toolchain-external/pkg-toolchain-external.mk
+@@ -105,7 +105,8 @@
+ define TOOLCHAIN_EXTERNAL_MOVE
+ 	rm -rf $(TOOLCHAIN_EXTERNAL_DOWNLOAD_INSTALL_DIR)
+ 	mkdir -p $(TOOLCHAIN_EXTERNAL_DOWNLOAD_INSTALL_DIR)
+-	mv $(@D)/* $(TOOLCHAIN_EXTERNAL_DOWNLOAD_INSTALL_DIR)/
++	rsync -a --remove-source-files --exclude='/.stamp*' $(@D)/ $(TOOLCHAIN_EXTERNAL_DOWNLOAD_INSTALL_DIR)/
++	find $(@D) -mindepth 1 -depth -type d -empty -delete
+ endef
+ endif
+ 

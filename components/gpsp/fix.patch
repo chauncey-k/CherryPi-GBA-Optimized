@@ -1,0 +1,244 @@
+--- a/arm/arm_emit.h
++++ b/arm/arm_emit.h
+@@ -46,6 +46,7 @@
+ void function_cc execute_store_u32_safe(u32 address, u32 source);
+ 
+ void step_debug_arm(u32 pc);
++void cp_live_unknown_arm(void);
+ 
+ 
+ #define write32(value)                                                        \
+--- a/arm/arm_stub.S
++++ b/arm/arm_stub.S
+@@ -571,7 +571,8 @@
+   store_trace_width_##store_type()                                          ;\
+   str r0, [lr, #12]                                                         ;\
+   ldmia sp!, { r0, r2 }                                                     ;\
+-  store_op r1, [r2, r0]                   /* changed code still invalidates */;\
++  store_op r1, [r2, r0]                                                     ;\
++  live_store_##store_type()                                                 ;\
+   ldmia sp!, { lr }                       /* restore lr                    */;\
+   ldr r0, [lr]                            /* load PC                       */;\
+   str r0, [reg_base, #REG_PC]             /* write out PC                  */;\
+@@ -585,6 +586,19 @@
+   call_c_function(write_memory##store_type)                                  ;\
+   b write_epilogue                        /* handle additional write stuff */;\
+ 
++
++#define live_store_8()
++#define live_store_16()
++#define live_store_32()                                                     ;\
++  add r0, r2, r0                                                          ;\
++  ldr lr, [sp]                                                            ;\
++  ldr r1, [lr]                                                            ;\
++  stmdb sp!, { r1 }                  /* maintain EABI stack alignment */   ;\
++  call_c_function(cp_live_store)                                            ;\
++  add sp, sp, #4                                                          ;\
++  cmp r0, #0                                                              ;\
++  bne 1b                                                                   ;\
++
+ #define store_difference_8() movs lr, lr, lsl #24
+ #define store_difference_16() movs lr, lr, lsl #16
+ #define store_difference_32() cmp lr, #0
+@@ -652,6 +666,13 @@
+   restore_flags()
+   add pc, lr, #4                          @ return
+ 
++
++.global cp_live_unknown_arm
++cp_live_unknown_arm:
++  ldr r0, [lr]                     @ retry this guest instruction normally
++  str r0, [reg_base, #REG_PC]
++  save_flags()
++  b smc_write
+ 
+ smc_write:
+   call_c_function(flush_translation_cache_ram)
+--- a/cherrypi/profile.c
++++ b/cherrypi/profile.c
+@@ -11,6 +11,7 @@
+ #include <sys/time.h>
+ #include <ucontext.h>
+ #include "profile.h"
++unsigned cp_live_smc_skipped;
+ #ifndef CP_PROFILE_TEST
+ #include "common.h"
+ #endif
+@@ -161,6 +162,7 @@
+         for (j = 0; j < 3; ++j) fprintf(out, " %u", timeline[i].flushes[j]);
+         fputc('\n', out);
+     }
++    fprintf(out,"LIVE_SMC_RETAINED %u\n",cp_live_smc_skipped);
+     fprintf(out,"ORIGIN_LOST %u\n",origin_lost);
+     for (i=0;i<64;i++) if (origins[i].count)
+         fprintf(out,"ORIGIN %08x %08x %08x %u %08x %08x %u %u\n",
+--- a/cpu_threaded.c
++++ b/cpu_threaded.c
+@@ -24,6 +24,66 @@
+ #include "common.h"
+ #include "cherrypi/profile.h"
+ 
++
++/* The six patch columns in the game's eight-sample ARM mixing loop.
++ * Eligibility is semantic: every listed variant is emitted, not just the
++ * instruction present while translating. Unsupported writes still flush. */
++static const u32 cp_live_words[6][3] = {
++  {0xe1a09b49,0xe0969bc9,0xe0969bc9},
++  {0xe0999086,0xe08c6006,0xe0877004},
++  {0xe0977004,0xe0977004,0xe0833ba7},
++  {0x508c6006,0x51f360d1,0xe1d360d0},
++  {0x51f3c0d1,0xe1f3c0d1,0xe1f3c0d1},
++  {0x505cc006,0xe05cc006,0xe05cc006}
++};
++static u8 cp_live_ready[0x2000], cp_live_blocked[0x2000];
++extern unsigned cp_smc_write_trace[4];
++extern unsigned cp_live_smc_skipped;
++static int cp_live_column(u32 pc)
++{
++  u32 off, sample;
++  if((pc >> 24) != 3 || (pc & 3)) return -1;
++  off = pc & 0x7fff;
++  if(off >= 0x2178) off -= 0x98;
++  if(off < 0x20e0 || off > 0x2164) return -1;
++  off -= 0x20e0;
++  sample = off / 0x24;
++  if(sample >= 4) return -1;
++  off %= 0x24;
++  if(off == 0) return 0;
++  if(off == 4) return 1;
++  if(off >= 0x0c && off <= 0x18) return 2 + (off - 0x0c) / 4;
++  return -1;
++}
++static int cp_live_allowed(unsigned col, u32 word)
++{
++  return word == cp_live_words[col][0] || word == cp_live_words[col][1] ||
++         word == cp_live_words[col][2];
++}
++/* Called only after a changed, guarded 32-bit CPU store. The preceding stores
++ * in STM use the unguarded safe helper, so validate the WHOLE STM group. */
++unsigned cp_live_store(u32 host, u32 resume_pc)
++{
++  u32 offset, first, n, i;
++  if(host < (u32)(iwram + 0x8000) || host >= (u32)(iwram + 0x10000)) return 0;
++  offset = host - (u32)(iwram + 0x8000);
++  if(resume_pc == 0x030020a0 || resume_pc == 0x030020a8) n = 2;
++  else if(resume_pc == 0x030020b0 || resume_pc == 0x030020b8) n = 4;
++  else return 0;
++  if(offset & 3 || offset < (n - 1) * 4) return 0;
++  first = offset - (n - 1) * 4;
++  for(i = 0; i < n; i++) {
++    u32 at = first + i * 4;
++    int col = cp_live_column(0x03000000 + at);
++    if(col != (n == 2 ? i : i + 2) || !cp_live_ready[at >> 2] ||
++       cp_live_blocked[at >> 2] ||
++       !cp_live_allowed(col, address32(iwram, 0x8000 + at))) return 0;
++  }
++  cp_live_smc_skipped++;
++  cp_smc_write_trace[3] = 0;
++  return 1;
++}
++
+ u8 rom_translation_cache[ROM_TRANSLATION_CACHE_SIZE];
+ u8 *rom_translation_ptr = rom_translation_cache;
+ 
+@@ -223,7 +283,7 @@
+       pc_address_block = load_gamepak_page(pc_region & 0x3FF);                \
+   }                                                                           \
+ 
+-#define translate_arm_instruction()                                           \
++#define translate_arm_instruction_header()                                           \
+   check_pc_region(pc);                                                        \
+   opcode = address32(pc_address_block, (pc & 0x7FFF));                        \
+   condition = block_data[block_data_position].condition;                      \
+@@ -244,7 +304,8 @@
+       arm_conditional_block_header();                                         \
+     }                                                                         \
+   }                                                                           \
+-                                                                              \
++
++#define translate_arm_opcode_body() \
+   switch((opcode >> 20) & 0xFF)                                               \
+   {                                                                           \
+     case 0x00:                                                                \
+@@ -1660,8 +1721,61 @@
+       break;                                                                  \
+     }                                                                         \
+   }                                                                           \
+-                                                                              \
+-  pc += 4                                                                     \
++
++
++/* A finite set of live ARM opcodes, selected without changing guest NZCV.
++ * No native code is patched at runtime, so no additional I-cache sync is needed. */
++#define translate_arm_instruction()                                          \
++{                                                                            \
++  check_pc_region(pc);                                                       \
++  int live_column = cp_live_column(pc);                                      \
++  u32 live_word = address32(pc_address_block, pc & 0x7fff);                   \
++  if(live_column >= 0 && cp_live_allowed(live_column, live_word) &&           \
++     !cp_live_blocked[(pc & 0x7fff) >> 2])                                   \
++  {                                                                          \
++    u8 *choices[3], *ends[3];                                                \
++    u32 k;                                                                   \
++    if((last_condition & 15) != 14)                                         \
++      generate_branch_patch_conditional(backpatch_address, translation_ptr); \
++    generate_cycle_update();                                                \
++    generate_save_flags();                                                  \
++    generate_load_pc(reg_a0, (u32)(iwram + 0x8000 + (pc & 0x7fff)));         \
++    ARM_LDR_IMM(0, reg_a0, reg_a0, 0);                                     \
++    for(k = 0; k < 3; k++)                                                  \
++    {                                                                        \
++      generate_load_pc(reg_a1, cp_live_words[live_column][k]);               \
++      ARM_CMP_REG_REG(0, reg_a0, reg_a1);                                   \
++      generate_branch_filler(ARMCOND_EQ, choices[k]);                        \
++    }                                                                        \
++    /* Even an unguarded preceding STM store cannot execute a stale variant. */\
++    generate_restore_flags();                                               \
++    generate_function_call(cp_live_unknown_arm);                             \
++    write32(pc);                                                            \
++    for(k = 0; k < 3; k++)                                                  \
++    {                                                                        \
++      generate_branch_patch_conditional(choices[k], translation_ptr);        \
++      generate_restore_flags();                                             \
++      opcode = cp_live_words[live_column][k];                               \
++      condition = opcode >> 28;                                             \
++      if(condition != 14) { arm_conditional_block_header(); }               \
++      translate_arm_opcode_body();                                          \
++      generate_cycle_update();                                              \
++      if((opcode >> 28) != 14)                                              \
++        generate_branch_patch_conditional(backpatch_address, translation_ptr);\
++      generate_branch_filler(ARMCOND_AL, ends[k]);                           \
++    }                                                                        \
++    for(k = 0; k < 3; k++)                                                  \
++      generate_branch_patch_conditional(ends[k], translation_ptr);           \
++    cp_live_ready[(pc & 0x7fff) >> 2] = 1;                                 \
++    condition = last_condition = 14;                                        \
++  }                                                                          \
++  else                                                                       \
++  {                                                                          \
++    translate_arm_instruction_header();                                     \
++    translate_arm_opcode_body();                                            \
++  }                                                                          \
++  pc += 4;                                                                  \
++}
+ 
+ #define arm_flag_status()                                                     \
+ 
+@@ -3111,6 +3225,8 @@
+   {                                                                           \
+     check_pc_region(block_end_pc);                                            \
+     smc_write_##type##_##smc_write_op();                                      \
++    if(#type[0] == 't' && (block_end_pc >> 24) == 3) \
++      cp_live_blocked[(block_end_pc & 0x7fff) >> 2] = 1; \
+     type##_load_opcode();                                                     \
+     type##_flag_status();                                                     \
+                                                                               \
+@@ -3427,6 +3543,8 @@
+ #ifdef ARM_ARCH
+   last_ram_translation_ptr = ram_translation_cache;
+ #endif
++  memset(cp_live_ready, 0, sizeof(cp_live_ready));
++  memset(cp_live_blocked, 0, sizeof(cp_live_blocked));
+   ram_translation_ptr = ram_translation_cache;
+   ram_block_tag_top = 0x0101;
+   

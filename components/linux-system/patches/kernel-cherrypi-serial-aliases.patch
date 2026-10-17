@@ -1,0 +1,12 @@
+diff --git a/arch/arm/boot/dts/suniv-f1c100s-generic.dts b/arch/arm/boot/dts/suniv-f1c100s-generic.dts
+index 644de0928..01845cf6f 100755
+--- a/arch/arm/boot/dts/suniv-f1c100s-generic.dts
++++ b/arch/arm/boot/dts/suniv-f1c100s-generic.dts
+@@ -10,6 +10,7 @@
+ 
+ 	aliases {
+ 		serial0 = &uart1;
++		serial1 = &uart0;
+ 	};
+ 
+ 	chosen {

@@ -1,0 +1,40 @@
+{
+  "Allwinnerck-Pi": {
+    "commit": "95e68ac5cdb49e7b63dddbd0193773627e6077d5",
+    "date": "2024-09-03T17:00:39Z",
+    "url": "https://github.com/NingbinWang/Allwinnerck-Pi"
+  },
+  "sunxi_uboot": {
+    "commit": "52d207ddb228289147c4ebea2e67ce64ecbc3e20",
+    "date": "2025-03-26T17:24:17Z",
+    "url": "https://github.com/NingbinWang/sunxi_uboot"
+  },
+  "sunxi_kernel": {
+    "commit": "5657bddc11fb3b654ee955139d180750d0d5d12b",
+    "date": "2025-04-10T15:39:19Z",
+    "url": "https://github.com/NingbinWang/sunxi_kernel"
+  },
+  "buildroot": {
+    "version": "2025.02.18",
+    "url": "https://github.com/buildroot/buildroot",
+    "archive_url": "https://codeload.github.com/buildroot/buildroot/tar.gz/refs/tags/2025.02.18",
+    "archive_sha256": "9a0f33022512709eb876db2c27943b0e2acfe2d67616cd3882e0d8ce251cd8d1",
+    "local_patches": [
+      "patches/buildroot-host-tar-wsl1.patch",
+      "patches/buildroot-external-toolchain-wsl1.patch"
+    ]
+  },
+  "rootfs-toolchain": {
+    "version": "2024.05-1",
+    "architecture": "armv5-eabi",
+    "libc": "musl",
+    "url": "https://toolchains.bootlin.com/downloads/releases/toolchains/armv5-eabi/tarballs/armv5-eabi--musl--stable-2024.05-1.tar.xz",
+    "sha256": "9825d9a4515a92d2251aab3228ddbb6258440b0f952b95fcaa94653a4b29c71a"
+  },
+  "gpsp": {
+    "url": "https://github.com/Apaczer/gpsp",
+    "branch": "miyoo",
+    "commit": "4f8c8378041663ca1d3da4413bbf36d0c8a70cd6",
+    "local_patch": "patches/gpsp-cherrypi.patch"
+  }
+}

@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+SCRIPT=/root/gpsp/run-gpsp.sh
+case "${1:-status}" in
+  status) grep SDL_AUDIODRIVER "$SCRIPT"; exit 0 ;;
+  dsp) mode=dsp ;;
+  dummy) mode=dummy ;;
+  *) echo "Usage: audio-mode [status|dsp|dummy]" >&2; exit 1 ;;
+esac
+grep -q '^export SDL_AUDIODRIVER=' "$SCRIPT" || { echo "Audio setting not found" >&2; exit 1; }
+[ -f "$SCRIPT.before-audio" ] || cp -p "$SCRIPT" "$SCRIPT.before-audio"
+sed "s/^export SDL_AUDIODRIVER=.*/export SDL_AUDIODRIVER=$mode/" "$SCRIPT" > "$SCRIPT.audio-new"
+chmod +x "$SCRIPT.audio-new"
+mv "$SCRIPT.audio-new" "$SCRIPT"
+sync
+echo "Audio backend: $mode (takes effect on next gpSP launch)"

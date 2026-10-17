@@ -1,0 +1,112 @@
+--- a/arch/arm/boot/dts/suniv-f1c100s-generic.dts
++++ b/arch/arm/boot/dts/suniv-f1c100s-generic.dts
+@@ -13,6 +13,16 @@
+ 		serial1 = &uart0;
+ 	};
+ 
++    panel: panel {
++        compatible = "cherrypi,rgb480272-prototype";
++        power-supply = <&reg_vcc3v3>;
++        port {
++            panel_in: endpoint {
++                remote-endpoint = <&tcon0_out_panel>;
++            };
++        };
++    };
++
+ 	chosen {
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
+@@ -99,15 +109,15 @@
+ };
+ 
+ &de {
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &fe0 {
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &be0 {
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &tve0 {
+@@ -192,3 +202,30 @@
+ 		};
+ 	};
+ };
++
++/* PCB wiring: B3..7, G2..7, R3..7, plus CLK/DE/HSYNC/VSYNC.
++ * PD0 and PD12 are deliberately left out (touch I2C on Cherry Pi).
++ */
++&pio {
++    lcd_rgb565_pins: lcd-rgb565-pins {
++        pins = "PD1", "PD2", "PD3", "PD4", "PD5",
++               "PD6", "PD7", "PD8", "PD9", "PD10", "PD11",
++               "PD13", "PD14", "PD15", "PD16", "PD17",
++               "PD18", "PD19", "PD20", "PD21";
++        function = "lcd";
++    };
++};
++
++&tcon0 {
++    pinctrl-names = "default";
++    pinctrl-0 = <&lcd_rgb565_pins>;
++    status = "okay";
++};
++
++&tcon0_out {
++    tcon0_out_panel: endpoint@0 {
++        reg = <0>;
++        remote-endpoint = <&panel_in>;
++        allwinner,tcon-channel = <0>;
++    };
++};
+--- a/drivers/gpu/drm/panel/panel-simple.c
++++ b/drivers/gpu/drm/panel/panel-simple.c
+@@ -3108,8 +3108,40 @@
+ 	.bus_format = MEDIA_BUS_FMT_RGB888_1X24,
+ };
+ 
++/* Prototype timing from the seller's 480x272 module specification.
++ * The specified 43/12 back porch includes the 4-clock sync pulse.
++ * Actual IPS 300 panel timing still requires on-board verification.
++ */
++static const struct display_timing cherrypi_rgb480272_timing = {
++    .pixelclock = { 9000000, 9000000, 9000000 },
++    .hactive = { 480, 480, 480 },
++    .hfront_porch = { 8, 8, 8 },
++    .hback_porch = { 39, 39, 39 },
++    .hsync_len = { 4, 4, 4 },
++    .vactive = { 272, 272, 272 },
++    .vfront_porch = { 8, 8, 8 },
++    .vback_porch = { 8, 8, 8 },
++    .vsync_len = { 4, 4, 4 },
++    .flags = DISPLAY_FLAGS_HSYNC_LOW | DISPLAY_FLAGS_VSYNC_LOW |
++             DISPLAY_FLAGS_DE_HIGH | DISPLAY_FLAGS_PIXDATA_POSEDGE,
++};
++
++static const struct panel_desc cherrypi_rgb480272 = {
++    .timings = &cherrypi_rgb480272_timing,
++    .num_timings = 1,
++    .bpc = 8,
++    .size = { .width = 95, .height = 54 },
++    .delay = { .prepare = 20, .enable = 100 },
++    .bus_format = MEDIA_BUS_FMT_RGB565_1X16,
++    .bus_flags = DRM_BUS_FLAG_DE_HIGH | DRM_BUS_FLAG_PIXDATA_DRIVE_POSEDGE,
++};
++
+ static const struct of_device_id platform_of_match[] = {
+ 	{
++		.compatible = "cherrypi,rgb480272-prototype",
++		.data = &cherrypi_rgb480272,
++	},
++	{
+ 		.compatible = "ampire,am-480272h3tmqw-t01h",
+ 		.data = &ampire_am_480272h3tmqw_t01h,
+ 	}, {

@@ -1,0 +1,8 @@
+{
+  "name": "sdcard-lcdtest-20261009.img",
+  "size": 336592896,
+  "sha256": "e794d49730c5fbefed9a83b815cce9737cfce71fd7b1ec99691e52cbddf23a89",
+  "compressed_name": "sdcard-lcdtest-20261009.img.gz",
+  "compressed_sha256": "e50453310a9b5fe5be2e1871c9e5897e30a4277809ae429698a7c7a129ef06b9",
+  "role": "Early two-partition base Linux; install supplied kernel and userspace after writing"
+}

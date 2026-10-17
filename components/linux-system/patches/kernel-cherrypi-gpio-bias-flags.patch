@@ -1,0 +1,15 @@
+--- a/drivers/gpio/gpiolib-of.c
++++ b/drivers/gpio/gpiolib-of.c
+@@ -358,6 +358,12 @@
+ 	if (transitory)
+ 		lflags |= GPIO_TRANSITORY;
+ 
++	/* Preserve bias flags for the fwnode GPIO consumer path as well. */
++	if (flags & OF_GPIO_PULL_UP)
++		lflags |= GPIO_PULL_UP;
++	if (flags & OF_GPIO_PULL_DOWN)
++		lflags |= GPIO_PULL_DOWN;
++
+ 	ret = gpiod_configure_flags(desc, propname, lflags, dflags);
+ 	if (ret < 0) {
+ 		gpiod_put(desc);

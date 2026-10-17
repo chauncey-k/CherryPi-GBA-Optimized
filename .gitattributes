@@ -1,0 +1,21 @@
+* text=auto eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.patch text eol=lf
+*.tar.gz binary
+*.dtb binary
+zImage binary
+gpsp binary
+gpsp.nm text eol=lf
+cherrypi-launcher binary
+SHA256SUMS text eol=lf
+BASELINE_SHA256 text eol=lf
+*.tar.xz binary
+*.tar.bz2 binary
+*.png binary
+*.bin binary
+*.c text eol=lf
+*.h text eol=lf
+*.S text eol=lf
+*.json text eol=lf

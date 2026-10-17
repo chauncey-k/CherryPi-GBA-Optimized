@@ -1,0 +1,1185 @@
+{
+  "version": "2026.10.17-smc-live",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "size": 367,
+      "sha256": "94a22de30fa8b37e2951725c2082d4a55b1e2ef6d057242da9d44cd9548bab1f"
+    },
+    {
+      "path": ".gitignore",
+      "size": 423,
+      "sha256": "4643cfb0e0247ab5f36b6f6923f6e7b485a0f977d120c3c3c4d9623cf9003f78"
+    },
+    {
+      "path": "components/audio-tools/source/0001-alsactl-info.c-fix-conditionals-on-__ALSA_PCM_H-and-.patch",
+      "size": 3346,
+      "sha256": "55a7bca157c99f525f69a1b7c4279d9a3787fc31cc1a4e6aed8e9014ddead87f"
+    },
+    {
+      "path": "components/audio-tools/source/alsa-lib-1.2.13.tar.bz2",
+      "size": 1116739,
+      "sha256": "8c4ff37553cbe89618e187e4c779f71a9bb2a8b27b91f87ed40987cc9233d8f6"
+    },
+    {
+      "path": "components/audio-tools/source/alsa-lib.mk",
+      "size": 2441,
+      "sha256": "473ae1ceb11b1dac345986253e8212f92468dfa607218df5849f5e8765a7315e"
+    },
+    {
+      "path": "components/audio-tools/source/alsa-utils-1.2.13.tar.bz2",
+      "size": 1642028,
+      "sha256": "1702a6b1cdf9ba3e996ecbc1ddcf9171e6808f5961d503d0f27e80ee162f1daa"
+    },
+    {
+      "path": "components/audio-tools/source/alsa-utils.mk",
+      "size": 4354,
+      "sha256": "ac541b40a87fb0d7a497441439605712cd6940223f7d02b852ebb95b3017fa08"
+    },
+    {
+      "path": "components/audio-tools/source/buildroot.config",
+      "size": 119510,
+      "sha256": "6cca61ba986546816accfe25bf72d6ac313fccb22e453043d4cd36ca44edce3b"
+    },
+    {
+      "path": "components/audio-tools/source/launcher-scripts/amixer",
+      "size": 264,
+      "sha256": "b866a0d96628048388cb31b768882cd4c043ed8d6a769f0cc0fb20fb14a542ba"
+    },
+    {
+      "path": "components/audio-tools/source/launcher-scripts/aplay",
+      "size": 263,
+      "sha256": "6d2d2cbd8e27eff2e43bd3b01010bc19ec4e3b401b94654c05342ef3d4a02bcc"
+    },
+    {
+      "path": "components/audio-tools/source/launcher-scripts/audio-mode",
+      "size": 629,
+      "sha256": "cb7c066588471a9380002a3e8c9c790f49aeb5e675857b4823ed5b15c61ff856"
+    },
+    {
+      "path": "components/gpsp/analyze.py",
+      "size": 4656,
+      "sha256": "efc782c3be356c4f8eb7be84c1dc3cc08e81529107df7c8d10439cb345d4e37d"
+    },
+    {
+      "path": "components/gpsp/build.sh",
+      "size": 829,
+      "sha256": "95d8ae085b5b83a84b57be99f56aa142dc3dcdcdaff9dad97e35c13f5a9323a5"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/BASELINE_SHA256",
+      "size": 130,
+      "sha256": "9b574982007b8f7922f437033fcf858b003e1a8d08ae72f2c2259ef75c31818a"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/COPYING.DOC",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/gpsp",
+      "size": 924572,
+      "sha256": "923fb7fff27a3f0eb2bfc4b3599a62dd0149a478444ee8a521e49a563589f250"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/gpsp.nm",
+      "size": 27820,
+      "sha256": "4f8fd8c267d323b62dd33a7633b782bf8dde27db78e6a279c1f11183fb33548e"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/install.sh",
+      "size": 1195,
+      "sha256": "3839ba5db7fcf4859186d28bce5b2a1412faa851e90b826e7b42ba1f349add24"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/README.md",
+      "size": 916,
+      "sha256": "5a0dcdf51bbf2221c9f72d189cd4c6467dd56256010d5bb6b8e5b50057cf62cd"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/run-profile.sh",
+      "size": 925,
+      "sha256": "57ada04ad2aee45e408b4801e6c4cb72ad6429aef3c2de3c11065d2d7a8ce9fe"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/SHA256SUMS",
+      "size": 618,
+      "sha256": "22ed6646b0fd4bc641271bd4e6b86aafedcdb1a43bbb46813b47976a37fce1a4"
+    },
+    {
+      "path": "components/gpsp/cherrypi-profile/uninstall.sh",
+      "size": 461,
+      "sha256": "81ec2007f1dc5572e0e041eda52c387ea66b8355f6530875335f82fbfc22cf87"
+    },
+    {
+      "path": "components/gpsp/fix.patch",
+      "size": 12305,
+      "sha256": "a87784e71cf96db4c34f235be00dba5d193b194b4a5600d2f9522ce82334b605"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/.gitignore.upstream",
+      "size": 200,
+      "sha256": "c50f7bb1b3c3b3fbdb5dc7cc887f39551f1277fb11d885c537a7ae54cbf3c49c"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/arm_codegen.h",
+      "size": 48768,
+      "sha256": "f56c44db36148556e3a9ab9b890a37192fab18eedcb34d83c5331a80d32bc2e0"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/arm_dpimacros.h",
+      "size": 72113,
+      "sha256": "84914cccc6ade30999917d6cdc318f1c7d5e96156decf3c794dd836fe8b65524"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/arm_emit.h",
+      "size": 107458,
+      "sha256": "a7ab38ca0da51bdc179402c0e72a586796ccac26df183516faf11c292638441e"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/arm_stub.S",
+      "size": 43254,
+      "sha256": "ceaa6d201dd06864ca456e13fc9f9e539e2fa1883b7ddb1de102a1bf32f72791"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_eagle2x.h",
+      "size": 1839,
+      "sha256": "14cda01ef4b65cd46c2924d025a92a85b7221f9e5a48cee45e76666d30924a10"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_eagle2x.S",
+      "size": 11460,
+      "sha256": "712753f3985f2d5bfc07b956f511c6add4b79682b010a5dc4b1d59903bfc3297"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_eagle2x.Sinc",
+      "size": 25101,
+      "sha256": "c71c4131f668c800d6f43c8561bb8c40e4cdbc3b056b1885955271025f23a983"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_normalxx.Sinc",
+      "size": 22697,
+      "sha256": "c6a0b78bbcb9e1b3a389c0dcafa24ed2236d869ad45861fd3f282870f4f5ff51"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_scale2x.h",
+      "size": 1839,
+      "sha256": "737257986a9e2e8ea58c7d94b34630935852ed122e60dade209c656ed089cc1c"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_scale2x.S",
+      "size": 9873,
+      "sha256": "da92f5d941af56a074bf89be0879a6414e4c59e5640576e0b70ca3db714faaa4"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_scale2x.Sinc",
+      "size": 17302,
+      "sha256": "53847762d632fa39b6945336e50b9ab828f5f4e0b478e57af6f110b56d505fc1"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_scale3x.h",
+      "size": 1839,
+      "sha256": "77b47d888a6bb465f1189d0389b0cb29befa274aa2d4fb94a5af61ae4b738e83"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_scale3x.S",
+      "size": 11992,
+      "sha256": "c2860c8adfe25ad887b25aa010d5e501dd85fbcd60543199be43a70d710f57bf"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_scale3x.Sinc",
+      "size": 34944,
+      "sha256": "30638c92dacc079ba20e9e3c58827b38969b75940823ce48a5d684c9ee771b1d"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/neon_scale_license.txt",
+      "size": 1055,
+      "sha256": "0e2375d7980c78fb40a2f70b5c13b5f4decf12d1697c3b6090e9ab6e892a1c66"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/video_blend.S",
+      "size": 6615,
+      "sha256": "60607fde95e4dfad9a3f5968263482851fad0d179f9dfc6774297033c9eab025"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/warm.c",
+      "size": 6132,
+      "sha256": "4eb1755f156ec7e2f551472fc719bf1069352e719b35be4b7ab5c644fc517e80"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/arm/warm.h",
+      "size": 3236,
+      "sha256": "6dd90df6324eab409fd8e928e100527e00efbeda8d19bc8dd319fa258a4cbdbc"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/borders/border1.png",
+      "size": 39242,
+      "sha256": "3c19ca21987429397978b2ec0e4170c9cbc86b54b26fab3dd953ff61406977f3"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/borders/border2.png",
+      "size": 3673,
+      "sha256": "e0baced694e62969075683ca6346071311267d06227f3b49f28f34b75281f281"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/borders/border3.png",
+      "size": 2643,
+      "sha256": "535a3f62210116a9ead1f228aca97dcb364b39406aaa4a332483e44bfa46138f"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/changelog-org.txt",
+      "size": 38664,
+      "sha256": "99f323731879e650b9a613931322e140e18a71e084b7dcc6ff4887c9c16d3861"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cheats.c",
+      "size": 9199,
+      "sha256": "505ebd15b1b958c851b59c57205229fea15ca2586c51a18ce6b0c2616c89ba49"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cheats.h",
+      "size": 1257,
+      "sha256": "eaad703ce7c6a5cccf71b388421704266cf3bdc557283ec5dd37b3e50525ca0a"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/Makefile",
+      "size": 1060,
+      "sha256": "b3270786da908a44ac8dfe9648652e1cd01794a55c3dadda9c5496e3c5b7759d"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/platform.c",
+      "size": 11882,
+      "sha256": "a8cbb1102b479b55ad226e9689cd37f1d6ab481ca27e403c0642616c063c3696"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/platform.h",
+      "size": 316,
+      "sha256": "beaf4ab68adaa7b50939c523585d4e150afb7e37b297f720cf5220607d20fd98"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/profile.c",
+      "size": 8483,
+      "sha256": "387d3ef138343595a301910e5eeae74635e9250e9d05767b92502bf3a1e82c8b"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/profile.h",
+      "size": 346,
+      "sha256": "684aaeae1c185ff14f2c442e5d00ded02229fdef6427d5a589e6361ac5e40bf6"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/quick_menu.c",
+      "size": 10505,
+      "sha256": "18f60075adbb82fba824d332e79252be7a9a43a1697e3e7ee3c000c6f907e9f8"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/quick_menu.h",
+      "size": 164,
+      "sha256": "be37d11483deb751152421d5d3920362e95c0876fffbb6cf1dd73b7ae7c0ac09"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/settings.c",
+      "size": 5811,
+      "sha256": "39348efaf48a70055c5ccc7392a7eb6598d4ce982b2559915517ca6aaf5bcc8e"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/state_io.c",
+      "size": 8393,
+      "sha256": "30a455a34a0fabd5c745123c05b62a5b5db37a4f46d6441ffb6b2612701da889"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cherrypi/state_io.h",
+      "size": 916,
+      "sha256": "7f50840cf35448218c067ee2888e9f81fe8bbd8a8f32c0144fff2a1fb400eba8"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/common.h",
+      "size": 10803,
+      "sha256": "39809c6f2506f11f3fa73a1e17c1564b58a7b679a6bf8d0185abeac9bc1e1e5e"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/COPYING.DOC",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cpu.c",
+      "size": 304448,
+      "sha256": "a64019a57f1e448099e03f36fc947d72f944bbf4148fc8b16e2f5c1e6ffbfbc1"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cpu.h",
+      "size": 5626,
+      "sha256": "ca71fe044ce315a539ca2b60f6add4be80711219df5c8b0f760b40ef590dc5ea"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/cpu_threaded.c",
+      "size": 267601,
+      "sha256": "3ce077717b5086a0ecdf345ad625466572c9af88bc2f2267210e130f45e471d2"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/disasm.c",
+      "size": 9074,
+      "sha256": "a86547a86744363bd1187686baed7b94a18f6ccf38b384306cb6abbceaba2970"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/game_config.txt",
+      "size": 33552,
+      "sha256": "2a90bef52459513ea00288a24ab47e6ea2e1b5e0f391b2d77bf4532bba27a780"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/gp2x.c",
+      "size": 12855,
+      "sha256": "a361bf2716789981b18a1b4aa4bb3b09d71acc224052d25c0da8f984252ccbba"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/gp2x.h",
+      "size": 1463,
+      "sha256": "07cae8bf2725f47cc1db81455ddea3b8379349ca67d505558952018c38682747"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/gpsp_caanoo.gpe",
+      "size": 182,
+      "sha256": "8e1adc02ad94caace2f35c3753cf45707349f26bdcdb05780f227aec21184296"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/gpsp_caanoo.ini",
+      "size": 76,
+      "sha256": "9267179c346e29005f2de559e42dd1da0a44c5a9763925263e5e3323c961b5c8"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/Makefile",
+      "size": 1882,
+      "sha256": "18c484be72fe7aa60b597e4fe5fbc60b33a0b9fdeaad77ccf935995219615f0b"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/pollux_dpc_set.c",
+      "size": 3092,
+      "sha256": "477bf62856579ff780ba06d51c6dbe66737055a83d5eb542aed5c6b315be30c9"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/pollux_dpc_set.h",
+      "size": 140,
+      "sha256": "1478dcf2bb770a9213f5f3509df84e4b2858287c50da4711a40fdab52a21c29b"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/readme_gp2x.txt",
+      "size": 13848,
+      "sha256": "a7d5e482ab8e1e3b76875607bbaa0775d0e3bf44bc26dc5b69b1cca1bec37bb0"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/test/align_test.c",
+      "size": 1391,
+      "sha256": "9155e0c897feb180f5b359af9a067715ab17670c3b205ea99a54359719ee0fed"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/test/load_imm_test.c",
+      "size": 3220,
+      "sha256": "ec8143d24c5fcf0d0036e231eac9b6a0f4400c9fe3dbd600bf4f99b898b5f409"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gp2x/upscale_aspect.s",
+      "size": 14285,
+      "sha256": "ab9deb7eea1db1bf6f068eb9b6ff85b32feaaacea82ccde296d5f8911e65cd4f"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gui.c",
+      "size": 66436,
+      "sha256": "c541785720d10b7fcb4a07a984fba6ab2e790efff945f0504125973cfee839a3"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/gui.h",
+      "size": 1539,
+      "sha256": "ef0d872946a19c66ba51003c308e14f83113bf3bd1ea87c5d233cd7288cbde29"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/imageio.c",
+      "size": 3670,
+      "sha256": "72d0da766ad6f1a5dc762a12b8db33f4a6ee1f4bf9703e3a5067e33c190d56d2"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/imageio.h",
+      "size": 186,
+      "sha256": "9fd90880c8ee2198338d1143607f0702b1f2c662a1c9ad81603525750d42a6f4"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/input.c",
+      "size": 24282,
+      "sha256": "a9060ad2c0a8c1f39f13cf616f31b3bca4b5bdb045cdad0c124e0030dd471ef2"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/input.h",
+      "size": 2340,
+      "sha256": "c857707b08083e345d7d534e21a1ac5b2d9d4ab2a28f67dfd8113e1d2095083f"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/main.c",
+      "size": 26885,
+      "sha256": "b7617d6277af20b6cd142d41f1791bcc128c420176a7e4062b3a5dbd3beee969"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/main.h",
+      "size": 7797,
+      "sha256": "bb6617f746ee28594b7a97f354ccc4ee9665bfbf8c800c2d699adbf5ac681f50"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/memory.c",
+      "size": 125803,
+      "sha256": "ab796b7405afd1de1542734d84ebab6e0ed86e17c343a276c8419c78eff603a8"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/memory.h",
+      "size": 5320,
+      "sha256": "1c3d29ea028c2f233e998feff43c2a68156ea9f0243e2a1fd90c7f1ed8564b20"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/miyoo/Makefile",
+      "size": 4065,
+      "sha256": "6ff5cf1fd730e5d6dd9cc89e306f6ff17a20278253dcedb406f71a83582dc913"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/miyoo/opkg_assets/aliases.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/miyoo/opkg_assets/CONTROL/control",
+      "size": 213,
+      "sha256": "14a31c7bbdfa9d5b47f53980d57904d0529efbe90c7c9dc5e6cbc4c973bad5f3"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/miyoo/opkg_assets/CONTROL/postinst",
+      "size": 103,
+      "sha256": "baa77be4ac828fa538e4bb8af592addffb6dbcafe8d0e07982b2b97f9bf32a8e"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/miyoo/opkg_assets/CONTROL/preinst",
+      "size": 86,
+      "sha256": "e6841e41fb47d6b46ad669de2ec18359f46fa8949e8387bb5ee7e1f9fc32ae36"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/miyoo/opkg_assets/gpsp.lnk",
+      "size": 144,
+      "sha256": "8eeaca6a198310e18b20906297e951bcc75434b782ea9a55cfe37e63b47d8327"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/miyoo/pkg.cfg",
+      "size": 3623,
+      "sha256": "2a0c3664f7bc4a6011971397342762afa4723cdc20d1de6df44f0c8c8b5f4b07"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/README.md",
+      "size": 3323,
+      "sha256": "2b9d7d91d6fd3b1291452f38e7dfc15e537165b51bd531232e13d0b79cfa007a"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/sha1.c",
+      "size": 7775,
+      "sha256": "12887155d3230e7d6f11e518ef39036b6e8b2b64de7b94b24de7bbdc421d5144"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/sha1.h",
+      "size": 821,
+      "sha256": "23dfe895085d8283d7f4c351bae1f7bfc9ad07dd5fc30ac7cc45f2fa6a4692de"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/sound.c",
+      "size": 32709,
+      "sha256": "cf85d4902624095fe05fd3b42b1247702bb14a1ca9809a0374beec79591e5dfd"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/sound.h",
+      "size": 17781,
+      "sha256": "c6c6dc1a930870d93937e22c7f1cfbb889ed8dc25c739e5d147df130ac1a4a17"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/video.c",
+      "size": 230751,
+      "sha256": "84a8cf1f8d2d125c00d6d2bd308995639adb6f0cd9271a927c44b69467525755"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/video.h",
+      "size": 3150,
+      "sha256": "8e43981cf898da3cc27d6b9eba4bbcb1384032959eadd62226f79cd4080b29f1"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/x86/Makefile",
+      "size": 767,
+      "sha256": "81009b1fd00ad7eceaedaccce79ee3c0ed05745ffc81f04b77996cb3394825bb"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/x86/x86_emit.h",
+      "size": 128664,
+      "sha256": "8f99a099a48dfc7123fe7665aa31b60ad09e37681d4c8a969e8bc3ea5651954b"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/x86/x86_stub.S",
+      "size": 17541,
+      "sha256": "fc3ac408e266d7764fb7eee860a1a6ac3636b16fb31464a39c8201cc7cc1231f"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/zip.c",
+      "size": 3988,
+      "sha256": "f479a697c77fdc6025080b0b657a2c2997be729518d5e2d42191bcc3bfaff0db"
+    },
+    {
+      "path": "components/gpsp/source/gpsp/zip.h",
+      "size": 866,
+      "sha256": "c7a00e54fb34a19e7f02027ede632ef6a3994a15d96d40647c38175210bd6a02"
+    },
+    {
+      "path": "components/gpsp/tests/check_archive.sh",
+      "size": 449,
+      "sha256": "068e48c95b74f5c76b12af8f016bcb6d024f4c245befecf7e3981985a6ba94e4"
+    },
+    {
+      "path": "components/gpsp/tests/check_arm_layout.py",
+      "size": 2269,
+      "sha256": "2c79cfd53aeb7473c46c96eb6c4fff7c24058c8e4a08389496ddfdaba4efd020"
+    },
+    {
+      "path": "components/gpsp/tests/quick_test_api.h",
+      "size": 949,
+      "sha256": "b5404ec25fcebab9d2b282f6f5f6b71ef9c469511c3e08fac3225c50776154a6"
+    },
+    {
+      "path": "components/gpsp/tests/run.sh",
+      "size": 1300,
+      "sha256": "801f514cbcd7609e853004ce81a810c7cec37881c54db4c6acb974ba737cc5ce"
+    },
+    {
+      "path": "components/gpsp/tests/test_adapter.py",
+      "size": 4177,
+      "sha256": "50e2853539f0945af26ceb81f9ddbe076fd586bf49f9cb0e9ee92497088d8111"
+    },
+    {
+      "path": "components/gpsp/tests/test_arm_smc.py",
+      "size": 5799,
+      "sha256": "b40dc1df0d23201163ffde42e68bd6dec9be46ce8250cb331ad02a407fa9d8e3"
+    },
+    {
+      "path": "components/gpsp/tests/test_dma_smc.py",
+      "size": 3339,
+      "sha256": "a25c10076e1c834dc51fcba2baa36d0baa55713717cd7d5569f748d24eb7c482"
+    },
+    {
+      "path": "components/gpsp/tests/test_guard_flush.py",
+      "size": 6983,
+      "sha256": "32ddbd3c760f4aadfca53605c34ed12e1dbe65ba20b535fac82c91f239dce94b"
+    },
+    {
+      "path": "components/gpsp/tests/test_gui.py",
+      "size": 1959,
+      "sha256": "1c9f6f5ecb5f269ec5edf8ec465782cab23b61fc452ee3a27bfa56818ae2b8e4"
+    },
+    {
+      "path": "components/gpsp/tests/test_helpers.py",
+      "size": 2438,
+      "sha256": "d8d1b5dd430c3902e14342013f02534084123cef4e44fb3c523a980e0c1a54eb"
+    },
+    {
+      "path": "components/gpsp/tests/test_io.c",
+      "size": 6715,
+      "sha256": "d8ba0bb03d2b910bfa8b9501e392faa31f14a314091b9d5864180195a67aa4ba"
+    },
+    {
+      "path": "components/gpsp/tests/test_live_smc.py",
+      "size": 11738,
+      "sha256": "6ff174b710cce7fb4899356a08fe1efd9641253581089c456a66187dce47ceb9"
+    },
+    {
+      "path": "components/gpsp/tests/test_native_controls.py",
+      "size": 3358,
+      "sha256": "59c4650589605a1f34a72de43b7ee067403bd08465147d45d81342a72915b77b"
+    },
+    {
+      "path": "components/gpsp/tests/test_profile.c",
+      "size": 3060,
+      "sha256": "3cbdc4f63a407ef15298f29339f009691707f7ed96415fb83fc4bf60e220772d"
+    },
+    {
+      "path": "components/gpsp/tests/test_profile.py",
+      "size": 1449,
+      "sha256": "cbb5fea3e0f034e4862f3e9c4ed4313f0775dbbf210f842515e229c1c4b432d1"
+    },
+    {
+      "path": "components/gpsp/tests/test_quick.c",
+      "size": 8754,
+      "sha256": "98a7f118f29536f4534c3d291d2b16cb29f3c412189fff91125659be30e75b13"
+    },
+    {
+      "path": "components/gpsp/tests/test_quick_install.py",
+      "size": 2518,
+      "sha256": "9fd21f5dc49f0fefbdd4ddd94efb2c6baf76d99936f16194bd57075c1526b17a"
+    },
+    {
+      "path": "components/gpsp/tests/test_text.py",
+      "size": 1100,
+      "sha256": "fd4f53fbe9683fd4aaf9cda6cf0c1f9beecfa6346f99d1acd3e205f579e562ca"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/audio-tools/amixer",
+      "size": 264,
+      "sha256": "b866a0d96628048388cb31b768882cd4c043ed8d6a769f0cc0fb20fb14a542ba"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/audio-tools/aplay",
+      "size": 263,
+      "sha256": "6d2d2cbd8e27eff2e43bd3b01010bc19ec4e3b401b94654c05342ef3d4a02bcc"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/audio-tools/audio-mode",
+      "size": 629,
+      "sha256": "cb7c066588471a9380002a3e8c9c790f49aeb5e675857b4823ed5b15c61ff856"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/boot.cmd",
+      "size": 625,
+      "sha256": "8018e5f92b8dfd1dcf23de8f53e91312d56e436147c64c25446183c81c5fec5f"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/gba-input-demo/demo.c",
+      "size": 1796,
+      "sha256": "e1821f5c719e34a5c8bf19d86a4fde8b97c6a4a7fd4a8b68162c0119ab523969"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/gba-input-demo/link.ld",
+      "size": 222,
+      "sha256": "653bbaf8e50e66c0b2d8f7670d2cebe5451fc5fd823fa17de9c17a415c4e47a5"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/gba-input-demo/start.S",
+      "size": 541,
+      "sha256": "8f4d63dd8a1bb3a1b7111cc9941a1f347af843db5102bb663796abac5e65fa13"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/genimage.cfg",
+      "size": 666,
+      "sha256": "071e1fef9addce508ed273e7475ab7c1254b0acd087419afbe21320ab9081b10"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/lcd-test.c",
+      "size": 4642,
+      "sha256": "6f17695ef6c4259c78973add192b359ce63ceb006acbcf6fbb8e521dde7b5e9c"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/post-build.sh",
+      "size": 264,
+      "sha256": "9b49ae16e4636d024c72d032351cbb839666f162366279d572d7872dce07fa3e"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/run-gpsp.sh",
+      "size": 1010,
+      "sha256": "de9743565be15877bc0c3f7806abd4b86c0a2b8bd7f17877dc56d53736e179e3"
+    },
+    {
+      "path": "components/linux-system/board/cherrypi/uboot-sd.env",
+      "size": 366,
+      "sha256": "1cee6afa25d53daac9e53afed2a830ce20d679cfcd45f862106ad3c7bb04f52d"
+    },
+    {
+      "path": "components/linux-system/configs/buildroot-before-audio-20261011.config",
+      "size": 118348,
+      "sha256": "4152d4c90dfaabe8704ea437d33355ef40573d3b885f166bf7c4c99e7b3b5363"
+    },
+    {
+      "path": "components/linux-system/configs/buildroot-cherrypi-audio.config",
+      "size": 119510,
+      "sha256": "6cca61ba986546816accfe25bf72d6ac313fccb22e453043d4cd36ca44edce3b"
+    },
+    {
+      "path": "components/linux-system/configs/buildroot-cherrypi_defconfig",
+      "size": 800,
+      "sha256": "ef35ad99f27655246fcd97fd9d30cbda016d147bd65c3f92e4f785e91e5da052"
+    },
+    {
+      "path": "components/linux-system/configs/buildroot-gpsp.config",
+      "size": 118348,
+      "sha256": "4152d4c90dfaabe8704ea437d33355ef40573d3b885f166bf7c4c99e7b3b5363"
+    },
+    {
+      "path": "components/linux-system/configs/kernel-backlight.config",
+      "size": 98571,
+      "sha256": "89c9a629b0d258175d92b344ef6415e06ae114cb48026181a3541460be2efa88"
+    },
+    {
+      "path": "components/linux-system/configs/kernel-baseline.config",
+      "size": 98571,
+      "sha256": "294bd3aa94c2ad3c0784e4fd07d9173d89d1c9f2eb0215c46fcac79539fb31a0"
+    },
+    {
+      "path": "components/linux-system/configs/kernel-verified.config",
+      "size": 98560,
+      "sha256": "9269a597659d4e5752bd4b4f440bd73943b97a8ac7e3266cef1d7a14dc481997"
+    },
+    {
+      "path": "components/linux-system/configs/rootfs-baseline.config",
+      "size": 117889,
+      "sha256": "6177729003a5b7f89fb80280b6612012e4e8f8869e8cdfddcf03efdba4e04dcd"
+    },
+    {
+      "path": "components/linux-system/configs/rootfs-verified.config",
+      "size": 119510,
+      "sha256": "6cca61ba986546816accfe25bf72d6ac313fccb22e453043d4cd36ca44edce3b"
+    },
+    {
+      "path": "components/linux-system/configs/uboot-serial-baseline.config",
+      "size": 40839,
+      "sha256": "b8c8f39863175cb38a44b72dbf0624495b87e5b7e03c4bd08e7966bcefbabdb6"
+    },
+    {
+      "path": "components/linux-system/patches/buildroot-external-toolchain-wsl1.patch",
+      "size": 513,
+      "sha256": "027d970c0caed2a27795767f4ed3dc0d0257bc546831e5976eed9f04a1945630"
+    },
+    {
+      "path": "components/linux-system/patches/buildroot-host-tar-wsl1.patch",
+      "size": 287,
+      "sha256": "6aa532c7266a00060a8d66c1615034adb990fc9fbea01daf788678dcd30429bc"
+    },
+    {
+      "path": "components/linux-system/patches/gpsp-cherrypi.patch",
+      "size": 20343,
+      "sha256": "56811502e4c7eaea6a052f433ed8c024bfeb099c96dfde3b687a81088a773d43"
+    },
+    {
+      "path": "components/linux-system/patches/kernel-cherrypi-backlight.patch",
+      "size": 1095,
+      "sha256": "763cc50550af077ae180d090975d9dee20741889910b7de6dabab7f692c4f40c"
+    },
+    {
+      "path": "components/linux-system/patches/kernel-cherrypi-gamepad-gpio-ownership.patch",
+      "size": 4147,
+      "sha256": "168b8ceb57c285669e1a7ff07938970fffae201ecc03cffcf5f27b533decbec2"
+    },
+    {
+      "path": "components/linux-system/patches/kernel-cherrypi-gamepad.patch",
+      "size": 2785,
+      "sha256": "73044ceddcd6cf7d787512f5313960f8e8755dd9d227242a6c767b25e9a3a3b5"
+    },
+    {
+      "path": "components/linux-system/patches/kernel-cherrypi-gpio-bias-flags.patch",
+      "size": 428,
+      "sha256": "95a636c767d1a5f42461e61439fcb066fb7510312669e127bfecae93a6c1d5c5"
+    },
+    {
+      "path": "components/linux-system/patches/kernel-cherrypi-lcd-prototype.patch",
+      "size": 2911,
+      "sha256": "aef87774c353ce49b0ba1b1bd6d2d173b6b4bf65810fa6b8e969c289918d5512"
+    },
+    {
+      "path": "components/linux-system/patches/kernel-cherrypi-serial-aliases.patch",
+      "size": 329,
+      "sha256": "6a992b41293b9d17f7f35ce5d20ae534476e6b58ba156b35cf85efcc7ce61ffb"
+    },
+    {
+      "path": "components/linux-system/patches/uboot-cherrypi-mmc0-alias.patch",
+      "size": 334,
+      "sha256": "70f7e634d2b653fb6d864d6c8c7076a2585d2cebda95ab546944547a7071fe07"
+    },
+    {
+      "path": "components/linux-system/scripts/build-gpsp.sh",
+      "size": 1158,
+      "sha256": "839742e154153973b7b36302ca87667a0ce17e62f6b955072aeb235d8f1b80fe"
+    },
+    {
+      "path": "components/linux-system/scripts/build-kernel.sh",
+      "size": 2764,
+      "sha256": "cb4fda428e5a3d62c574f09ee8a5f047b1f1e2bbf141ebbc880b02280e11b87d"
+    },
+    {
+      "path": "components/linux-system/scripts/build-rootfs.sh",
+      "size": 466,
+      "sha256": "a797b6157e37724bced933e814002911056a398f70b8f649a40b8067eabfcf2e"
+    },
+    {
+      "path": "components/linux-system/scripts/build-uboot.sh",
+      "size": 875,
+      "sha256": "41417aa767b8d2700c0c610d18cd90f42cb267ddebaa429f0473b14b7440e96d"
+    },
+    {
+      "path": "components/linux-system/scripts/make-sdimage.sh",
+      "size": 1849,
+      "sha256": "09d4765d3c82d01c9c703265efbe9307f7380265d12cd9ed399492df4ba90bc8"
+    },
+    {
+      "path": "components/linux-system/scripts/verify-sdimage.py",
+      "size": 2896,
+      "sha256": "1d5cd06b99fbc04e56c71384383ac318a515acc281132e8f99f4cc210e1fe009"
+    },
+    {
+      "path": "components/linux-system/sources.lock.json",
+      "size": 1479,
+      "sha256": "d80ee398be559f5f1f6f36b214bb88da0e64641bce534c90cca51eeecfc49e08"
+    },
+    {
+      "path": "components/main-menu/build.sh",
+      "size": 569,
+      "sha256": "df11ac1d37101b6f6710c9ef804c9dd8ac3e1931b4793dd433b82bac4af9a483"
+    },
+    {
+      "path": "components/main-menu/source/font.h",
+      "size": 65541,
+      "sha256": "4292eaa8c21b8849fe9d9fc70d6cd4daafc62b1cdcfbf9a96f04b9f97a7b57bb"
+    },
+    {
+      "path": "components/main-menu/source/launcher.c",
+      "size": 9892,
+      "sha256": "8ffa6038fbc83e9107c4491a6bb6f8ce34ef9ec24fe2fe34b04c939f34c3ef61"
+    },
+    {
+      "path": "components/main-menu/source/library.c",
+      "size": 3755,
+      "sha256": "0702ea1ea3d2d31c1201d13f65bfcf09b6254eb1b7688fa6168a2b2d4ee686dd"
+    },
+    {
+      "path": "components/main-menu/source/library.h",
+      "size": 440,
+      "sha256": "c49895172e1525a0568aace52df590f27a7712e8782e995b4fff0e944a8a80cd"
+    },
+    {
+      "path": "components/main-menu/source/platform.c",
+      "size": 12047,
+      "sha256": "fbb5b2089acd94cdf912d271efb92d484c6f7f192173acf1dd533245b5860e01"
+    },
+    {
+      "path": "components/main-menu/source/platform.h",
+      "size": 352,
+      "sha256": "637e521902dd255f79a820d32e3de7d3178c205969b1351f6b6c6c8998ce838b"
+    },
+    {
+      "path": "components/main-menu/source/settings.c",
+      "size": 5681,
+      "sha256": "bc42c650ebb5fcfe7e79cffbf530ab799b07b8ad13f20d88cd05e0c084fcf8e9"
+    },
+    {
+      "path": "components/main-menu/source/settings.h",
+      "size": 336,
+      "sha256": "f8884698b22075aff74741eddc4e22b205f32097a572accc727f6f83619d0aa2"
+    },
+    {
+      "path": "components/main-menu/tests/check_archive.sh",
+      "size": 488,
+      "sha256": "cb00ff4c9b5376bb950c70bfcc1e3a0c382d774de26c96169513d9f8851a0306"
+    },
+    {
+      "path": "components/main-menu/tests/run.sh",
+      "size": 778,
+      "sha256": "f497bb57ad6d7801daf604b969c9d64abef718f21c0369d7ef3ed865b619f490"
+    },
+    {
+      "path": "components/main-menu/tests/SDL.h",
+      "size": 714,
+      "sha256": "6028e8c7e07a21ad34a7f4e3537066dfd520576e4e9b5c3cc7d52ec8a430803a"
+    },
+    {
+      "path": "components/main-menu/tests/test_install.py",
+      "size": 2843,
+      "sha256": "a7362a343b88529eeb8164fff6717200fe8f18d49d56331ebe80766987001594"
+    },
+    {
+      "path": "components/main-menu/tests/test_menu.c",
+      "size": 5670,
+      "sha256": "93f5c681350bb1b47b16ab5cd1e696515cfa95415c76533791f743f9b2e403eb"
+    },
+    {
+      "path": "components/main-menu/tests/test_native_controls.py",
+      "size": 3344,
+      "sha256": "19ebb17ca54552c1952b3c923a443de21d4eda78dc1624ee438886781d5f3464"
+    },
+    {
+      "path": "components/main-menu/tests/test_supervisor.py",
+      "size": 3548,
+      "sha256": "be429191155237fb446e0c1f8169a57f8fc95b5a2db4ac64e654c4dd4c4c85b1"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-lib/0001-Don-t-use-fork-on-noMMU-platforms.patch",
+      "size": 1759,
+      "sha256": "b2ddd38ea11bf37453d2e79c226a43cf445a8fc4eb0f27b95f4f7b53577876ae"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-lib/0002-configure-Make-sequencer-dependent-on-rawmidi.patch",
+      "size": 1170,
+      "sha256": "78dc56dadf4e97fe9f2c08922f65680bc43b80b552a5bd1d59714933ead4afb8"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-lib/alsa-lib.hash",
+      "size": 291,
+      "sha256": "0343ab34ff7120c1d5a224236e30c3f8b1f45b36421e0ddf9dd917a4fe4519cd"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-lib/alsa-lib.mk",
+      "size": 2441,
+      "sha256": "473ae1ceb11b1dac345986253e8212f92468dfa607218df5849f5e8765a7315e"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-lib/Config.in",
+      "size": 2241,
+      "sha256": "b7451762ced5b53958a0519475fb425c7adb5ddc130a09bc9bade875873bf5f6"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-utils/0001-alsactl-info.c-fix-conditionals-on-__ALSA_PCM_H-and-.patch",
+      "size": 3346,
+      "sha256": "55a7bca157c99f525f69a1b7c4279d9a3787fc31cc1a4e6aed8e9014ddead87f"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-utils/alsa-utils.hash",
+      "size": 203,
+      "sha256": "972fd69e5f45597d57e6e510dbda2ff0be6b8a0c8b4582f687d9403955d5f0ce"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-utils/alsa-utils.mk",
+      "size": 4354,
+      "sha256": "ac541b40a87fb0d7a497441439605712cd6940223f7d02b852ebb95b3017fa08"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/alsa-utils/Config.in",
+      "size": 2363,
+      "sha256": "c760deaad26e6e0044bd906c68f6493975a383521c5bcf817eed1d8cf426a63e"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/libpng/Config.in",
+      "size": 166,
+      "sha256": "c23db15d3894ed9fa2132c0d319b9b0781d09adca7c8b9227af643c846333582"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/libpng/libpng.hash",
+      "size": 336,
+      "sha256": "596fc888f6f574b7739788d9a3bf45457e3c31750ecc4fafb8275c252bbfb2a9"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/libpng/libpng.mk",
+      "size": 1190,
+      "sha256": "c635d31c81079a82de7fc60cbef186e9f553f799bf97a5e07022d07bba28e481"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/libzlib/libzlib.hash",
+      "size": 238,
+      "sha256": "0b077e366d405edec1e7747ea44e14d90d2cf1a0af7146ee98c80d9d5c3d53ce"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/libzlib/libzlib.mk",
+      "size": 2132,
+      "sha256": "7d2b9e24c7b230a93b66e354d5a1bd5091311e31c13cc1fcf9edc8ab2b2eedb3"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/sdl/0001-Fix-compilation-with-libX11-1.5.99.902.patch",
+      "size": 2549,
+      "sha256": "0a59cedd9379b5bc07d8b0ddcb55845470804658c4b25e69fa1e7d148c3c510f"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/sdl/0002-SDL_x11yuv.c-fix-possible-use-after-free.patch",
+      "size": 1111,
+      "sha256": "0c34c44b38c0a01eb29efeccfb7fe63889df6a9d9df7881fb8cb9dc3d545fa05"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/sdl/0004-src-stdlib-SDL_iconv.c-fix-types-mismatch.patch",
+      "size": 1899,
+      "sha256": "77ee274055359dfe62b1c6b7b02b0817afa968abd4c52584dd76cf88b00a30c9"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/sdl/Config.in",
+      "size": 492,
+      "sha256": "448fe7a9a3dc720b5b04447bc3d112b6148ad9c448163b586e94942548c8b410"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/sdl/sdl.hash",
+      "size": 243,
+      "sha256": "5d4a949303df0c0db755a74f22711bab72e6b1da61fe6ab4e612ebecd233b0d5"
+    },
+    {
+      "path": "components/runtime-libraries/buildroot-recipes/package/sdl/sdl.mk",
+      "size": 2391,
+      "sha256": "7091e5b9f096312483188454b4464237b6097b932ac1ebd31dc07dad842fdf27"
+    },
+    {
+      "path": "components/runtime-libraries/libpng-1.6.58.tar.xz",
+      "size": 1070096,
+      "sha256": "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775"
+    },
+    {
+      "path": "components/runtime-libraries/SDL-1.2.15.tar.gz",
+      "size": 3920622,
+      "sha256": "d6d316a793e5e348155f0dd93b979798933fb98aa1edebcc108829d6474aad00"
+    },
+    {
+      "path": "components/runtime-libraries/zlib-1.3.2.tar.xz",
+      "size": 1320064,
+      "sha256": "d7a0654783a4da529d1bb793b7ad9c3318020af77667bcae35f95d0e42a792f3"
+    },
+    {
+      "path": "components/system-scripts/device-control.sh",
+      "size": 2650,
+      "sha256": "95971fcab8743531547d4500944fdbc74579a05e623afec44a2792183aff3dfa"
+    },
+    {
+      "path": "components/system-scripts/supervisor.sh",
+      "size": 4662,
+      "sha256": "28a58b152c173bb575ec44bb18678f893ef4d6dd87fc905cf6719c98cfdab419"
+    },
+    {
+      "path": "COPYING",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "docs/01-新卡制作与安装.md",
+      "size": 6934,
+      "sha256": "fd497d47bc2171b33afaed78b3a5e8bf8790565f3771c45361fdb53d9b3ef70e"
+    },
+    {
+      "path": "docs/02-已有系统升级与回退.md",
+      "size": 2511,
+      "sha256": "f2313cba8663abee90db274f7e6d7281c636d0c1e5b2371ceac61ae924d099a7"
+    },
+    {
+      "path": "docs/03-运行GBA游戏.md",
+      "size": 3445,
+      "sha256": "e24d24586a3d90323edc1e71f3932bdfb6c12f648e95b411ab3ca0bd717ee553"
+    },
+    {
+      "path": "docs/04-构建测试与GitHub.md",
+      "size": 5060,
+      "sha256": "7f9c77eea58ebbca2f8a8ed77024490d23342b247e2a39b0a1895ca38841bbde"
+    },
+    {
+      "path": "docs/05-性能优化记录.md",
+      "size": 3038,
+      "sha256": "fdc8809adba0aaba1f02ae81ac0f53d9d1a8dc529128e093222c5a839133e4da"
+    },
+    {
+      "path": "docs/06-整理与验证记录.md",
+      "size": 1523,
+      "sha256": "8f497cd3cba0430e50dadb8243b408a4db346360a701290d4bd1d1fbe6e3cc18"
+    },
+    {
+      "path": "firmware/image.json",
+      "size": 388,
+      "sha256": "5e77d4da89f3adc08fcbf33628575bd40da4f0a2d7ba9ae532a26421ff405437"
+    },
+    {
+      "path": "firmware/README.md",
+      "size": 876,
+      "sha256": "8882e156a5d98be659c801661f952fc26591d897ae2b9d3bade2da9dc49561ea"
+    },
+    {
+      "path": "LICENSES/GPL-2.0.txt",
+      "size": 17990,
+      "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+    },
+    {
+      "path": "README.md",
+      "size": 3537,
+      "sha256": "6af849343dd27a5ec878b0374922684a092e9bac493939d1a3dad062940d4bed"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/kernel/SHA256SUMS",
+      "size": 165,
+      "sha256": "c9b805ae5cd90b9b6ef14795f01cccaee39aec15fe78119877b809f53072e5ed"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/kernel/suniv-f1c100s-generic.dtb",
+      "size": 16448,
+      "sha256": "14b65ceabd84e9f70940a704e4741888bbff2267a5a9c1ee8e2ad6e456563e47"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/kernel/zImage",
+      "size": 4408000,
+      "sha256": "a586de85ee0ba295c5ad82e7ae6ee19c6494cedc3802085a8f6df81ba18d86fb"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/packages/audio-tools.tar.gz",
+      "size": 526487,
+      "sha256": "5e69284affb789a6ab57ca992d67f3b3820db5c2dd1f4578a4e9e95d15c80334"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/packages/autostart.tar.gz",
+      "size": 5086,
+      "sha256": "2fcf3695c0d4c2a4329f0a43bde2724e25386f9dae6e8a639a24ff6beb522164"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/packages/gpsp-base.tar.gz",
+      "size": 605050,
+      "sha256": "dca6d425d66c235de087c824502b704cd153063fae228b048634d649da44e057"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/packages/main-menu.tar.gz",
+      "size": 54661,
+      "sha256": "0e0df04495965a7ac87c9585facadb541fdf862d43c4e0b125b550d7aef97f26"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/packages/optimized-20261017.tar.gz",
+      "size": 675907,
+      "sha256": "39acc1e9e879b55a47f66075ba247ce8856b7fb6b3f23314a32f242ecc319b89"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/packages/settings-native.tar.gz",
+      "size": 288989,
+      "sha256": "7d9fa5a73dfeb1a878acaa77761529d12864b541b7e137d77edd50443202e769"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/README.txt",
+      "size": 216,
+      "sha256": "8134d9b6958a5ea23f91d99589f26c1ccf1af63e6bcd4899698a8dde50376439"
+    },
+    {
+      "path": "sdcard-files/cherrypi-kit/SHA256SUMS",
+      "size": 825,
+      "sha256": "56c16e073146afe0b2f5b8beedbc43acd9562517fee13a2f68c8ce3c640dc765"
+    },
+    {
+      "path": "sdcard-files/DISABLE_GBA_AUTOSTART",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "sdcard-files/roms/README.txt",
+      "size": 115,
+      "sha256": "c85adeb469dad6b7d4a3059cb707f9fcb961f52818f6526d56dbd93a2832f29c"
+    },
+    {
+      "path": "sources.lock.json",
+      "size": 1479,
+      "sha256": "d80ee398be559f5f1f6f36b214bb88da0e64641bce534c90cca51eeecfc49e08"
+    },
+    {
+      "path": "THIRD_PARTY.md",
+      "size": 1501,
+      "sha256": "9c92830b37cfd0e2225494f88bd12de233df0e1b8199eef9fb0f426b0da03060"
+    },
+    {
+      "path": "tools/package-optimized.py",
+      "size": 1093,
+      "sha256": "bf9dbf3b4e8a7db6d65c3635fe32e86d7a557426392eb25217b94321909c3d1d"
+    },
+    {
+      "path": "tools/unpack-image.py",
+      "size": 1766,
+      "sha256": "ec5d3a63828581a8a4b6cb1281409278ec23197b3dfcc1d002d503f6acc21990"
+    },
+    {
+      "path": "tools/update-manifest.py",
+      "size": 859,
+      "sha256": "fe8d1c29ee9685f590359f58af2177036e1ad1310117e789e8539243132f0e74"
+    },
+    {
+      "path": "tools/verify.py",
+      "size": 2438,
+      "sha256": "710de60895b956f8ae279c5ec484b5bc0fdc8fe3a02486fc6583eaa86f521a35"
+    },
+    {
+      "path": "VERSION",
+      "size": 20,
+      "sha256": "04feff83728b7b25be347c39c87d65820eacd097fadc884346b7dbc9a4bf0bd1"
+    }
+  ]
+}
